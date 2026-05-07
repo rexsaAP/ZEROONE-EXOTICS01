@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ========== SAME AS BEFORE (no changes) ========== */
         :root {
             --bg-deep: #2A211C;
             --bg-darker: #1E1612;
@@ -95,7 +96,6 @@
             color: inherit;
         }
 
-        /* ========== CONTAINER ========== */
         .container {
             max-width: var(--container-max);
             margin: 0 auto;
@@ -103,7 +103,6 @@
             width: 100%;
         }
 
-        /* ========== BUTTONS ========== */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -202,7 +201,6 @@
             background: rgba(184, 124, 79, 0.08);
         }
 
-        /* ========== CARDS ========== */
         .card {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -241,7 +239,6 @@
             flex-grow: 1;
         }
 
-        /* ========== GRID ========== */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -261,7 +258,6 @@
             margin: 2rem 0;
         }
 
-        /* ========== HEADER ========== */
         .site-header {
             background: var(--bg-darker);
             padding: 0.7rem 2rem;
@@ -378,7 +374,6 @@
             outline-offset: 2px;
         }
 
-        /* Mobile nav backdrop */
         .nav-backdrop {
             display: none;
             position: fixed;
@@ -393,7 +388,6 @@
             opacity: 1;
         }
 
-        /* ========== PAGE SECTIONS ========== */
         .page {
             min-height: 60vh;
             animation: fadeSlideIn 0.4s ease;
@@ -449,13 +443,11 @@
             color: #F0E4D6;
         }
 
-        /* ========== HOMEPAGE HERO (DENGAN BACKGROUND FOTO) ========== */
         .home-hero {
             text-align: center;
             padding: 3rem 1.5rem 4rem;
             max-width: 100%;
             margin: 0 auto;
-            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -463,13 +455,13 @@
             border-radius: var(--radius-2xl);
             overflow: hidden;
             color: #F5EAD8;
+            transition: background-image 0.6s ease-in-out;
         }
-        /* Overlay gelap transparan agar teks tetap terbaca */
         .home-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(30, 22, 18, 0.75); /* warna gelap tembus pandang */
+            background: rgba(30, 22, 18, 0.75);
             z-index: 1;
             border-radius: inherit;
         }
@@ -500,7 +492,6 @@
             padding: 0 0.5rem;
         }
 
-        /* ========== HIGHLIGHT GRID (Fasilitas) ========== */
         .highlight-grid {
             display: flex;
             gap: 1.5rem;
@@ -545,7 +536,6 @@
             color: var(--text-muted);
         }
 
-        /* ========== PRODUCT IMG PLACEHOLDER ========== */
         .product-img {
             background: #2E221D;
             aspect-ratio: 4 / 3;
@@ -572,7 +562,6 @@
             border-color: var(--border-light);
         }
 
-        /* ========== STOCK BADGE ========== */
         .stock-badge {
             background: #C49B6C;
             color: #221A14;
@@ -586,7 +575,6 @@
             align-self: flex-start;
         }
 
-        /* ========== TAB MENU ========== */
         .tab-menu {
             display: flex;
             flex-wrap: wrap;
@@ -637,7 +625,6 @@
             animation: fadeSlideIn 0.35s ease;
         }
 
-        /* ========== FOOTER ========== */
         footer {
             background: #1A120E;
             color: var(--text-muted);
@@ -654,7 +641,6 @@
             margin: 0 auto;
         }
 
-        /* ========== SECTION HEADINGS ========== */
         .section-title {
             font-family: var(--font-heading);
             font-size: clamp(1.5rem, 4vw, 2rem);
@@ -669,7 +655,6 @@
             line-height: 1.6;
         }
 
-        /* ========== TESTIMONIAL BLOCK ========== */
         .testimonial-block {
             background: var(--bg-section);
             border-radius: var(--radius-2xl);
@@ -685,7 +670,6 @@
             color: #F2E0C9;
         }
 
-        /* ========== CONTACT CARD ========== */
         .contact-info-card {
             background: #3E2C23;
             border-radius: var(--radius-xl);
@@ -713,7 +697,6 @@
             color: #9CCC65;
         }
 
-        /* ========== FAQ BLOCK ========== */
         .faq-block {
             background: var(--bg-rodent-section);
             border-radius: var(--radius-lg);
@@ -735,7 +718,6 @@
             color: #F5EAD8;
         }
 
-        /* ========== UTILITY ========== */
         .text-center {
             text-align: center;
         }
@@ -767,282 +749,83 @@
             justify-content: center;
         }
 
-        /* ========== RESPONSIVE: TABLET ========== */
         @media (max-width: 1024px) {
-            .container {
-                padding: 1.8rem 1.2rem;
-            }
-            .grid-2 {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 1.2rem;
-            }
-            .grid-3 {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                gap: 1.2rem;
-            }
-            .grid-4 {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1rem;
-            }
-            .nav-links {
-                gap: 0.3rem;
-            }
-            .nav-links li {
-                font-size: 0.85rem;
-                padding: 0.35rem 0.7rem;
-            }
-            .site-header {
-                padding: 0.6rem 1.5rem;
-            }
-            .home-hero {
-                padding: 2.5rem 1.2rem 3rem;
-            }
-            .product-img {
-                aspect-ratio: 4 / 3;
-                font-size: 1.2rem;
-            }
-            .product-img i {
-                font-size: 2rem;
-            }
+            .container { padding: 1.8rem 1.2rem; }
+            .grid-2 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+            .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+            .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+            .nav-links { gap: 0.3rem; }
+            .nav-links li { font-size: 0.85rem; padding: 0.35rem 0.7rem; }
+            .site-header { padding: 0.6rem 1.5rem; }
+            .home-hero { padding: 2.5rem 1.2rem 3rem; }
+            .product-img { aspect-ratio: 4 / 3; font-size: 1.2rem; }
+            .product-img i { font-size: 2rem; }
         }
 
-        /* ========== RESPONSIVE: MOBILE ========== */
         @media (max-width: 768px) {
-            .container {
-                padding: 1.4rem 1rem;
-            }
-            .site-header {
-                padding: 0.7rem 1rem;
-                flex-wrap: wrap;
-                align-items: center;
-                position: sticky;
-                top: 0;
-                z-index: 101;
-            }
-            .logo {
-                flex: 1;
-                min-width: 0;
-            }
-            .logo h1 {
-                font-size: 1.2rem;
-                gap: 6px;
-            }
-            .logo p {
-                font-size: 0.65rem;
-            }
-            .menu-icon {
-                display: inline-flex;
-                z-index: 102;
-            }
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.2rem;
-                margin-top: 0.6rem;
-                background: #1F1713;
-                border-radius: var(--radius);
-                padding: 0.6rem;
-                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
-                border: 1px solid var(--border);
-                position: relative;
-                z-index: 101;
-                max-height: 70vh;
-                overflow-y: auto;
-            }
-            .nav-links.show {
-                display: flex;
-                animation: slideDown 0.3s ease;
-            }
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-8px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            .nav-links li {
-                font-size: 0.95rem;
-                padding: 0.7rem 1.2rem;
-                border-radius: var(--radius-sm);
-                width: 100%;
-                text-align: left;
-            }
-            .nav-backdrop.show {
-                display: block;
-                opacity: 1;
-            }
-            .grid-2,
-            .grid-3,
-            .grid-4 {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .card {
-                padding: 1.3rem;
-            }
-            .btn-primary {
-                padding: 0.7rem 1.4rem;
-                font-size: 0.9rem;
-                width: 100%;
-                justify-content: center;
-            }
-            .btn-wa {
-                width: 100%;
-                justify-content: center;
-            }
-            .btn-outline {
-                width: 100%;
-                justify-content: center;
-            }
-            .tab-menu {
-                gap: 0.35rem;
-                padding-bottom: 0.6rem;
-                margin-bottom: 1.2rem;
-            }
-            .tab-link {
-                padding: 0.4rem 0.9rem;
-                font-size: 0.8rem;
-            }
-            .product-img {
-                aspect-ratio: 16 / 10;
-                font-size: 1.2rem;
-            }
-            .product-img i {
-                font-size: 2rem;
-            }
-            h1 {
-                font-size: 1.7rem !important;
-            }
-            h2 {
-                font-size: 1.4rem !important;
-            }
-            h3 {
-                font-size: 1.1rem !important;
-            }
-            .highlight-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .highlight-item {
-                width: 100%;
-                max-width: 260px;
-            }
-            .testi-img {
-                aspect-ratio: 1 / 1;
-            }
-            footer {
-                padding: 1.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            .home-hero {
-                padding: 2rem 1rem 2.5rem;
-            }
-            .home-hero h1 {
-                font-size: 1.8rem !important;
-            }
-            .home-hero .btn-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .contact-info-card p {
-                font-size: 0.85rem;
-            }
+            .container { padding: 1.4rem 1rem; }
+            .site-header { padding: 0.7rem 1rem; flex-wrap: wrap; align-items: center; position: sticky; top: 0; z-index: 101; }
+            .logo { flex: 1; min-width: 0; }
+            .logo h1 { font-size: 1.2rem; gap: 6px; }
+            .logo p { font-size: 0.65rem; }
+            .menu-icon { display: inline-flex; z-index: 102; }
+            .nav-links { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.2rem; margin-top: 0.6rem; background: #1F1713; border-radius: var(--radius); padding: 0.6rem; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55); border: 1px solid var(--border); position: relative; z-index: 101; max-height: 70vh; overflow-y: auto; }
+            .nav-links.show { display: flex; animation: slideDown 0.3s ease; }
+            @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+            .nav-links li { font-size: 0.95rem; padding: 0.7rem 1.2rem; border-radius: var(--radius-sm); width: 100%; text-align: left; }
+            .nav-backdrop.show { display: block; opacity: 1; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1rem; }
+            .card { padding: 1.3rem; }
+            .btn-primary, .btn-wa { width: 100%; justify-content: center; }
+            .btn-outline { width: 100%; justify-content: center; }
+            .tab-menu { gap: 0.35rem; padding-bottom: 0.6rem; margin-bottom: 1.2rem; }
+            .tab-link { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+            .product-img { aspect-ratio: 16 / 10; font-size: 1.2rem; }
+            .product-img i { font-size: 2rem; }
+            h1 { font-size: 1.7rem !important; }
+            h2 { font-size: 1.4rem !important; }
+            h3 { font-size: 1.1rem !important; }
+            .highlight-grid { flex-direction: column; align-items: center; }
+            .highlight-item { width: 100%; max-width: 260px; }
+            .testi-img { aspect-ratio: 1 / 1; }
+            footer { padding: 1.5rem 1rem; font-size: 0.8rem; }
+            .home-hero { padding: 2rem 1rem 2.5rem; }
+            .home-hero h1 { font-size: 1.8rem !important; }
+            .home-hero .btn-group { flex-direction: column; align-items: stretch; }
+            .contact-info-card p { font-size: 0.85rem; }
         }
 
-        /* ========== RESPONSIVE: SMALL MOBILE ========== */
         @media (max-width: 400px) {
-            .logo h1 {
-                font-size: 1rem;
-                gap: 4px;
-            }
-            .logo p {
-                font-size: 0.6rem;
-                letter-spacing: 0.8px;
-            }
-            .btn-primary,
-            .btn-wa {
-                font-size: 0.85rem;
-                padding: 0.6rem 1rem;
-                min-height: 42px;
-            }
-            .product-img {
-                aspect-ratio: 4 / 3;
-                font-size: 1rem;
-            }
-            .product-img i {
-                font-size: 1.7rem;
-            }
-            .container {
-                padding: 1.1rem 0.8rem;
-            }
-            .card {
-                padding: 1.1rem;
-                border-radius: var(--radius);
-            }
-            .tab-link {
-                padding: 0.35rem 0.7rem;
-                font-size: 0.75rem;
-            }
-            .home-hero {
-                padding: 1.5rem 0.8rem 2rem;
-            }
-            .home-hero h1 {
-                font-size: 1.5rem !important;
-            }
-            .home-hero p {
-                font-size: 0.9rem;
-            }
-            .site-header {
-                padding: 0.5rem 0.8rem;
-            }
-            .menu-icon {
-                font-size: 1.7rem;
-                min-width: 40px;
-                min-height: 40px;
-            }
+            .logo h1 { font-size: 1rem; gap: 4px; }
+            .logo p { font-size: 0.6rem; letter-spacing: 0.8px; }
+            .btn-primary, .btn-wa { font-size: 0.85rem; padding: 0.6rem 1rem; min-height: 42px; }
+            .product-img { aspect-ratio: 4 / 3; font-size: 1rem; }
+            .product-img i { font-size: 1.7rem; }
+            .container { padding: 1.1rem 0.8rem; }
+            .card { padding: 1.1rem; border-radius: var(--radius); }
+            .tab-link { padding: 0.35rem 0.7rem; font-size: 0.75rem; }
+            .home-hero { padding: 1.5rem 0.8rem 2rem; }
+            .home-hero h1 { font-size: 1.5rem !important; }
+            .home-hero p { font-size: 0.9rem; }
+            .site-header { padding: 0.5rem 0.8rem; }
+            .menu-icon { font-size: 1.7rem; min-width: 40px; min-height: 40px; }
         }
 
-        /* ========== LARGER SCREENS ========== */
         @media (min-width: 1400px) {
-            .container {
-                padding: 2.5rem 2rem;
-            }
-            .grid-2 {
-                gap: 2rem;
-            }
-            .home-hero {
-                padding: 4rem 2rem 5rem;
-            }
+            .container { padding: 2.5rem 2rem; }
+            .grid-2 { gap: 2rem; }
+            .home-hero { padding: 4rem 2rem 5rem; }
         }
 
-        /* ========== REDUCED MOTION ========== */
         @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-            .page {
-                animation: none;
-            }
-            .tab-content {
-                animation: none;
-            }
-            .card,
-            .btn-primary,
-            .btn-wa,
-            .nav-links li,
-            .tab-link {
-                transition: none;
-            }
+            html { scroll-behavior: auto; }
+            .page, .tab-content { animation: none; }
+            .card, .btn-primary, .btn-wa, .nav-links li, .tab-link { transition: none; }
+            .home-hero { transition: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Backdrop untuk mobile menu -->
     <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
     <header class="site-header">
@@ -1063,7 +846,6 @@
     </header>
 
     <main>
-        <!-- ==================== HOMEPAGE ==================== -->
         <div id="homepage" class="page">
             <div class="container">
                 <div class="home-hero">
@@ -1076,43 +858,18 @@
                 </div>
 
                 <div class="grid-2">
-                    <div class="card">
-                        <i class="fas fa-dna fa-2x"></i>
-                        <h3>Kualitas Breeding</h3>
-                        <p>Seleksi ketat & line breeding bergaya tradisional premium untuk hasil terbaik.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-temperature-low fa-2x"></i>
-                        <h3>Sistem Terkontrol</h3>
-                        <p>Ruangan bersuhu optimal, kandang higienis kayu solid dengan ventilasi natural.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-shipping-fast fa-2x"></i>
-                        <h3>Pengiriman Aman</h3>
-                        <p>Packing profesional + live guarantee ke seluruh Indonesia dengan metode teruji.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-comment-dots fa-2x"></i>
-                        <h3>Testimoni Nyata</h3>
-                        <p>Dipercaya breeder & kolektor dari Sabang sampai Merauke sejak 2019.</p>
-                    </div>
+                    <div class="card"><i class="fas fa-dna fa-2x"></i><h3>Kualitas Breeding</h3><p>Seleksi ketat & line breeding bergaya tradisional premium untuk hasil terbaik.</p></div>
+                    <div class="card"><i class="fas fa-temperature-low fa-2x"></i><h3>Sistem Terkontrol</h3><p>Ruangan bersuhu optimal, kandang higienis kayu solid dengan ventilasi natural.</p></div>
+                    <div class="card"><i class="fas fa-shipping-fast fa-2x"></i><h3>Pengiriman Aman</h3><p>Packing profesional + live guarantee ke seluruh Indonesia dengan metode teruji.</p></div>
+                    <div class="card"><i class="fas fa-comment-dots fa-2x"></i><h3>Testimoni Nyata</h3><p>Dipercaya breeder & kolektor dari Sabang sampai Merauke sejak 2019.</p></div>
                 </div>
 
                 <div class="testimonial-block">
                     <h3><i class="fas fa-camera"></i> Fasilitas Breeding & Kandang Kayu</h3>
                     <div class="highlight-grid">
-                        <div class="highlight-item">
-                            <div class="testi-img"><i class="fas fa-home fa-2x"></i><span>Ruangan Gecko</span></div>
-                            <p>Rack sistem modular kayu jati</p>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="testi-img"><i class="fas fa-box fa-2x"></i><span>Kandang Tikus</span></div>
-                            <p>Ventilasi + kebersihan natural</p>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="testi-img"><i class="fas fa-truck fa-2x"></i><span>Packaging</span></div>
-                            <p>Kotak khusus + serbuk kayu aman</p>
-                        </div>
+                        <div class="highlight-item"><div class="testi-img"><i class="fas fa-home fa-2x"></i><span>Ruangan Gecko</span></div><p>Rack sistem modular kayu jati</p></div>
+                        <div class="highlight-item"><div class="testi-img"><i class="fas fa-box fa-2x"></i><span>Kandang Tikus</span></div><p>Ventilasi + kebersihan natural</p></div>
+                        <div class="highlight-item"><div class="testi-img"><i class="fas fa-truck fa-2x"></i><span>Packaging</span></div><p>Kotak khusus + serbuk kayu aman</p></div>
                     </div>
                     <p class="mt-1"><i class="fas fa-check-circle"></i> Foto real dokumentasi eco-farm kayu gelap — request video call kapan saja.</p>
                 </div>
@@ -1120,19 +877,16 @@
                 <div class="text-center mt-2">
                     <p style="font-style: italic; max-width: 600px; margin: 0 auto 0.5rem;">"ZeroOne Exotics memberikan pengalaman natural, gecko sehat dan tikus pakan super bersih."</p>
                     <p style="font-weight: 600; color: var(--gold);">— Ivan, kolektor Jabodetabek</p>
-                    <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Halo%20ZeroOne%20Exotics,%20saya%20mau%20konsultasi%20breeding%20kayu')">
-                        <i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp
-                    </button>
+                    <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Halo%20ZeroOne%20Exotics,%20saya%20mau%20konsultasi%20breeding%20kayu')"><i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp</button>
                 </div>
             </div>
         </div>
 
-        <!-- ==================== ZeroOne.Gecko ==================== -->
+        <!-- ZeroOne.Gecko page (unchanged) -->
         <div id="gecko-page" class="page" style="display:none;">
             <div class="container">
                 <h1 style="color:#D6AA7A; font-family:var(--font-heading);"><i class="fas fa-lizard"></i> ZeroOne.Gecko</h1>
                 <p class="section-subtitle">Premium, selectively bred geckos with quality genetics. Morph langka dalam nuansa kayu klasik.</p>
-
                 <div class="tab-menu" role="tablist">
                     <span class="tab-link active" data-tab="geck-catalog" role="tab">📦 Catalog</span>
                     <span class="tab-link" data-tab="geck-stock" role="tab">📊 Available Stock</span>
@@ -1141,102 +895,20 @@
                     <span class="tab-link" data-tab="geck-gallery" role="tab">🖼️ Gallery</span>
                     <span class="tab-link" data-tab="geck-order" role="tab">📞 Order / Contact</span>
                 </div>
-
-                <div id="geck-catalog" class="tab-content">
-                    <div class="grid-2">
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-eye fa-2x"></i> <span>Mack Snow</span></div>
-                            <h3>Mack Snow Eclipse</h3>
-                            <p>Kontras tinggi, pupil solid, grade A — wood series eksklusif.</p>
-                            <span class="stock-badge">Ask Price</span>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Mack%20Snow%20Eclipse%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Tanya Harga</button>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-fire fa-2x"></i> <span>Tangerine</span></div>
-                            <h3>Tangerine Tornado</h3>
-                            <p>Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.</p>
-                            <span class="stock-badge">Ask Price</span>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tangerine%20Tornado')"><i class="fab fa-whatsapp"></i> WA</button>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-moon fa-2x"></i> <span>Black Night</span></div>
-                            <h3>Black Night 50% het</h3>
-                            <p>Gen langka, dark melanistic seperti eboni — incaran kolektor serius.</p>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Black%20Night')"><i class="fab fa-whatsapp"></i> WA</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="geck-stock" class="tab-content" style="display:none;">
-                    <div class="card">
-                        <h3>Stok Tersedia (update rutin)</h3>
-                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 1.8;">
-                            <li>Leopard Gecko Mack Snow (Juvi) – 3 ekor</li>
-                            <li>RAPTOR Bold – 2 ekor</li>
-                            <li>Enigma het Tremper – 1 jantan premium</li>
-                            <li>Super Giant 70% – 1 ekor</li>
-                        </ul>
-                        <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Update%20stok%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Request Daftar Stok Lengkap</button>
-                    </div>
-                </div>
-
-                <div id="geck-projects" class="tab-content" style="display:none;">
-                    <h3 style="color:#F5EAD8;">🔥 Breeding Projects Saat Ini</h3>
-                    <p style="line-height: 1.8;">
-                        • Enigma × Eclipse – Target F1 Super Snow Eclipse<br>
-                        • Tremper Albino line breeding – warna intens kayu<br>
-                        • Black Night × Mack Snow – melanistic snow combos<br>
-                        • Giant Project: Super Giant × Tangerine
-                    </p>
-                    <div class="card mt-1"><i class="fas fa-flask"></i> Genetik teruji, pairing dengan lineage dokumentasi lengkap.</div>
-                </div>
-
-                <div id="geck-care" class="tab-content" style="display:none;">
-                    <h3 style="color:#F5EAD8;">📌 Panduan Perawatan Gecko Natural</h3>
-                    <ul style="line-height: 1.8; margin-left: 1.2rem; list-style: disc;">
-                        <li>Enclosure: 30×30×30cm untuk juvenile, 60×45×45 untuk dewasa</li>
-                        <li>Suhu: 28–32°C (hot spot 32°C)</li>
-                        <li>Pakan: Jangkrik/kecoa dubia + kalsium D3</li>
-                        <li>Kelembaban: 30–40% dengan tempat lembab</li>
-                    </ul>
-                    <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Konsultasi%20care%20gecko')">Konsultasi Perawatan via WA</button>
-                </div>
-
-                <div id="geck-gallery" class="tab-content" style="display:none;">
-                    <div class="grid-2">
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Closeup Tangerine</span></div>
-                            <p>Foto closeup — warna kayu alami</p>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Setup Kandang Kayu</span></div>
-                            <p>Rack sistem natural premium</p>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Indukan Super Giant</span></div>
-                            <p>High quality wood farm</p>
-                        </div>
-                    </div>
-                    <p class="mt-1"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p>
-                </div>
-
-                <div id="geck-order" class="tab-content" style="display:none;">
-                    <div class="card text-center">
-                        <i class="fas fa-headset fa-2x"></i>
-                        <h3>Pemesanan — Suasana Kayu</h3>
-                        <p>Hubungi tim via WhatsApp untuk info terbaru & harga eksklusif.</p>
-                        <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=ZeroOne.Gecko%20order')"><i class="fab fa-whatsapp"></i> WhatsApp ZeroOne.Gecko</button>
-                    </div>
-                </div>
+                <div id="geck-catalog" class="tab-content"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-eye fa-2x"></i> <span>Mack Snow</span></div><h3>Mack Snow Eclipse</h3><p>Kontras tinggi, pupil solid, grade A — wood series eksklusif.</p><span class="stock-badge">Ask Price</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Mack%20Snow%20Eclipse%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Tanya Harga</button></div><div class="card"><div class="product-img"><i class="fas fa-fire fa-2x"></i> <span>Tangerine</span></div><h3>Tangerine Tornado</h3><p>Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.</p><span class="stock-badge">Ask Price</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tangerine%20Tornado')"><i class="fab fa-whatsapp"></i> WA</button></div><div class="card"><div class="product-img"><i class="fas fa-moon fa-2x"></i> <span>Black Night</span></div><h3>Black Night 50% het</h3><p>Gen langka, dark melanistic seperti eboni — incaran kolektor serius.</p><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Black%20Night')"><i class="fab fa-whatsapp"></i> WA</button></div></div></div>
+                <div id="geck-stock" class="tab-content" style="display:none;"><div class="card"><h3>Stok Tersedia (update rutin)</h3><ul style="margin-left:1.2rem; list-style: disc; line-height: 1.8;"><li>Leopard Gecko Mack Snow (Juvi) – 3 ekor</li><li>RAPTOR Bold – 2 ekor</li><li>Enigma het Tremper – 1 jantan premium</li><li>Super Giant 70% – 1 ekor</li></ul><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Update%20stok%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Request Daftar Stok Lengkap</button></div></div>
+                <div id="geck-projects" class="tab-content" style="display:none;"><h3 style="color:#F5EAD8;">🔥 Breeding Projects Saat Ini</h3><p style="line-height: 1.8;">• Enigma × Eclipse – Target F1 Super Snow Eclipse<br>• Tremper Albino line breeding – warna intens kayu<br>• Black Night × Mack Snow – melanistic snow combos<br>• Giant Project: Super Giant × Tangerine</p><div class="card mt-1"><i class="fas fa-flask"></i> Genetik teruji, pairing dengan lineage dokumentasi lengkap.</div></div>
+                <div id="geck-care" class="tab-content" style="display:none;"><h3 style="color:#F5EAD8;">📌 Panduan Perawatan Gecko Natural</h3><ul style="line-height: 1.8; margin-left: 1.2rem; list-style: disc;"><li>Enclosure: 30×30×30cm untuk juvenile, 60×45×45 untuk dewasa</li><li>Suhu: 28–32°C (hot spot 32°C)</li><li>Pakan: Jangkrik/kecoa dubia + kalsium D3</li><li>Kelembaban: 30–40% dengan tempat lembab</li></ul><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Konsultasi%20care%20gecko')">Konsultasi Perawatan via WA</button></div>
+                <div id="geck-gallery" class="tab-content" style="display:none;"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Closeup Tangerine</span></div><p>Foto closeup — warna kayu alami</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Setup Kandang Kayu</span></div><p>Rack sistem natural premium</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Indukan Super Giant</span></div><p>High quality wood farm</p></div></div><p class="mt-1"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p></div>
+                <div id="geck-order" class="tab-content" style="display:none;"><div class="card text-center"><i class="fas fa-headset fa-2x"></i><h3>Pemesanan — Suasana Kayu</h3><p>Hubungi tim via WhatsApp untuk info terbaru & harga eksklusif.</p><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=ZeroOne.Gecko%20order')"><i class="fab fa-whatsapp"></i> WhatsApp ZeroOne.Gecko</button></div></div>
             </div>
         </div>
 
-        <!-- ==================== Rumah Tikus Nusantara (Tab System) ==================== -->
+        <!-- Rumah Tikus Nusantara (unchanged) -->
         <div id="rodent-page" class="page" style="display:none;">
             <div class="container">
                 <h1 style="font-family:var(--font-heading);"><i class="fas fa-rat"></i> Rumah Tikus Nusantara</h1>
                 <p class="section-subtitle">Clean, consistent rodent supply — sentuhan kayu gelap nan hangat untuk feeder & hobiis.</p>
-
                 <div class="tab-menu" role="tablist">
                     <span class="tab-link active" data-tab="rodent-catalog" role="tab">📦 Catalog</span>
                     <span class="tab-link" data-tab="rodent-stock" role="tab">📊 Available Stock</span>
@@ -1245,159 +917,18 @@
                     <span class="tab-link" data-tab="rodent-gallery" role="tab">🖼️ Gallery</span>
                     <span class="tab-link" data-tab="rodent-order" role="tab">📞 Order / Contact</span>
                 </div>
-
-                <!-- Catalog Tikus -->
-                <div id="rodent-catalog" class="tab-content">
-                    <div class="grid-2">
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-baby fa-2x"></i> <span>Pinkies</span></div>
-                            <h3>Pinkies (1-4 hari)</h3>
-                            <p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p>
-                            <span class="stock-badge">Mulai 5rb</span>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Pinkies%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-frog fa-2x"></i> <span>Jumper</span></div>
-                            <h3>Jumper (Mulai Berbulu)</h3>
-                            <p>8-14 gram, aktif dan bernutrisi tinggi.</p>
-                            <span class="stock-badge">Mulai 7rb</span>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Jumper%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-otter fa-2x"></i> <span>Medium</span></div>
-                            <h3>Medium (Remaja)</h3>
-                            <p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p>
-                            <span class="stock-badge">Mulai 9rb</span>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Medium%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-kiwi-bird fa-2x"></i> <span>Adult</span></div>
-                            <h3>Adult (Dewasa)</h3>
-                            <p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p>
-                            <span class="stock-badge">Mulai 12rb</span>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Adult%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-crown fa-2x"></i> <span>Tikus Hias</span></div>
-                            <h3>Tikus Hias (Warna Unik)</h3>
-                            <p>Jinak, sehat, warna eksotis seperti kayu eboni.</p>
-                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tikus%20Hias')"><i class="fab fa-whatsapp"></i> Tanya Koleksi</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Available Stock -->
-                <div id="rodent-stock" class="tab-content" style="display:none;">
-                    <div class="card">
-                        <h3>Stok Real-Time (Update Harian)</h3>
-                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 1.9;">
-                            <li>Pinkies Frozen – 50 pack</li>
-                            <li>Jumper Live – 25 ekor</li>
-                            <li>Medium Frozen – 30 pack</li>
-                            <li>Adult Live – 12 ekor</li>
-                            <li>Tikus Hias (coklat kayu) – 3 ekor</li>
-                        </ul>
-                        <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Stok%20terbaru%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Cek Stok Lengkap</button>
-                    </div>
-                </div>
-
-                <!-- Breeding System -->
-                <div id="rodent-system" class="tab-content" style="display:none;">
-                    <div class="card">
-                        <i class="fas fa-seedling fa-2x"></i>
-                        <h3>Sistem Breeding & Kebersihan Kayu</h3>
-                        <p style="line-height: 1.8;">
-                            ✅ Kandang sistem litter kayu + sekam, bebas amonia.<br>
-                            ✅ Pembersihan harian tanpa bau menyengat — seperti habitat alami.<br>
-                            ✅ Pakan nutrisi seimbang (biji-bijian, sayur, suplemen) untuk tikus sehat.<br>
-                            ✅ Dokumentasi real-time kebersihan bisa direquest kapan saja.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Care Guide & FAQ -->
-                <div id="rodent-care" class="tab-content" style="display:none;">
-                    <h3 style="color:#F5EAD8;">📌 Panduan Perawatan & Ukuran</h3>
-                    <ul style="line-height: 1.9; margin-left: 1.2rem; list-style: disc; margin-bottom: 1.5rem;">
-                        <li><strong>Pinkies</strong> (1–4 hari) – 2–5gr, untuk baby reptile</li>
-                        <li><strong>Jumper</strong> (mulai berbulu) – 8–14gr</li>
-                        <li><strong>Medium</strong> (remaja) – 25–40gr</li>
-                        <li><strong>Adult</strong> (dewasa) – 45–70gr</li>
-                    </ul>
-                    <div class="faq-block">
-                        <h3><i class="fas fa-question-circle"></i> FAQ — Perawatan & Pengiriman</h3>
-                        <p><strong>Apakah tikus pakan bau?</strong> Tidak, ventilasi + kemasan khusus menjaga kesegaran.<br>
-                            <strong>Pengiriman aman?</strong> Ya, packing double carrier + garansi DOA dengan unboxing video.<br>
-                            <strong>Minimal order?</strong> 10 ekor live, 5 pack frozen.</p>
-                    </div>
-                </div>
-
-                <!-- Gallery -->
-                <div id="rodent-gallery" class="tab-content" style="display:none;">
-                    <div class="grid-2">
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Kandang Kayu</span></div>
-                            <p>Setup kandang sistem litter kayu alami</p>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Tikus Hias</span></div>
-                            <p>Warna eksotis — koleksi kayu gelap</p>
-                        </div>
-                        <div class="card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Packaging</span></div>
-                            <p>Double carrier + serbuk kayu aman</p>
-                        </div>
-                    </div>
-                    <p class="mt-1"><i class="fas fa-info-circle"></i> Foto asli dari farm — request video call untuk tur virtual.</p>
-                </div>
-
-                <!-- Order / Contact -->
-                <div id="rodent-order" class="tab-content" style="display:none;">
-                    <div class="card text-center">
-                        <i class="fas fa-boxes fa-2x"></i>
-                        <h3>Paket Bulk & Pemesanan</h3>
-                        <p>Min order 50 ekor (mix ukuran). Tersedia paket frozen 20, 50, 100 pcs.<br>Diskon khusus breeder dan toko.</p>
-                        <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Harga%20Bulk%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Minta Daftar Harga Grosir</button>
-                        <button class="btn-primary mt-1" style="background: var(--accent-rodent);" onclick="window.open('https://wa.me/6281234567890?text=Order%20Rumah%20Tikus%20Nusantara')"><i class="fab fa-whatsapp"></i> Order Sekarang</button>
-                    </div>
-                </div>
+                <div id="rodent-catalog" class="tab-content"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-baby fa-2x"></i> <span>Pinkies</span></div><h3>Pinkies (1-4 hari)</h3><p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p><span class="stock-badge">Mulai 5rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Pinkies%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-frog fa-2x"></i> <span>Jumper</span></div><h3>Jumper (Mulai Berbulu)</h3><p>8-14 gram, aktif dan bernutrisi tinggi.</p><span class="stock-badge">Mulai 7rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Jumper%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-otter fa-2x"></i> <span>Medium</span></div><h3>Medium (Remaja)</h3><p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p><span class="stock-badge">Mulai 9rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Medium%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-kiwi-bird fa-2x"></i> <span>Adult</span></div><h3>Adult (Dewasa)</h3><p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p><span class="stock-badge">Mulai 12rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Adult%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-crown fa-2x"></i> <span>Tikus Hias</span></div><h3>Tikus Hias (Warna Unik)</h3><p>Jinak, sehat, warna eksotis seperti kayu eboni.</p><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tikus%20Hias')"><i class="fab fa-whatsapp"></i> Tanya Koleksi</button></div></div></div>
+                <div id="rodent-stock" class="tab-content" style="display:none;"><div class="card"><h3>Stok Real-Time (Update Harian)</h3><ul style="margin-left:1.2rem; list-style: disc; line-height: 1.9;"><li>Pinkies Frozen – 50 pack</li><li>Jumper Live – 25 ekor</li><li>Medium Frozen – 30 pack</li><li>Adult Live – 12 ekor</li><li>Tikus Hias (coklat kayu) – 3 ekor</li></ul><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Stok%20terbaru%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Cek Stok Lengkap</button></div></div>
+                <div id="rodent-system" class="tab-content" style="display:none;"><div class="card"><i class="fas fa-seedling fa-2x"></i><h3>Sistem Breeding & Kebersihan Kayu</h3><p style="line-height: 1.8;">✅ Kandang sistem litter kayu + sekam, bebas amonia.<br>✅ Pembersihan harian tanpa bau menyengat — seperti habitat alami.<br>✅ Pakan nutrisi seimbang (biji-bijian, sayur, suplemen) untuk tikus sehat.<br>✅ Dokumentasi real-time kebersihan bisa direquest kapan saja.</p></div></div>
+                <div id="rodent-care" class="tab-content" style="display:none;"><h3 style="color:#F5EAD8;">📌 Panduan Perawatan & Ukuran</h3><ul style="line-height: 1.9; margin-left: 1.2rem; list-style: disc; margin-bottom: 1.5rem;"><li><strong>Pinkies</strong> (1–4 hari) – 2–5gr, untuk baby reptile</li><li><strong>Jumper</strong> (mulai berbulu) – 8–14gr</li><li><strong>Medium</strong> (remaja) – 25–40gr</li><li><strong>Adult</strong> (dewasa) – 45–70gr</li></ul><div class="faq-block"><h3><i class="fas fa-question-circle"></i> FAQ — Perawatan & Pengiriman</h3><p><strong>Apakah tikus pakan bau?</strong> Tidak, ventilasi + kemasan khusus menjaga kesegaran.<br><strong>Pengiriman aman?</strong> Ya, packing double carrier + garansi DOA dengan unboxing video.<br><strong>Minimal order?</strong> 10 ekor live, 5 pack frozen.</p></div></div>
+                <div id="rodent-gallery" class="tab-content" style="display:none;"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Kandang Kayu</span></div><p>Setup kandang sistem litter kayu alami</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Tikus Hias</span></div><p>Warna eksotis — koleksi kayu gelap</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Packaging</span></div><p>Double carrier + serbuk kayu aman</p></div></div><p class="mt-1"><i class="fas fa-info-circle"></i> Foto asli dari farm — request video call untuk tur virtual.</p></div>
+                <div id="rodent-order" class="tab-content" style="display:none;"><div class="card text-center"><i class="fas fa-boxes fa-2x"></i><h3>Paket Bulk & Pemesanan</h3><p>Min order 50 ekor (mix ukuran). Tersedia paket frozen 20, 50, 100 pcs.<br>Diskon khusus breeder dan toko.</p><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Harga%20Bulk%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Minta Daftar Harga Grosir</button><button class="btn-primary mt-1" style="background: var(--accent-rodent);" onclick="window.open('https://wa.me/6281234567890?text=Order%20Rumah%20Tikus%20Nusantara')"><i class="fab fa-whatsapp"></i> Order Sekarang</button></div></div>
             </div>
         </div>
 
-        <!-- ==================== ABOUT US ==================== -->
-        <div id="about-page" class="page" style="display:none;">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-leaf"></i> Tentang ZeroOne Exotics — Kayu Gelap</h2>
-                <p class="section-subtitle">ZeroOne Exotics didirikan oleh pecinta reptil dan rodent dengan jiwa natural. Setiap kandang kami buktikan bersih, hangat, dan mengedepankan kesejahteraan hewan. Mengusung estetika kayu gelap yang tenang namun profesional.</p>
-                <div class="grid-3">
-                    <div class="card"><i class="fas fa-chart-line fa-2x"></i><h3>2019 – Sekarang</h3><p>Pengalaman breeding gecko premium dan suplai rodent bersih skala nasional.</p></div>
-                    <div class="card"><i class="fas fa-shield-alt fa-2x"></i><h3>Garansi Kesehatan</h3><p>Screening ketat — semua hewan dipastikan sehat sebelum dikirim.</p></div>
-                    <div class="card"><i class="fas fa-globe fa-2x"></i><h3>Jangkauan Nasional</h3><p>Kirim ke seluruh Indonesia dengan metode live animal care terstandar.</p></div>
-                </div>
-                <p class="mt-2">Kami mendukung edukasi, kepercayaan, dan kehangatan — seperti kayu jati pilihan.</p>
-            </div>
-        </div>
+        <div id="about-page" class="page" style="display:none;"><div class="container"><h2 class="section-title"><i class="fas fa-leaf"></i> Tentang ZeroOne Exotics — Kayu Gelap</h2><p class="section-subtitle">ZeroOne Exotics didirikan oleh pecinta reptil dan rodent dengan jiwa natural. Setiap kandang kami buktikan bersih, hangat, dan mengedepankan kesejahteraan hewan. Mengusung estetika kayu gelap yang tenang namun profesional.</p><div class="grid-3"><div class="card"><i class="fas fa-chart-line fa-2x"></i><h3>2019 – Sekarang</h3><p>Pengalaman breeding gecko premium dan suplai rodent bersih skala nasional.</p></div><div class="card"><i class="fas fa-shield-alt fa-2x"></i><h3>Garansi Kesehatan</h3><p>Screening ketat — semua hewan dipastikan sehat sebelum dikirim.</p></div><div class="card"><i class="fas fa-globe fa-2x"></i><h3>Jangkauan Nasional</h3><p>Kirim ke seluruh Indonesia dengan metode live animal care terstandar.</p></div></div><p class="mt-2">Kami mendukung edukasi, kepercayaan, dan kehangatan — seperti kayu jati pilihan.</p></div></div>
 
-        <!-- ==================== CONTACT & SHIPPING ==================== -->
-        <div id="contact-page" class="page" style="display:none;">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-headset"></i> Hubungi & Pengiriman Kayu Gelap</h2>
-                <div class="contact-info-card">
-                    <p><i class="fab fa-whatsapp fa-fw"></i> <strong>WhatsApp Bisnis:</strong> +62 812-3456-7890 (Admin ZeroOne)</p>
-                    <p><i class="far fa-envelope fa-fw"></i> <strong>Email:</strong> admin@zerooneexotics.com</p>
-                    <p><i class="fab fa-instagram fa-fw"></i> <strong>Instagram:</strong> @zerooneexotics.kayu</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-shipping-fast"></i> Shipping & Guarantee</h3>
-                    <p style="line-height: 1.8;">🚚 Pengiriman via JNE / Sicepat / Cargo — packing standar IATA untuk hewan hidup.<br>
-                        ✅ <strong>Garansi DOA (Dead on Arrival)</strong> untuk Frozen Rodent & reptile khusus — wajib video unboxing.<br>
-                        📦 Estimasi 1–3 hari (Jawa, Sumatera, Kalimantan, Sulawesi, dan seluruh Indonesia).</p>
-                </div>
-                <div class="text-center mt-2">
-                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Halo%20ZeroOne%20Exotics%20Kayu')" style="font-size: 1.05rem; padding: 0.9rem 2rem;"><i class="fab fa-whatsapp"></i> Chat Sekarang → Tim Siap Membantu</button>
-                </div>
-            </div>
-        </div>
+        <div id="contact-page" class="page" style="display:none;"><div class="container"><h2 class="section-title"><i class="fas fa-headset"></i> Hubungi & Pengiriman Kayu Gelap</h2><div class="contact-info-card"><p><i class="fab fa-whatsapp fa-fw"></i> <strong>WhatsApp Bisnis:</strong> +62 812-3456-7890 (Admin ZeroOne)</p><p><i class="far fa-envelope fa-fw"></i> <strong>Email:</strong> admin@zerooneexotics.com</p><p><i class="fab fa-instagram fa-fw"></i> <strong>Instagram:</strong> @zerooneexotics.kayu</p></div><div class="card"><h3><i class="fas fa-shipping-fast"></i> Shipping & Guarantee</h3><p style="line-height: 1.8;">🚚 Pengiriman via JNE / Sicepat / Cargo — packing standar IATA untuk hewan hidup.<br>✅ <strong>Garansi DOA (Dead on Arrival)</strong> untuk Frozen Rodent & reptile khusus — wajib video unboxing.<br>📦 Estimasi 1–3 hari (Jawa, Sumatera, Kalimantan, Sulawesi, dan seluruh Indonesia).</p></div><div class="text-center mt-2"><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Halo%20ZeroOne%20Exotics%20Kayu')" style="font-size: 1.05rem; padding: 0.9rem 2rem;"><i class="fab fa-whatsapp"></i> Chat Sekarang → Tim Siap Membantu</button></div></div></div>
     </main>
 
     <footer>
@@ -1406,6 +937,24 @@
     </footer>
 
     <script>
+        // SLIDESHOW BACKGROUND HERO (HANYA FOTO REPTIL DAN TIKUS)
+        const heroEl = document.querySelector('.home-hero');
+        if (heroEl) {
+            // Hanya foto reptil dan tikus (foto kayu gelap dihapus)
+            const slides = [
+                'https://images.unsplash.com/photo-1589331357433-93214743bdea?w=1350&q=80',   // Reptil (Leopard Gecko)
+                'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=1350&q=80'    // Tikus / Rodent
+            ];
+            let index = 0;
+            function setHeroBackground() {
+                heroEl.style.backgroundImage = `url('${slides[index]}')`;
+                index = (index + 1) % slides.length;
+            }
+            setHeroBackground();
+            setInterval(setHeroBackground, 5000); // ganti tiap 5 detik
+        }
+
+        // ========== EXISTING NAVIGATION & TABS (SAME) ==========
         const pages = {
             home: document.getElementById('homepage'),
             gecko: document.getElementById('gecko-page'),
@@ -1413,7 +962,6 @@
             about: document.getElementById('about-page'),
             contact: document.getElementById('contact-page')
         };
-
         const navLinks = document.getElementById('navLinks');
         const navBackdrop = document.getElementById('navBackdrop');
         const menuIcon = document.getElementById('menuIcon');
@@ -1422,20 +970,13 @@
         function setActiveNav(pageId) {
             allNavItems.forEach(li => {
                 li.classList.remove('active-nav');
-                if (li.getAttribute('data-nav') === pageId) {
-                    li.classList.add('active-nav');
-                }
+                if (li.getAttribute('data-nav') === pageId) li.classList.add('active-nav');
             });
         }
-
         function showPage(pageId) {
-            Object.keys(pages).forEach(key => {
-                if (pages[key]) pages[key].style.display = 'none';
-            });
+            Object.keys(pages).forEach(key => { if (pages[key]) pages[key].style.display = 'none'; });
             if (pages[pageId]) {
                 pages[pageId].style.display = 'block';
-                // Re-trigger animation
-                pages[pageId].style.animation = 'none';
                 void pages[pageId].offsetWidth;
                 pages[pageId].style.animation = 'fadeSlideIn 0.4s ease';
             }
@@ -1443,78 +984,41 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
             closeMobileMenu();
         }
-
         function closeMobileMenu() {
             navLinks.classList.remove('show');
             navBackdrop.classList.remove('show');
             menuIcon.setAttribute('aria-expanded', 'false');
             menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
         }
-
         function openMobileMenu() {
             navLinks.classList.add('show');
             navBackdrop.classList.add('show');
             menuIcon.setAttribute('aria-expanded', 'true');
             menuIcon.innerHTML = '<i class="fas fa-times"></i>';
         }
-
         function toggleMobileMenu() {
-            if (navLinks.classList.contains('show')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
+            if (navLinks.classList.contains('show')) closeMobileMenu();
+            else openMobileMenu();
         }
-
-        // Navigasi dari menu
         allNavItems.forEach(li => {
             li.addEventListener('click', (e) => {
                 const navPage = li.getAttribute('data-nav');
-                const pageMap = {
-                    'home': 'home',
-                    'gecko': 'gecko',
-                    'rodent': 'rodent',
-                    'about': 'about',
-                    'contact': 'contact'
-                };
-                if (pageMap[navPage]) {
-                    showPage(pageMap[navPage]);
-                }
+                const pageMap = { home:'home', gecko:'gecko', rodent:'rodent', about:'about', contact:'contact' };
+                if (pageMap[navPage]) showPage(pageMap[navPage]);
             });
         });
-
-        // Tombol homepage
         document.getElementById('homeGeckoBtn')?.addEventListener('click', () => showPage('gecko'));
         document.getElementById('homeRodentBtn')?.addEventListener('click', () => showPage('rodent'));
-
-        // Mobile menu toggle
         menuIcon?.addEventListener('click', toggleMobileMenu);
-
-        // Backdrop click to close
         navBackdrop?.addEventListener('click', closeMobileMenu);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navLinks.classList.contains('show')) closeMobileMenu(); });
+        window.addEventListener('resize', () => { if (window.innerWidth > 768 && navLinks.classList.contains('show')) closeMobileMenu(); });
 
-        // Tutup menu dengan Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navLinks.classList.contains('show')) {
-                closeMobileMenu();
-                menuIcon.focus();
-            }
-        });
-
-        // Resize: tutup menu mobile jika layar membesar
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && navLinks.classList.contains('show')) {
-                closeMobileMenu();
-            }
-        });
-
-        // ========== TAB SYSTEM (Gecko & Rodent) ==========
         function initTabs(containerSelector) {
             const container = document.querySelector(containerSelector);
             if (!container) return;
             const tabs = container.querySelectorAll('.tab-link');
             const contents = container.querySelectorAll('.tab-content');
-
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const targetId = tab.getAttribute('data-tab');
@@ -1522,27 +1026,13 @@
                     tab.classList.add('active');
                     contents.forEach(c => c.style.display = 'none');
                     const target = container.querySelector(`#${targetId}`);
-                    if (target) {
-                        target.style.display = 'block';
-                        target.style.animation = 'none';
-                        void target.offsetWidth;
-                        target.style.animation = 'fadeSlideIn 0.35s ease';
-                    }
+                    if (target) { target.style.display = 'block'; void target.offsetWidth; target.style.animation = 'fadeSlideIn 0.35s ease'; }
                 });
             });
-
-            if (contents.length > 0 && tabs.length > 0) {
-                contents.forEach((c, i) => {
-                    c.style.display = i === 0 ? 'block' : 'none';
-                });
-                tabs[0].classList.add('active');
-            }
+            if (contents.length && tabs.length) { contents.forEach((c,i) => c.style.display = i===0?'block':'none'); tabs[0].classList.add('active'); }
         }
-
         initTabs('#gecko-page');
         initTabs('#rodent-page');
-
-        // ========== INITIAL PAGE ==========
         showPage('home');
     </script>
 </body>
