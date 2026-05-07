@@ -449,12 +449,34 @@
             color: #F0E4D6;
         }
 
-        /* ========== HOMEPAGE HERO ========== */
+        /* ========== HOMEPAGE HERO (BACKGROUND FOTO REPTIL & TIKUS) ========== */
         .home-hero {
             text-align: center;
-            padding: 2.5rem 0.5rem 3rem;
-            max-width: 800px;
+            padding: 3rem 1.5rem 4rem;
+            max-width: 100%;
             margin: 0 auto;
+            /* Ganti URL ini dengan foto kompilasi reptil & tikus Anda */
+            background-image: url('https://images.unsplash.com/photo-1530595467517-aa8e6b5c8d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            color: #F5EAD8;
+        }
+        /* Overlay gelap agar teks tetap kontras */
+        .home-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 22, 18, 0.8); /* 0.8 = lebih gelap jika gambar ramai */
+            z-index: 1;
+            border-radius: inherit;
+        }
+        .home-hero > * {
+            position: relative;
+            z-index: 2;
         }
         .home-hero h1 {
             font-family: var(--font-heading);
@@ -774,7 +796,7 @@
                 padding: 0.6rem 1.5rem;
             }
             .home-hero {
-                padding: 2rem 0.3rem 2.5rem;
+                padding: 2.5rem 1.2rem 3rem;
             }
             .product-img {
                 aspect-ratio: 4 / 3;
@@ -918,11 +940,11 @@
                 padding: 1.5rem 1rem;
                 font-size: 0.8rem;
             }
+            .home-hero {
+                padding: 2rem 1rem 2.5rem;
+            }
             .home-hero h1 {
                 font-size: 1.8rem !important;
-            }
-            .home-hero {
-                padding: 1.5rem 0.2rem 2rem;
             }
             .home-hero .btn-group {
                 flex-direction: column;
@@ -967,6 +989,9 @@
                 padding: 0.35rem 0.7rem;
                 font-size: 0.75rem;
             }
+            .home-hero {
+                padding: 1.5rem 0.8rem 2rem;
+            }
             .home-hero h1 {
                 font-size: 1.5rem !important;
             }
@@ -992,7 +1017,7 @@
                 gap: 2rem;
             }
             .home-hero {
-                padding: 3rem 1rem 3.5rem;
+                padding: 4rem 2rem 5rem;
             }
         }
 
@@ -1047,7 +1072,6 @@
                     <p>Breeding standar tinggi, kayukan alami, kebersihan natural & terpercaya sejak 2019.</p>
                     <div class="btn-group">
                         <button class="btn-primary" id="homeGeckoBtn"><i class="fas fa-lizard"></i> ZeroOne.Gecko →</button>
-                        <!-- Tombol Rumah Tikus Nusantara dengan desain sama seperti ZeroOne.Gecko -->
                         <button class="btn-primary" id="homeRodentBtn"><i class="fas fa-rat"></i> Rumah Tikus Nusantara →</button>
                     </div>
                 </div>
@@ -1495,10 +1519,8 @@
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const targetId = tab.getAttribute('data-tab');
-                    // Update active tab
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
-                    // Show target content
                     contents.forEach(c => c.style.display = 'none');
                     const target = container.querySelector(`#${targetId}`);
                     if (target) {
@@ -1510,7 +1532,6 @@
                 });
             });
 
-            // Set default: tampilkan konten pertama
             if (contents.length > 0 && tabs.length > 0) {
                 contents.forEach((c, i) => {
                     c.style.display = i === 0 ? 'block' : 'none';
