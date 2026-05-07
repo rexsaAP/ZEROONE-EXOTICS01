@@ -449,14 +449,13 @@
             color: #F0E4D6;
         }
 
-        /* ========== HOMEPAGE HERO (BACKGROUND FOTO REPTIL & TIKUS) ========== */
+        /* ========== HOMEPAGE HERO (DENGAN BACKGROUND FOTO) ========== */
         .home-hero {
             text-align: center;
             padding: 3rem 1.5rem 4rem;
             max-width: 100%;
             margin: 0 auto;
-            /* Ganti URL ini dengan foto kompilasi reptil & tikus Anda */
-            background-image: url('https://images.unsplash.com/photo-1530595467517-aa8e6b5c8d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -465,12 +464,12 @@
             overflow: hidden;
             color: #F5EAD8;
         }
-        /* Overlay gelap agar teks tetap kontras */
+        /* Overlay gelap transparan agar teks tetap terbaca */
         .home-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(30, 22, 18, 0.8); /* 0.8 = lebih gelap jika gambar ramai */
+            background: rgba(30, 22, 18, 0.75); /* warna gelap tembus pandang */
             z-index: 1;
             border-radius: inherit;
         }
