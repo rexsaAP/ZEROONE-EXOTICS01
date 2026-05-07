@@ -48,7 +48,20 @@
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-size: 16px; }
-        body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); line-height: 1.6; min-height: 100vh; overflow-x: hidden; letter-spacing: 0.01em; }
+
+        /* ===== TEKSTUR KAYU GELAP GLOBAL ===== */
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            letter-spacing: 0.01em;
+            background-color: #221914;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cdefs%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65 0.015' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.12'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='400' height='400' filter='url(%23w)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
         img { max-width: 100%; height: auto; display: block; }
         ul { list-style: none; }
         a { color: inherit; text-decoration: none; }
@@ -94,6 +107,9 @@
             transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
             box-shadow: var(--shadow-sm); border: 1px solid var(--border);
             height: 100%; display: flex; flex-direction: column; gap: 0.6rem;
+            /* Tekstur kayu halus pada card */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7 0.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23c)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
         }
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-light); }
         .card i.fa-2x { color: var(--gold); flex-shrink: 0; display: block; margin-bottom: 0.2rem; }
@@ -105,10 +121,13 @@
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
 
         .site-header {
-            background: var(--bg-darker); padding: 0.7rem 2rem;
+            background: rgba(30, 22, 18, 0.92); padding: 0.7rem 2rem;
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
             position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #5E3F2E;
-            gap: 0.5rem; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            gap: 0.5rem; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            /* Tekstur kayu pada header */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8 0.018' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.06'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23h)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
         }
         .logo { flex-shrink: 0; }
         .logo h1 {
@@ -133,9 +152,9 @@
             transform: translateX(-50%) scaleX(0); width: 60%; height: 2px;
             background: var(--accent-light); border-radius: 2px; transition: transform var(--transition);
         }
-        .nav-links li:hover { color: #DAA872; background: rgba(255,255,255,0.04); }
+        .nav-links li:hover { color: #DAA872; background: rgba(255,255,255,0.06); }
         .nav-links li:hover::after { transform: translateX(-50%) scaleX(1); }
-        .nav-links li.active-nav { color: #DAA872; background: rgba(255,255,255,0.06); font-weight: 600; }
+        .nav-links li.active-nav { color: #DAA872; background: rgba(255,255,255,0.08); font-weight: 600; }
         .nav-links li.active-nav::after { transform: translateX(-50%) scaleX(1); background: var(--accent); }
 
         .menu-icon {
@@ -144,7 +163,7 @@
             border-radius: 10px; transition: var(--transition); min-width: 48px;
             min-height: 48px; align-items: center; justify-content: center;
         }
-        .menu-icon:hover { background: rgba(255,255,255,0.05); }
+        .menu-icon:hover { background: rgba(255,255,255,0.06); }
         .menu-icon:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 2px; }
 
         .nav-backdrop {
@@ -159,16 +178,25 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        #homepage { background: var(--bg-deep); color: #F0E4D6; }
-        #gecko-page { background: #2F251F; color: #F2E4D4; }
+        /* Halaman dengan overlay tekstur kayu semi-transparan */
+        #homepage {
+            background: rgba(42, 33, 28, 0.55); color: #F0E4D6;
+        }
+        #gecko-page {
+            background: rgba(47, 37, 31, 0.55); color: #F2E4D4;
+        }
         #gecko-page .card { background: var(--bg-card-alt); border: 1px solid #6F4F38; }
-        #rodent-page { background: #2B221D; color: #F0E2D0; }
+        #rodent-page {
+            background: rgba(43, 34, 29, 0.55); color: #F0E2D0;
+        }
         #rodent-page .card { background: var(--bg-card-alt); box-shadow: var(--shadow-xl); border: 1px solid #5E4230; }
         #rodent-page .btn-primary { background: var(--accent-rodent); color: #FCF6EC; }
         #rodent-page .btn-primary:hover { background: var(--accent-rodent-hover); }
         #rodent-page .stock-badge { background: #A5734B; }
         #rodent-page .tab-link.active { background: var(--accent-rodent-hover); }
-        #about-page, #contact-page { background: var(--bg-deep); color: #F0E4D6; }
+        #about-page, #contact-page {
+            background: rgba(42, 33, 28, 0.55); color: #F0E4D6;
+        }
 
         .home-hero {
             text-align: center; padding: 3rem 1.5rem 4rem; max-width: 100%; margin: 0 auto;
@@ -178,7 +206,13 @@
         }
         .home-hero::before {
             content: ''; position: absolute; inset: 0;
-            background: rgba(30, 22, 18, 0.78); z-index: 1; border-radius: inherit;
+            background: rgba(22, 16, 12, 0.82); z-index: 1; border-radius: inherit;
+        }
+        /* Tekstur kayu tipis di atas overlay hero */
+        .home-hero::after {
+            content: ''; position: absolute; inset: 0; z-index: 1; border-radius: inherit;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7 0.015' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat; opacity: 0.4; pointer-events: none;
         }
         .home-hero > * { position: relative; z-index: 2; }
         .home-hero h1 {
@@ -191,24 +225,16 @@
         }
         .home-hero .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; padding: 0 0.5rem; }
 
-        /* Slide indicator dots */
-        .hero-dots {
-            display: flex; gap: 8px; justify-content: center; margin-top: 1.5rem;
-            position: relative; z-index: 2;
-        }
+        .hero-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1.5rem; position: relative; z-index: 2; }
         .hero-dot {
             width: 10px; height: 10px; border-radius: 50%;
             background: rgba(255,255,255,0.3); border: none; cursor: pointer;
             transition: var(--transition); padding: 0;
         }
-        .hero-dot.active {
-            background: var(--accent-light); transform: scale(1.3);
-            box-shadow: 0 0 8px rgba(207,160,110,0.5);
-        }
+        .hero-dot.active { background: var(--accent-light); transform: scale(1.3); box-shadow: 0 0 8px rgba(207,160,110,0.5); }
         .hero-dot:hover { background: rgba(255,255,255,0.6); }
         .hero-dot:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
 
-        /* Slide label */
         .hero-label {
             display: inline-block; background: rgba(184,124,79,0.25);
             border: 1px solid rgba(184,124,79,0.4); border-radius: var(--radius-full);
@@ -221,7 +247,7 @@
         .highlight-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1.5rem; }
         .highlight-item { flex: 1 1 140px; min-width: 130px; max-width: 220px; text-align: center; }
         .testi-img {
-            background: #4D382A; width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius);
+            background: rgba(77, 56, 42, 0.6); width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius);
             display: flex; align-items: center; justify-content: center; color: #E2C9AF;
             flex-direction: column; text-align: center; padding: 1rem; font-size: 0.85rem;
             gap: 0.4rem; transition: var(--transition); border: 1px solid transparent;
@@ -231,7 +257,7 @@
         .highlight-item p { margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-muted); }
 
         .product-img {
-            background: #2E221D; aspect-ratio: 4 / 3; border-radius: var(--radius);
+            background: rgba(46, 34, 29, 0.7); aspect-ratio: 4 / 3; border-radius: var(--radius);
             display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem;
             font-size: 1.4rem; color: var(--gold-light); flex-direction: column; gap: 0.4rem;
             overflow: hidden; text-align: center; padding: 1rem; transition: var(--transition);
@@ -261,33 +287,42 @@
             font-size: 0.9rem; white-space: nowrap; user-select: none;
             letter-spacing: 0.02em; border: 2px solid transparent; flex-shrink: 0;
         }
-        .tab-link:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
+        .tab-link:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
         .tab-link.active { background: var(--accent); color: #231B16; font-weight: 700; border-color: var(--accent); }
         .tab-content { animation: fadeSlideIn 0.35s ease; }
 
         footer {
-            background: #1A120E; color: var(--text-muted); text-align: center;
+            background: rgba(26, 18, 14, 0.9); color: var(--text-muted); text-align: center;
             padding: 2.2rem 1.5rem; font-size: 0.85rem; margin-top: 2rem;
             border-top: 1px solid #5E3F2E; letter-spacing: 0.02em; line-height: 1.7;
+            /* Tekstur kayu footer */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75 0.014' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.08'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23f)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
         }
         footer p { max-width: 600px; margin: 0 auto; }
 
         .section-title { font-family: var(--font-heading); font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -0.3px; color: #F5EAD8; margin-bottom: 0.6rem; }
         .section-subtitle { font-size: clamp(0.95rem, 2vw, 1.1rem); color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
 
-        .testimonial-block { background: var(--bg-section); border-radius: var(--radius-2xl); padding: 2rem 1.5rem; margin: 2rem 0; text-align: center; }
+        .testimonial-block {
+            background: rgba(58, 43, 34, 0.7); border-radius: var(--radius-2xl); padding: 2rem 1.5rem; margin: 2rem 0; text-align: center;
+            border: 1px solid rgba(94, 63, 46, 0.4);
+        }
         .testimonial-block h3 { font-family: var(--font-accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; color: #F2E0C9; }
 
         .contact-info-card {
-            background: #3E2C23; border-radius: var(--radius-xl); padding: 1.8rem;
+            background: rgba(62, 44, 35, 0.8); border-radius: var(--radius-xl); padding: 1.8rem;
             box-shadow: var(--shadow); margin: 1.5rem 0; display: flex;
-            flex-direction: column; gap: 0.8rem;
+            flex-direction: column; gap: 0.8rem; border: 1px solid rgba(94, 63, 46, 0.4);
         }
         .contact-info-card p { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.95rem; line-height: 1.5; }
         .contact-info-card i { width: 24px; text-align: center; flex-shrink: 0; }
         .contact-info-card .fa-whatsapp { color: #9CCC65; }
 
-        .faq-block { background: var(--bg-rodent-section); border-radius: var(--radius-lg); padding: 1.5rem; margin: 1.5rem 0; }
+        .faq-block {
+            background: rgba(71, 55, 43, 0.7); border-radius: var(--radius-lg); padding: 1.5rem; margin: 1.5rem 0;
+            border: 1px solid rgba(94, 63, 46, 0.4);
+        }
         .faq-block h3 { font-family: var(--font-accent); font-weight: 700; margin-bottom: 0.8rem; color: #F2E0C9; }
         .faq-block p { line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary); }
         .faq-block strong { color: #F5EAD8; }
@@ -320,9 +355,10 @@
             .menu-icon { display: inline-flex; z-index: 102; }
             .nav-links {
                 display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.2rem;
-                margin-top: 0.6rem; background: #1F1713; border-radius: var(--radius);
+                margin-top: 0.6rem; background: rgba(31, 23, 19, 0.97); border-radius: var(--radius);
                 padding: 0.6rem; box-shadow: 0 12px 28px rgba(0,0,0,0.55); border: 1px solid var(--border);
                 position: relative; z-index: 101; max-height: 70vh; overflow-y: auto;
+                backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             }
             .nav-links.show { display: flex; animation: slideDown 0.3s ease; }
             @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
@@ -523,44 +559,22 @@
            SLIDESHOW HERO — HANYA FOTO GECKO/REPTIL & TIKUS/RODENT
            ========================================================== */
         (function () {
-            const heroEl = document.getElementById('homeHero');
-            const labelEl = document.getElementById('heroLabel');
-            const dotsContainer = document.getElementById('heroDots');
+            var heroEl = document.getElementById('homeHero');
+            var labelEl = document.getElementById('heroLabel');
+            var dotsContainer = document.getElementById('heroDots');
             if (!heroEl || !dotsContainer) return;
 
-            // Data slide: hanya gecko/reptil dan tikus/rodent
-            const slides = [
-                {
-                    // Leopard Gecko close-up
-                    src: 'https://images.unsplash.com/photo-1589331357433-93214743bdea?w=1350&q=80',
-                    label: '🦎 Leopard Gecko'
-                },
-                {
-                    // Gecko / reptil di tangan
-                    src: 'https://images.unsplash.com/photo-1606567595334-d39972c85dbe?w=1350&q=80',
-                    label: '🦎 Gecko Premium'
-                },
-                {
-                    // Tikus putih / laboratory mouse
-                    src: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=1350&q=80',
-                    label: '🐁 Tikus Pakan Berkualitas'
-                },
-                {
-                    // Reptil close-up (crested gecko / lizard)
-                    src: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=1350&q=80',
-                    label: '🦎 Crested Gecko'
-                },
-                {
-                    // Tikus / hamster / rodent kecil
-                    src: 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=1350&q=80',
-                    label: '🐁 Rodent Hias & Pakan'
-                }
+            var slides = [
+                { src: 'https://images.unsplash.com/photo-1589331357433-93214743bdea?w=1350&q=80', label: '🦎 Leopard Gecko' },
+                { src: 'https://images.unsplash.com/photo-1606567595334-d39972c85dbe?w=1350&q=80', label: '🦎 Gecko Premium' },
+                { src: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=1350&q=80', label: '🐁 Tikus Pakan Berkualitas' },
+                { src: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=1350&q=80', label: '🦎 Crested Gecko' },
+                { src: 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=1350&q=80', label: '🐁 Rodent Hias & Pakan' }
             ];
 
-            let currentIndex = 0;
-            let autoTimer = null;
+            var currentIndex = 0;
+            var autoTimer = null;
 
-            // Buat dot indicator
             slides.forEach(function (_, i) {
                 var dot = document.createElement('button');
                 dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
@@ -579,34 +593,20 @@
                 currentIndex = index;
                 heroEl.style.backgroundImage = "url('" + slides[index].src + "')";
                 if (labelEl) labelEl.textContent = slides[index].label;
-                dots.forEach(function (d, i) {
-                    d.classList.toggle('active', i === index);
-                });
+                dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
             }
 
-            function next() {
-                goTo((currentIndex + 1) % slides.length);
-            }
+            function next() { goTo((currentIndex + 1) % slides.length); }
+            function resetAuto() { clearInterval(autoTimer); autoTimer = setInterval(next, 5000); }
 
-            function resetAuto() {
-                clearInterval(autoTimer);
-                autoTimer = setInterval(next, 5000);
-            }
-
-            // Set slide pertama
             goTo(0);
-            // Mulai auto-play
             resetAuto();
 
-            // Preload gambar berikutnya
-            slides.forEach(function (s) {
-                var img = new Image();
-                img.src = s.src;
-            });
+            slides.forEach(function (s) { var img = new Image(); img.src = s.src; });
         })();
 
         /* ==========================================================
-           NAVIGASI & TABS (tidak berubah)
+           NAVIGASI & TABS
            ========================================================== */
         var pages = {
             home: document.getElementById('homepage'),
@@ -679,11 +679,7 @@
                     tab.classList.add('active');
                     contents.forEach(function (c) { c.style.display = 'none'; });
                     var target = container.querySelector('#' + targetId);
-                    if (target) {
-                        target.style.display = 'block';
-                        void target.offsetWidth;
-                        target.style.animation = 'fadeSlideIn 0.35s ease';
-                    }
+                    if (target) { target.style.display = 'block'; void target.offsetWidth; target.style.animation = 'fadeSlideIn 0.35s ease'; }
                 });
             });
             if (contents.length && tabs.length) {
