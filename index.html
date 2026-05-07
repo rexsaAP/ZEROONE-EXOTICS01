@@ -1207,54 +1207,135 @@
             </div>
         </div>
 
-        <!-- ==================== Rumah Tikus Nusantara ==================== -->
+        <!-- ==================== Rumah Tikus Nusantara (Tab System) ==================== -->
         <div id="rodent-page" class="page" style="display:none;">
             <div class="container">
                 <h1 style="font-family:var(--font-heading);"><i class="fas fa-rat"></i> Rumah Tikus Nusantara</h1>
                 <p class="section-subtitle">Clean, consistent rodent supply — sentuhan kayu gelap nan hangat untuk feeder & hobiis.</p>
 
-                <div class="grid-4">
-                    <div class="card"><i class="fas fa-drumstick-bite fa-2x"></i><h3>Tikus Pakan</h3><p>Frozen / Live, sistem bersih khas kayu alami.</p></div>
-                    <div class="card"><i class="fas fa-crown fa-2x"></i><h3>Tikus Hias</h3><p>Warna unik, jinak, dan sehat untuk koleksi.</p></div>
-                    <div class="card"><i class="fas fa-ruler-combined fa-2x"></i><h3>Sistem Ukuran</h3><p>Pinkies, Jumper, Medium, Adult — konsisten.</p></div>
-                    <div class="card"><i class="fas fa-boxes fa-2x"></i><h3>Paket Bulk</h3><p>Diskon grosir spesial untuk breeder & toko.</p></div>
+                <div class="tab-menu" role="tablist">
+                    <span class="tab-link active" data-tab="rodent-catalog" role="tab">📦 Catalog</span>
+                    <span class="tab-link" data-tab="rodent-stock" role="tab">📊 Available Stock</span>
+                    <span class="tab-link" data-tab="rodent-system" role="tab">🧬 Breeding System</span>
+                    <span class="tab-link" data-tab="rodent-care" role="tab">📘 Care Guide</span>
+                    <span class="tab-link" data-tab="rodent-gallery" role="tab">🖼️ Gallery</span>
+                    <span class="tab-link" data-tab="rodent-order" role="tab">📞 Order / Contact</span>
                 </div>
 
-                <div class="grid-2">
-                    <div>
-                        <h3 style="color:#F5EAD8;">📏 Tabel Ukuran Tikus (Feeder)</h3>
-                        <ul style="margin-left: 1rem; list-style: disc; line-height: 1.9;">
-                            <li><strong>Pinkies</strong> (1–4 hari) – 2–5gr, untuk baby reptile</li>
-                            <li><strong>Jumper</strong> (mulai berbulu) – 8–14gr</li>
-                            <li><strong>Medium</strong> (remaja) – 25–40gr</li>
-                            <li><strong>Adult</strong> (dewasa) – 45–70gr</li>
+                <!-- Catalog Tikus -->
+                <div id="rodent-catalog" class="tab-content">
+                    <div class="grid-2">
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-baby fa-2x"></i> <span>Pinkies</span></div>
+                            <h3>Pinkies (1-4 hari)</h3>
+                            <p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p>
+                            <span class="stock-badge">Mulai 5rb</span>
+                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Pinkies%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
+                        </div>
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-frog fa-2x"></i> <span>Jumper</span></div>
+                            <h3>Jumper (Mulai Berbulu)</h3>
+                            <p>8-14 gram, aktif dan bernutrisi tinggi.</p>
+                            <span class="stock-badge">Mulai 7rb</span>
+                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Jumper%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
+                        </div>
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-otter fa-2x"></i> <span>Medium</span></div>
+                            <h3>Medium (Remaja)</h3>
+                            <p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p>
+                            <span class="stock-badge">Mulai 9rb</span>
+                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Medium%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
+                        </div>
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-kiwi-bird fa-2x"></i> <span>Adult</span></div>
+                            <h3>Adult (Dewasa)</h3>
+                            <p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p>
+                            <span class="stock-badge">Mulai 12rb</span>
+                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Adult%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button>
+                        </div>
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-crown fa-2x"></i> <span>Tikus Hias</span></div>
+                            <h3>Tikus Hias (Warna Unik)</h3>
+                            <p>Jinak, sehat, warna eksotis seperti kayu eboni.</p>
+                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tikus%20Hias')"><i class="fab fa-whatsapp"></i> Tanya Koleksi</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Stock -->
+                <div id="rodent-stock" class="tab-content" style="display:none;">
+                    <div class="card">
+                        <h3>Stok Real-Time (Update Harian)</h3>
+                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 1.9;">
+                            <li>Pinkies Frozen – 50 pack</li>
+                            <li>Jumper Live – 25 ekor</li>
+                            <li>Medium Frozen – 30 pack</li>
+                            <li>Adult Live – 12 ekor</li>
+                            <li>Tikus Hias (coklat kayu) – 3 ekor</li>
                         </ul>
+                        <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Stok%20terbaru%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Cek Stok Lengkap</button>
                     </div>
-                    <div>
-                        <h3 style="color:#F5EAD8;">📦 Paket Bulk & Harga Natural</h3>
-                        <p>Min order 50 ekor (mix ukuran). Tersedia frozen 20, 50, 100 pcs.</p>
+                </div>
+
+                <!-- Breeding System -->
+                <div id="rodent-system" class="tab-content" style="display:none;">
+                    <div class="card">
+                        <i class="fas fa-seedling fa-2x"></i>
+                        <h3>Sistem Breeding & Kebersihan Kayu</h3>
+                        <p style="line-height: 1.8;">
+                            ✅ Kandang sistem litter kayu + sekam, bebas amonia.<br>
+                            ✅ Pembersihan harian tanpa bau menyengat — seperti habitat alami.<br>
+                            ✅ Pakan nutrisi seimbang (biji-bijian, sayur, suplemen) untuk tikus sehat.<br>
+                            ✅ Dokumentasi real-time kebersihan bisa direquest kapan saja.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Care Guide & FAQ -->
+                <div id="rodent-care" class="tab-content" style="display:none;">
+                    <h3 style="color:#F5EAD8;">📌 Panduan Perawatan & Ukuran</h3>
+                    <ul style="line-height: 1.9; margin-left: 1.2rem; list-style: disc; margin-bottom: 1.5rem;">
+                        <li><strong>Pinkies</strong> (1–4 hari) – 2–5gr, untuk baby reptile</li>
+                        <li><strong>Jumper</strong> (mulai berbulu) – 8–14gr</li>
+                        <li><strong>Medium</strong> (remaja) – 25–40gr</li>
+                        <li><strong>Adult</strong> (dewasa) – 45–70gr</li>
+                    </ul>
+                    <div class="faq-block">
+                        <h3><i class="fas fa-question-circle"></i> FAQ — Perawatan & Pengiriman</h3>
+                        <p><strong>Apakah tikus pakan bau?</strong> Tidak, ventilasi + kemasan khusus menjaga kesegaran.<br>
+                            <strong>Pengiriman aman?</strong> Ya, packing double carrier + garansi DOA dengan unboxing video.<br>
+                            <strong>Minimal order?</strong> 10 ekor live, 5 pack frozen.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <div id="rodent-gallery" class="tab-content" style="display:none;">
+                    <div class="grid-2">
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Kandang Kayu</span></div>
+                            <p>Setup kandang sistem litter kayu alami</p>
+                        </div>
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Tikus Hias</span></div>
+                            <p>Warna eksotis — koleksi kayu gelap</p>
+                        </div>
+                        <div class="card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Packaging</span></div>
+                            <p>Double carrier + serbuk kayu aman</p>
+                        </div>
+                    </div>
+                    <p class="mt-1"><i class="fas fa-info-circle"></i> Foto asli dari farm — request video call untuk tur virtual.</p>
+                </div>
+
+                <!-- Order / Contact -->
+                <div id="rodent-order" class="tab-content" style="display:none;">
+                    <div class="card text-center">
+                        <i class="fas fa-boxes fa-2x"></i>
+                        <h3>Paket Bulk & Pemesanan</h3>
+                        <p>Min order 50 ekor (mix ukuran). Tersedia paket frozen 20, 50, 100 pcs.<br>Diskon khusus breeder dan toko.</p>
                         <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Harga%20Bulk%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Minta Daftar Harga Grosir</button>
+                        <button class="btn-primary mt-1" style="background: var(--accent-rodent);" onclick="window.open('https://wa.me/6281234567890?text=Order%20Rumah%20Tikus%20Nusantara')"><i class="fab fa-whatsapp"></i> Order Sekarang</button>
                     </div>
-                </div>
-
-                <div class="card mt-2">
-                    <h3><i class="fas fa-seedling"></i> Sistem Breeding & Kebersihan Kayu</h3>
-                    <p style="line-height: 1.8;">✅ Kandang sistem litter kayu + sekam, bebas amonia.<br>
-                        ✅ Pembersihan harian tanpa bau menyengat.<br>
-                        ✅ Pakan nutrisi seimbang untuk tikus sehat.<br>
-                        ✅ Foto real kebersihan ready request kapan saja.</p>
-                </div>
-
-                <div class="faq-block">
-                    <h3><i class="fas fa-question-circle"></i> FAQ — Kayu Gelap</h3>
-                    <p><strong>Apakah tikus pakan bau?</strong> Tidak, ventilasi + kemasan khusus menjaga kesegaran.<br>
-                        <strong>Pengiriman aman?</strong> Ya, packing double carrier + garansi DOA dengan unboxing video.<br>
-                        <strong>Minimal order?</strong> 10 ekor live, 5 pack frozen.</p>
-                </div>
-
-                <div class="text-center mt-2">
-                    <button class="btn-primary" onclick="window.open('https://wa.me/6281234567890?text=Order%20Rumah%20Tikus%20Nusantara')"><i class="fab fa-whatsapp"></i> Order Sekarang (WhatsApp)</button>
-                    <p class="mt-1">Fast response — update stok rutin setiap hari.</p>
                 </div>
             </div>
         </div>
@@ -1403,7 +1484,7 @@
             }
         });
 
-        // ========== TAB SYSTEM (Gecko Page) ==========
+        // ========== TAB SYSTEM (Gecko & Rodent) ==========
         function initTabs(containerSelector) {
             const container = document.querySelector(containerSelector);
             if (!container) return;
@@ -1438,6 +1519,7 @@
         }
 
         initTabs('#gecko-page');
+        initTabs('#rodent-page');
 
         // ========== INITIAL PAGE ==========
         showPage('home');
