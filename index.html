@@ -463,9 +463,8 @@
                 border-bottom-width: 1.5px;
             }
             .logo { flex: 1; min-width: 0; }
-            .logo h1 { font-size: 1.05rem; gap: 5px; }
-            .logo h1 span.logo-full { display: none; }
-            .logo h1 span.logo-short { display: inline; }
+            .logo h1 { font-size: clamp(0.85rem, 3vw, 1.05rem); gap: 5px; }
+            /* ZEROONE EXOTICS tetap tampil di mobile */
             .logo p { font-size: 0.58rem; letter-spacing: 0.8px; margin-top: 1px; }
 
             /* Hamburger menu button */
@@ -619,8 +618,8 @@
             .container { padding: 1rem 0.75rem; }
 
             .site-header { padding: 0.5rem 0.65rem; }
-            .logo h1 { font-size: 0.95rem; gap: 4px; }
-            .logo h1 i { font-size: 0.95rem; }
+            .logo h1 { font-size: 0.82rem; gap: 3px; }
+            .logo h1 i { font-size: 0.82rem; }
             .logo p { font-size: 0.55rem; }
             .menu-icon { font-size: 1.6rem; min-width: 42px; min-height: 42px; }
 
@@ -679,7 +678,7 @@
             .home-hero { transition: none; }
         }
 
-        /* ===== DESKTOP ONLY: hide short logo ===== */
+        /* ===== LOGO: selalu tampilkan teks penuh ===== */
         .logo h1 span.logo-short { display: none; }
     </style>
 </head>
@@ -693,7 +692,7 @@
 
     <header class="site-header">
         <div class="logo">
-            <h1><i class="fas fa-tree"></i> <span class="logo-full">ZEROONE EXOTICS</span><span class="logo-short">ZO EXOTICS</span></h1>
+            <h1><i class="fas fa-tree"></i> ZEROONE EXOTICS</h1>
             <p>Premium Reptile & Rodent Breeder — Kayu Gelap Natural</p>
         </div>
         <button class="menu-icon" id="menuIcon" aria-label="Buka menu navigasi" aria-expanded="false">
@@ -756,14 +755,14 @@
                     <p class="section-subtitle">Premium, selectively bred geckos with quality genetics. Morph langka dalam nuansa kayu klasik.</p>
                 </div>
 
-                <!-- Sticky tab bar -->
+                <!-- Sticky tab bar — URUTAN BARU: Catalog → Gallery → Stock → Projects → Care Guide → Order -->
                 <div class="tab-menu-wrapper" id="gecko-tab-wrapper">
                     <div class="tab-menu" role="tablist" id="gecko-tab-menu">
                         <span class="tab-link active" data-tab="geck-catalog" role="tab">📦 Catalog</span>
+                        <span class="tab-link" data-tab="geck-gallery" role="tab">🖼️ Gallery</span>
                         <span class="tab-link" data-tab="geck-stock" role="tab">📊 Stock</span>
                         <span class="tab-link" data-tab="geck-projects" role="tab">🧬 Projects</span>
                         <span class="tab-link" data-tab="geck-care" role="tab">📘 Care Guide</span>
-                        <span class="tab-link" data-tab="geck-gallery" role="tab">🖼️ Gallery</span>
                         <span class="tab-link" data-tab="geck-order" role="tab">📞 Order</span>
                     </div>
                     <div class="tab-scroll-indicator" id="gecko-scroll-indicator"></div>
@@ -807,6 +806,25 @@
                     </div>
                 </div>
 
+                <!-- Tab: Gallery (DIPINDAHKAN ke urutan ke-2, setelah Catalog) -->
+                <div id="geck-gallery" class="tab-content" style="display:none;">
+                    <div class="product-grid product-grid-2">
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Closeup Tangerine</span></div>
+                            <div class="product-body"><p>Foto closeup — warna kayu alami</p></div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Setup Kandang Kayu</span></div>
+                            <div class="product-body"><p>Rack sistem natural premium</p></div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Indukan Super Giant</span></div>
+                            <div class="product-body"><p>High quality wood farm</p></div>
+                        </div>
+                    </div>
+                    <p class="mt-1" style="font-size: 0.88rem;"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p>
+                </div>
+
                 <!-- Tab: Stock -->
                 <div id="geck-stock" class="tab-content" style="display:none;">
                     <div class="card stock-list-card">
@@ -842,30 +860,11 @@
                         <ul style="line-height: 2; margin-left: 1.2rem; list-style: disc;">
                             <li>Enclosure: 30×30×30cm juvenile, 60×45×45 dewasa</li>
                             <li>Suhu: 28–32°C (hot spot 32°C)</li>
-                            <li>Pakan: Jangkrik/kecoa dubia + kalsium D3</li>
+                            <li>Pakan: Jangkrik/kecoak dubia + kalsium D3</li>
                             <li>Kelembaban: 30–40% dengan tempat lembab</li>
                         </ul>
                         <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Konsultasi%20care%20gecko')"><i class="fab fa-whatsapp"></i> Konsultasi Perawatan via WA</button>
                     </div>
-                </div>
-
-                <!-- Tab: Gallery -->
-                <div id="geck-gallery" class="tab-content" style="display:none;">
-                    <div class="product-grid product-grid-2">
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Closeup Tangerine</span></div>
-                            <div class="product-body"><p>Foto closeup — warna kayu alami</p></div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Setup Kandang Kayu</span></div>
-                            <div class="product-body"><p>Rack sistem natural premium</p></div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Indukan Super Giant</span></div>
-                            <div class="product-body"><p>High quality wood farm</p></div>
-                        </div>
-                    </div>
-                    <p class="mt-1" style="font-size: 0.88rem;"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p>
                 </div>
 
                 <!-- Tab: Order -->
