@@ -44,12 +44,12 @@
             --font-heading: 'Orbitron', monospace;
             --font-accent: 'Montserrat', sans-serif;
             --container-max: 1280px;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-size: 16px; }
 
-        /* ===== TEKSTUR KAYU GELAP GLOBAL ===== */
         body {
             font-family: var(--font-body);
             color: var(--text-primary);
@@ -68,6 +68,7 @@
         button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
         .container { max-width: var(--container-max); margin: 0 auto; padding: 2rem 1.5rem; width: 100%; }
 
+        /* ===== BUTTONS ===== */
         .btn-primary {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             background: var(--accent); color: #1F1915; font-weight: 700;
@@ -102,12 +103,12 @@
         }
         .btn-outline:hover { border-color: var(--accent); background: rgba(184,124,79,0.08); }
 
+        /* ===== CARD ===== */
         .card {
             background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.6rem;
             transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
             box-shadow: var(--shadow-sm); border: 1px solid var(--border);
             height: 100%; display: flex; flex-direction: column; gap: 0.6rem;
-            /* Tekstur kayu halus pada card */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7 0.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23c)' opacity='1'/%3E%3C/svg%3E");
             background-repeat: repeat;
         }
@@ -116,35 +117,81 @@
         .card h3 { font-family: var(--font-accent); font-weight: 700; font-size: 1.15rem; color: #F2E0C9; letter-spacing: 0.02em; line-height: 1.3; }
         .card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; flex-grow: 1; }
 
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+        /* ===== PRODUCT CARD (improved for mobile) ===== */
+        .product-card {
+            background: var(--bg-card); border-radius: var(--radius-lg);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+            height: 100%; display: flex; flex-direction: column;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='pc'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7 0.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23pc)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat; overflow: hidden;
+        }
+        .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-light); }
+        .product-card .product-img {
+            background: rgba(46, 34, 29, 0.7); aspect-ratio: 4 / 3;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: var(--gold-light); flex-direction: column; gap: 0.4rem;
+            overflow: hidden; text-align: center; padding: 1rem; transition: var(--transition);
+            border-bottom: 1px solid var(--border); width: 100%;
+        }
+        .product-card .product-img i { font-size: 2.4rem; }
+        .product-card:hover .product-img { border-color: var(--border-light); }
+        .product-card .product-body {
+            padding: 1.2rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex-grow: 1;
+        }
+        .product-card .product-body h3 {
+            font-family: var(--font-accent); font-weight: 700; font-size: 1.1rem;
+            color: #F2E0C9; letter-spacing: 0.02em; line-height: 1.3;
+        }
+        .product-card .product-body p {
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; flex-grow: 1;
+        }
+        .product-card .product-footer {
+            display: flex; align-items: center; gap: 0.6rem; margin-top: 0.3rem;
+            flex-wrap: wrap;
+        }
+        .product-card .product-footer .stock-badge { flex-shrink: 0; }
+        .product-card .product-footer .btn-wa { flex-grow: 1; min-width: 0; }
 
+        /* ===== GRIDS ===== */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+
+        /* ===== PRODUCT GRID (improved 2-col on mobile) ===== */
+        .product-grid {
+            display: grid; gap: 1rem; margin: 1.5rem 0;
+        }
+        .product-grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* ===== HEADER ===== */
         .site-header {
-            background: rgba(30, 22, 18, 0.92); padding: 0.7rem 2rem;
+            background: rgba(30, 22, 18, 0.95); padding: 0.7rem 1.5rem;
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
             position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #5E3F2E;
-            gap: 0.5rem; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            /* Tekstur kayu pada header */
+            gap: 0.5rem; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8 0.018' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.06'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23h)' opacity='1'/%3E%3C/svg%3E");
             background-repeat: repeat;
         }
         .logo { flex-shrink: 0; }
         .logo h1 {
-            font-family: var(--font-heading); font-size: clamp(1.1rem, 4vw, 1.55rem);
+            font-family: var(--font-heading); font-size: clamp(1.05rem, 3.5vw, 1.55rem);
             letter-spacing: -0.3px; color: #F2E0C9; line-height: 1.25;
             display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
         }
         .logo h1 i { color: var(--accent-light); font-size: 1.1em; }
         .logo p { font-size: 0.7rem; color: #CFA773; letter-spacing: 1.2px; display: block; margin-top: 2px; text-transform: uppercase; }
 
+        /* ===== DESKTOP NAV ===== */
         .nav-links {
-            display: flex; gap: 0.5rem; list-style: none; align-items: center;
-            transition: all var(--transition-slow); flex-wrap: wrap;
+            display: flex; gap: 0.3rem; list-style: none; align-items: center;
+            transition: all var(--transition-slow); flex-wrap: nowrap;
         }
         .nav-links li {
             color: #F0E2D2; font-weight: 500; cursor: pointer; transition: var(--transition);
-            font-size: 0.9rem; padding: 0.45rem 0.85rem; border-radius: var(--radius-full);
+            font-size: 0.88rem; padding: 0.45rem 0.85rem; border-radius: var(--radius-full);
             white-space: nowrap; letter-spacing: 0.02em; user-select: none; position: relative;
         }
         .nav-links li::after {
@@ -154,52 +201,53 @@
         }
         .nav-links li:hover { color: #DAA872; background: rgba(255,255,255,0.06); }
         .nav-links li:hover::after { transform: translateX(-50%) scaleX(1); }
+        .nav-links li:active { transform: scale(0.96); }
         .nav-links li.active-nav { color: #DAA872; background: rgba(255,255,255,0.08); font-weight: 600; }
         .nav-links li.active-nav::after { transform: translateX(-50%) scaleX(1); background: var(--accent); }
 
+        /* ===== HAMBURGER ===== */
         .menu-icon {
-            display: none; font-size: 2rem; color: #EFE2D4; cursor: pointer;
-            background: none; border: none; line-height: 1; padding: 6px 10px;
-            border-radius: 10px; transition: var(--transition); min-width: 48px;
+            display: none; font-size: 1.8rem; color: #EFE2D4; cursor: pointer;
+            background: none; border: none; line-height: 1; padding: 8px 10px;
+            border-radius: 12px; transition: var(--transition); min-width: 48px;
             min-height: 48px; align-items: center; justify-content: center;
+            -webkit-tap-highlight-color: transparent;
         }
         .menu-icon:hover { background: rgba(255,255,255,0.06); }
+        .menu-icon:active { transform: scale(0.92); }
         .menu-icon:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 2px; }
 
         .nav-backdrop {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55);
             z-index: 98; opacity: 0; transition: opacity var(--transition);
+            -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
         }
         .nav-backdrop.show { display: block; opacity: 1; }
 
+        /* ===== PAGE ANIMATION ===== */
         .page { min-height: 60vh; animation: fadeSlideIn 0.4s ease; }
         @keyframes fadeSlideIn {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Halaman dengan overlay tekstur kayu semi-transparan */
-        #homepage {
-            background: rgba(42, 33, 28, 0.55); color: #F0E4D6;
-        }
-        #gecko-page {
-            background: rgba(47, 37, 31, 0.55); color: #F2E4D4;
-        }
+        /* ===== PAGE BACKGROUNDS ===== */
+        #homepage { background: rgba(42, 33, 28, 0.55); color: #F0E4D6; }
+        #gecko-page { background: rgba(47, 37, 31, 0.55); color: #F2E4D4; }
         #gecko-page .card { background: var(--bg-card-alt); border: 1px solid #6F4F38; }
-        #rodent-page {
-            background: rgba(43, 34, 29, 0.55); color: #F0E2D0;
-        }
+        #gecko-page .product-card { background: var(--bg-card-alt); border: 1px solid #6F4F38; }
+        #rodent-page { background: rgba(43, 34, 29, 0.55); color: #F0E2D0; }
         #rodent-page .card { background: var(--bg-card-alt); box-shadow: var(--shadow-xl); border: 1px solid #5E4230; }
+        #rodent-page .product-card { background: var(--bg-card-alt); box-shadow: var(--shadow-xl); border: 1px solid #5E4230; }
         #rodent-page .btn-primary { background: var(--accent-rodent); color: #FCF6EC; }
         #rodent-page .btn-primary:hover { background: var(--accent-rodent-hover); }
         #rodent-page .stock-badge { background: #A5734B; }
         #rodent-page .tab-link.active { background: var(--accent-rodent-hover); }
-        #about-page, #contact-page {
-            background: rgba(42, 33, 28, 0.55); color: #F0E4D6;
-        }
+        #about-page, #contact-page { background: rgba(42, 33, 28, 0.55); color: #F0E4D6; }
 
+        /* ===== HERO ===== */
         .home-hero {
-            text-align: center; padding: 3rem 1.5rem 4rem; max-width: 100%; margin: 0 auto;
+            text-align: center; padding: 3.5rem 2rem 4rem; max-width: 100%; margin: 0 auto;
             background-size: cover; background-position: center; background-repeat: no-repeat;
             position: relative; border-radius: var(--radius-2xl); overflow: hidden;
             color: #F5EAD8; transition: background-image 1s ease-in-out;
@@ -208,7 +256,6 @@
             content: ''; position: absolute; inset: 0;
             background: rgba(22, 16, 12, 0.82); z-index: 1; border-radius: inherit;
         }
-        /* Tekstur kayu tipis di atas overlay hero */
         .home-hero::after {
             content: ''; position: absolute; inset: 0; z-index: 1; border-radius: inherit;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7 0.015' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
@@ -216,14 +263,14 @@
         }
         .home-hero > * { position: relative; z-index: 2; }
         .home-hero h1 {
-            font-family: var(--font-heading); font-size: clamp(1.9rem, 6vw, 2.6rem);
-            line-height: 1.25; letter-spacing: -0.5px; color: #F5EAD8; margin-bottom: 1rem;
+            font-family: var(--font-heading); font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+            line-height: 1.25; letter-spacing: -0.5px; color: #F5EAD8; margin-bottom: 0.8rem;
         }
         .home-hero p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem); margin: 1.2rem auto 1.8rem;
-            max-width: 650px; color: var(--text-secondary); line-height: 1.6;
+            font-size: clamp(0.95rem, 2.5vw, 1.2rem); margin: 1rem auto 1.6rem;
+            max-width: 620px; color: var(--text-secondary); line-height: 1.6;
         }
-        .home-hero .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; padding: 0 0.5rem; }
+        .home-hero .btn-group { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; padding: 0 0.5rem; }
 
         .hero-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1.5rem; position: relative; z-index: 2; }
         .hero-dot {
@@ -244,8 +291,9 @@
             transition: opacity 0.4s ease;
         }
 
+        /* ===== HIGHLIGHTS ===== */
         .highlight-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1.5rem; }
-        .highlight-item { flex: 1 1 140px; min-width: 130px; max-width: 220px; text-align: center; }
+        .highlight-item { flex: 1 1 160px; min-width: 140px; max-width: 240px; text-align: center; }
         .testi-img {
             background: rgba(77, 56, 42, 0.6); width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius);
             display: flex; align-items: center; justify-content: center; color: #E2C9AF;
@@ -256,6 +304,7 @@
         .testi-img i { font-size: 2.6rem; display: block; }
         .highlight-item p { margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-muted); }
 
+        /* ===== LEGACY PRODUCT IMG ===== */
         .product-img {
             background: rgba(46, 34, 29, 0.7); aspect-ratio: 4 / 3; border-radius: var(--radius);
             display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem;
@@ -272,38 +321,73 @@
             display: inline-block; margin: 0.4rem 0; letter-spacing: 0.03em; align-self: flex-start;
         }
 
+        /* ===== IMPROVED TAB MENU (scroll-friendly for mobile) ===== */
+        .tab-menu-wrapper {
+            position: sticky; top: 56px; z-index: 50;
+            background: rgba(47, 37, 31, 0.92);
+            -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+            padding: 0.6rem 0 0; margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
         .tab-menu {
-            display: flex; flex-wrap: wrap; gap: 0.4rem;
-            border-bottom: 1px solid var(--border-light); margin-bottom: 1.8rem;
-            padding-bottom: 0.8rem; overflow-x: auto; -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+            display: flex; flex-wrap: nowrap; gap: 0.4rem;
+            padding-bottom: 0.6rem; overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
-        .tab-menu::-webkit-scrollbar { height: 4px; }
-        .tab-menu::-webkit-scrollbar-track { background: transparent; }
-        .tab-menu::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        .tab-menu::-webkit-scrollbar { display: none; }
         .tab-link {
-            cursor: pointer; padding: 0.5rem 1.1rem; border-radius: var(--radius-full);
+            cursor: pointer; padding: 0.5rem 1rem; border-radius: var(--radius-full);
             font-weight: 500; transition: var(--transition); color: #EEDDCB;
-            font-size: 0.9rem; white-space: nowrap; user-select: none;
+            font-size: 0.88rem; white-space: nowrap; user-select: none;
             letter-spacing: 0.02em; border: 2px solid transparent; flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent; min-height: 40px;
+            display: inline-flex; align-items: center;
         }
+        .tab-link:active { transform: scale(0.95); }
         .tab-link:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
         .tab-link.active { background: var(--accent); color: #231B16; font-weight: 700; border-color: var(--accent); }
         .tab-content { animation: fadeSlideIn 0.35s ease; }
 
+        /* ===== SCROLL INDICATOR ===== */
+        .tab-scroll-indicator {
+            position: absolute; right: 0; top: 0; bottom: 0; width: 40px;
+            background: linear-gradient(to right, transparent, rgba(47, 37, 31, 0.95));
+            pointer-events: none; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            display: none;
+        }
+
+        /* ===== FOOTER ===== */
         footer {
             background: rgba(26, 18, 14, 0.9); color: var(--text-muted); text-align: center;
             padding: 2.2rem 1.5rem; font-size: 0.85rem; margin-top: 2rem;
             border-top: 1px solid #5E3F2E; letter-spacing: 0.02em; line-height: 1.7;
-            /* Tekstur kayu footer */
+            padding-bottom: calc(2.2rem + var(--safe-bottom));
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75 0.014' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.08'/%3E%3C/feComponentTransfer%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='300' height='300' filter='url(%23f)' opacity='1'/%3E%3C/svg%3E");
             background-repeat: repeat;
         }
         footer p { max-width: 600px; margin: 0 auto; }
 
-        .section-title { font-family: var(--font-heading); font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -0.3px; color: #F5EAD8; margin-bottom: 0.6rem; }
-        .section-subtitle { font-size: clamp(0.95rem, 2vw, 1.1rem); color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
+        .section-title { font-family: var(--font-heading); font-size: clamp(1.4rem, 4vw, 2rem); letter-spacing: -0.3px; color: #F5EAD8; margin-bottom: 0.6rem; }
+        .section-subtitle { font-size: clamp(0.92rem, 2vw, 1.1rem); color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
 
+        /* ===== PAGE HEADER (improved for mobile) ===== */
+        .page-header {
+            margin-bottom: 1.5rem;
+        }
+        .page-header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .page-header h1 i { font-size: 0.85em; }
+        .page-header .section-subtitle { margin-bottom: 0; }
+
+        /* ===== SECTION BLOCKS ===== */
         .testimonial-block {
             background: rgba(58, 43, 34, 0.7); border-radius: var(--radius-2xl); padding: 2rem 1.5rem; margin: 2rem 0; text-align: center;
             border: 1px solid rgba(94, 63, 46, 0.4);
@@ -327,101 +411,289 @@
         .faq-block p { line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary); }
         .faq-block strong { color: #F5EAD8; }
 
+        /* ===== MOBILE FLOATING WA BUTTON ===== */
+        .wa-float {
+            display: none; position: fixed; bottom: calc(20px + var(--safe-bottom)); right: 20px;
+            z-index: 90; width: 60px; height: 60px; border-radius: 50%;
+            background: var(--whatsapp); color: #fff; font-size: 1.6rem;
+            align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(44,110,47,0.45);
+            transition: var(--transition); -webkit-tap-highlight-color: transparent;
+        }
+        .wa-float:hover { background: var(--whatsapp-hover); transform: scale(1.08); }
+        .wa-float:active { transform: scale(0.94); }
+        .wa-float i { pointer-events: none; }
+
         .text-center { text-align: center; }
         .mt-1 { margin-top: 1rem; }
         .mt-2 { margin-top: 2rem; }
         .mb-1 { margin-bottom: 1rem; }
         .mb-2 { margin-bottom: 2rem; }
 
-        @media (max-width: 1024px) {
+        /* ===== RESPONSIVE: LARGE TABLET (1025px - 1200px) ===== */
+        @media (max-width: 1200px) {
             .container { padding: 1.8rem 1.2rem; }
             .grid-2 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
             .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
             .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-            .nav-links { gap: 0.3rem; }
-            .nav-links li { font-size: 0.85rem; padding: 0.35rem 0.7rem; }
-            .site-header { padding: 0.6rem 1.5rem; }
-            .home-hero { padding: 2.5rem 1.2rem 3rem; }
-            .product-img { aspect-ratio: 4 / 3; font-size: 1.2rem; }
-            .product-img i { font-size: 2rem; }
+            .nav-links li { font-size: 0.82rem; padding: 0.35rem 0.65rem; }
+            .site-header { padding: 0.6rem 1.2rem; }
         }
 
-        @media (max-width: 768px) {
-            .container { padding: 1.4rem 1rem; }
-            .site-header { padding: 0.7rem 1rem; flex-wrap: wrap; align-items: center; position: sticky; top: 0; z-index: 101; }
-            .logo { flex: 1; min-width: 0; }
-            .logo h1 { font-size: 1.2rem; gap: 6px; }
+        /* ===== RESPONSIVE: TABLET (769px - 1024px) ===== */
+        @media (max-width: 1024px) {
+            .container { padding: 1.6rem 1.2rem; }
+            .site-header { padding: 0.65rem 1.2rem; }
+            .home-hero { padding: 2.8rem 1.5rem 3.2rem; }
             .logo p { font-size: 0.65rem; }
+
+            /* Product grid: 2-col on tablet */
+            .product-grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        /* ===== RESPONSIVE: MOBILE (max-width: 768px) ===== */
+        @media (max-width: 768px) {
+            .container { padding: 1.2rem 1rem; }
+
+            /* Header: compact mobile */
+            .site-header {
+                padding: 0.6rem 0.8rem; gap: 0.3rem;
+                border-bottom-width: 1.5px;
+            }
+            .logo { flex: 1; min-width: 0; }
+            .logo h1 { font-size: 1.05rem; gap: 5px; }
+            .logo h1 span.logo-full { display: none; }
+            .logo h1 span.logo-short { display: inline; }
+            .logo p { font-size: 0.58rem; letter-spacing: 0.8px; margin-top: 1px; }
+
+            /* Hamburger menu button */
             .menu-icon { display: inline-flex; z-index: 102; }
+
+            /* Mobile nav: slide-down panel */
             .nav-links {
-                display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.2rem;
+                display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.15rem;
                 margin-top: 0.6rem; background: rgba(31, 23, 19, 0.97); border-radius: var(--radius);
-                padding: 0.6rem; box-shadow: 0 12px 28px rgba(0,0,0,0.55); border: 1px solid var(--border);
+                padding: 0.5rem; box-shadow: 0 12px 32px rgba(0,0,0,0.6); border: 1px solid var(--border);
                 position: relative; z-index: 101; max-height: 70vh; overflow-y: auto;
                 backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             }
             .nav-links.show { display: flex; animation: slideDown 0.3s ease; }
             @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-            .nav-links li { font-size: 0.95rem; padding: 0.7rem 1.2rem; border-radius: var(--radius-sm); width: 100%; text-align: left; }
-            .nav-backdrop.show { display: block; opacity: 1; }
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1rem; }
-            .card { padding: 1.3rem; }
-            .btn-primary, .btn-wa { width: 100%; justify-content: center; }
-            .btn-outline { width: 100%; justify-content: center; }
-            .tab-menu { gap: 0.35rem; padding-bottom: 0.6rem; margin-bottom: 1.2rem; }
-            .tab-link { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
-            .product-img { aspect-ratio: 16 / 10; font-size: 1.2rem; }
-            .product-img i { font-size: 2rem; }
-            h1 { font-size: 1.7rem !important; }
-            h2 { font-size: 1.4rem !important; }
-            h3 { font-size: 1.1rem !important; }
-            .highlight-grid { flex-direction: column; align-items: center; }
-            .highlight-item { width: 100%; max-width: 260px; }
-            .testi-img { aspect-ratio: 1 / 1; }
-            footer { padding: 1.5rem 1rem; font-size: 0.8rem; }
-            .home-hero { padding: 2rem 1rem 2.5rem; }
-            .home-hero h1 { font-size: 1.8rem !important; }
-            .home-hero .btn-group { flex-direction: column; align-items: stretch; }
-            .contact-info-card p { font-size: 0.85rem; }
-        }
+            .nav-links li {
+                font-size: 0.95rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm);
+                width: 100%; text-align: left; min-height: 48px;
+                display: flex; align-items: center; gap: 6px;
+            }
+            .nav-links li:active { background: rgba(255,255,255,0.1); }
 
-        @media (max-width: 400px) {
-            .logo h1 { font-size: 1rem; gap: 4px; }
-            .logo p { font-size: 0.6rem; letter-spacing: 0.8px; }
-            .btn-primary, .btn-wa { font-size: 0.85rem; padding: 0.6rem 1rem; min-height: 42px; }
-            .product-img { aspect-ratio: 4 / 3; font-size: 1rem; }
-            .product-img i { font-size: 1.7rem; }
-            .container { padding: 1.1rem 0.8rem; }
-            .card { padding: 1.1rem; border-radius: var(--radius); }
-            .tab-link { padding: 0.35rem 0.7rem; font-size: 0.75rem; }
-            .home-hero { padding: 1.5rem 0.8rem 2rem; }
-            .home-hero h1 { font-size: 1.5rem !important; }
-            .home-hero p { font-size: 0.9rem; }
-            .site-header { padding: 0.5rem 0.8rem; }
-            .menu-icon { font-size: 1.7rem; min-width: 40px; min-height: 40px; }
+            /* Sticky tab: adjust for mobile header height */
+            .tab-menu-wrapper {
+                top: 52px;
+                margin: 0 -1rem;
+                padding-left: 1rem;
+                padding-right: 2.5rem;
+            }
+
+            /* Tab links: slightly smaller but still tappable */
+            .tab-link {
+                padding: 0.4rem 0.85rem;
+                font-size: 0.82rem;
+                min-height: 38px;
+            }
+
+            /* Product grid: 2-col on mobile for compact browsing */
+            .product-grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            .product-card .product-body {
+                padding: 0.8rem 0.9rem 1rem;
+                gap: 0.35rem;
+            }
+            .product-card .product-body h3 {
+                font-size: 0.95rem;
+                line-height: 1.25;
+            }
+            .product-card .product-body p {
+                font-size: 0.78rem;
+                line-height: 1.45;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .product-card .product-footer {
+                gap: 0.4rem;
+                margin-top: 0.2rem;
+            }
+            .product-card .product-footer .stock-badge {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.6rem;
+            }
+            .product-card .product-footer .btn-wa {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.6rem;
+                min-height: 36px;
+                gap: 5px;
+            }
+            .product-card .product-footer .btn-wa span.btn-text { display: none; }
+            .product-card .product-img {
+                aspect-ratio: 1 / 1;
+                padding: 0.6rem;
+            }
+            .product-card .product-img i { font-size: 1.8rem; }
+            .product-card .product-img span { font-size: 0.75rem; }
+
+            /* General grid */
+            .grid-2 { grid-template-columns: 1fr; gap: 1rem; }
+            .grid-3 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+            .grid-4 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+            /* Cards */
+            .card { padding: 1.2rem; }
+            .card h3 { font-size: 1rem; }
+            .card p { font-size: 0.82rem; }
+
+            /* Hero */
+            .home-hero {
+                padding: 2rem 1rem 2.5rem;
+                border-radius: var(--radius-xl);
+            }
+            .home-hero h1 { font-size: 1.5rem !important; margin-bottom: 0.6rem; }
+            .home-hero p { font-size: 0.88rem; margin: 0.8rem auto 1.4rem; }
+            .home-hero .btn-group { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+            .home-hero .btn-group .btn-primary { width: 100%; }
+            .hero-label { font-size: 0.7rem; padding: 0.25rem 0.8rem; }
             .hero-dot { width: 8px; height: 8px; }
+
+            /* Buttons */
+            .btn-primary { padding: 0.7rem 1.2rem; font-size: 0.9rem; min-height: 46px; }
+            .btn-wa { padding: 0.6rem 1rem; font-size: 0.85rem; min-height: 44px; }
+            .btn-outline { width: 100%; justify-content: center; }
+
+            /* Highlight grid */
+            .highlight-grid { gap: 1rem; }
+            .highlight-item { min-width: 100px; }
+            .testi-img { padding: 0.8rem; gap: 0.3rem; }
+            .testi-img i { font-size: 2rem; }
+            .testi-img span { font-size: 0.75rem; }
+            .highlight-item p { font-size: 0.78rem; }
+
+            /* Section title */
+            .section-title { font-size: 1.35rem !important; }
+
+            /* Testimonial */
+            .testimonial-block { padding: 1.5rem 1rem; border-radius: var(--radius-xl); }
+
+            /* Contact */
+            .contact-info-card { padding: 1.3rem; }
+            .contact-info-card p { font-size: 0.85rem; gap: 8px; }
+
+            /* FAQ */
+            .faq-block { padding: 1.2rem; }
+            .faq-block p { font-size: 0.82rem; }
+
+            /* Footer */
+            footer { padding: 1.5rem 1rem; font-size: 0.78rem; }
+
+            /* Page header */
+            .page-header h1 { font-size: 1.3rem; gap: 8px; }
+
+            /* Show floating WA button on mobile */
+            .wa-float { display: flex; }
+
+            /* Lists in tab content */
+            .tab-content ul { font-size: 0.88rem; line-height: 1.8; margin-left: 1rem; }
+            .tab-content ul li { padding-left: 0.3rem; }
+
+            /* Stock list card */
+            .stock-list-card { padding: 1.2rem; }
+            .stock-list-card h3 { font-size: 1rem; }
+            .stock-list-card ul { font-size: 0.85rem; }
         }
 
+        /* ===== RESPONSIVE: SMALL MOBILE (max-width: 400px) ===== */
+        @media (max-width: 400px) {
+            .container { padding: 1rem 0.75rem; }
+
+            .site-header { padding: 0.5rem 0.65rem; }
+            .logo h1 { font-size: 0.95rem; gap: 4px; }
+            .logo h1 i { font-size: 0.95rem; }
+            .logo p { font-size: 0.55rem; }
+            .menu-icon { font-size: 1.6rem; min-width: 42px; min-height: 42px; }
+
+            /* Product grid: 2-col compact */
+            .product-grid-2 { gap: 0.6rem; }
+            .product-card .product-body { padding: 0.7rem 0.75rem 0.85rem; }
+            .product-card .product-body h3 { font-size: 0.88rem; }
+            .product-card .product-body p { font-size: 0.72rem; -webkit-line-clamp: 2; }
+            .product-card .product-footer .btn-wa { font-size: 0.7rem; padding: 0.35rem 0.5rem; min-height: 34px; }
+            .product-card .product-footer .stock-badge { font-size: 0.6rem; padding: 0.15rem 0.5rem; }
+            .product-card .product-img { padding: 0.5rem; }
+            .product-card .product-img i { font-size: 1.5rem; }
+            .product-card .product-img span { font-size: 0.68rem; }
+
+            /* Tabs */
+            .tab-link { padding: 0.35rem 0.7rem; font-size: 0.76rem; min-height: 36px; }
+            .tab-menu-wrapper { margin: 0 -0.75rem; padding-left: 0.75rem; padding-right: 2rem; }
+
+            /* Buttons */
+            .btn-primary { font-size: 0.85rem; padding: 0.6rem 1rem; min-height: 44px; }
+            .btn-wa { font-size: 0.8rem; padding: 0.55rem 0.85rem; min-height: 42px; }
+
+            /* Cards */
+            .card { padding: 1rem; border-radius: var(--radius); }
+            .card h3 { font-size: 0.95rem; }
+            .card p { font-size: 0.8rem; }
+
+            /* Grid */
+            .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 0.8rem; }
+
+            /* Hero */
+            .home-hero { padding: 1.5rem 0.75rem 2rem; border-radius: var(--radius-lg); }
+            .home-hero h1 { font-size: 1.3rem !important; }
+            .home-hero p { font-size: 0.82rem; }
+
+            /* Page header */
+            .page-header h1 { font-size: 1.15rem; }
+
+            /* Contact card */
+            .contact-info-card { padding: 1rem; border-radius: var(--radius-lg); }
+            .contact-info-card p { font-size: 0.8rem; }
+        }
+
+        /* ===== RESPONSIVE: WIDE SCREEN (1400px+) ===== */
         @media (min-width: 1400px) {
             .container { padding: 2.5rem 2rem; }
             .grid-2 { gap: 2rem; }
             .home-hero { padding: 4rem 2rem 5rem; }
         }
 
+        /* ===== REDUCED MOTION ===== */
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .page, .tab-content { animation: none; }
-            .card, .btn-primary, .btn-wa, .nav-links li, .tab-link { transition: none; }
+            .card, .product-card, .btn-primary, .btn-wa, .nav-links li, .tab-link { transition: none; }
             .home-hero { transition: none; }
         }
+
+        /* ===== DESKTOP ONLY: hide short logo ===== */
+        .logo h1 span.logo-short { display: none; }
     </style>
 </head>
 <body>
     <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
+    <!-- Floating WhatsApp button for mobile -->
+    <a class="wa-float" href="https://wa.me/6281234567890?text=Halo%20ZeroOne%20Exotics" aria-label="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <header class="site-header">
         <div class="logo">
-            <h1><i class="fas fa-tree"></i> ZEROONE EXOTICS</h1>
+            <h1><i class="fas fa-tree"></i> <span class="logo-full">ZEROONE EXOTICS</span><span class="logo-short">ZO EXOTICS</span></h1>
             <p>Premium Reptile & Rodent Breeder — Kayu Gelap Natural</p>
         </div>
         <button class="menu-icon" id="menuIcon" aria-label="Buka menu navigasi" aria-expanded="false">
@@ -430,13 +702,14 @@
         <ul class="nav-links" id="navLinks" role="navigation" aria-label="Navigasi utama">
             <li data-nav="home" class="active-nav">🏠 Home</li>
             <li data-nav="gecko">🦎 ZeroOne.Gecko</li>
-            <li data-nav="rodent">🐁 Rumah Tikus Nusantara</li>
+            <li data-nav="rodent">🐁 Rumah Tikus</li>
             <li data-nav="about">📖 About Us</li>
-            <li data-nav="contact">📞 Contact & Shipping</li>
+            <li data-nav="contact">📞 Contact</li>
         </ul>
     </header>
 
     <main>
+        <!-- ===== HOME ===== -->
         <div id="homepage" class="page">
             <div class="container">
                 <div class="home-hero" id="homeHero">
@@ -475,52 +748,309 @@
             </div>
         </div>
 
+        <!-- ===== GECKO PAGE ===== -->
         <div id="gecko-page" class="page" style="display:none;">
             <div class="container">
-                <h1 style="color:#D6AA7A; font-family:var(--font-heading);"><i class="fas fa-lizard"></i> ZeroOne.Gecko</h1>
-                <p class="section-subtitle">Premium, selectively bred geckos with quality genetics. Morph langka dalam nuansa kayu klasik.</p>
-                <div class="tab-menu" role="tablist">
-                    <span class="tab-link active" data-tab="geck-catalog" role="tab">📦 Catalog</span>
-                    <span class="tab-link" data-tab="geck-stock" role="tab">📊 Available Stock</span>
-                    <span class="tab-link" data-tab="geck-projects" role="tab">🧬 Breeding Projects</span>
-                    <span class="tab-link" data-tab="geck-care" role="tab">📘 Care Guide</span>
-                    <span class="tab-link" data-tab="geck-gallery" role="tab">🖼️ Gallery</span>
-                    <span class="tab-link" data-tab="geck-order" role="tab">📞 Order / Contact</span>
+                <div class="page-header">
+                    <h1 style="color:#D6AA7A;"><i class="fas fa-lizard"></i> ZeroOne.Gecko</h1>
+                    <p class="section-subtitle">Premium, selectively bred geckos with quality genetics. Morph langka dalam nuansa kayu klasik.</p>
                 </div>
-                <div id="geck-catalog" class="tab-content"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-eye fa-2x"></i> <span>Mack Snow</span></div><h3>Mack Snow Eclipse</h3><p>Kontras tinggi, pupil solid, grade A — wood series eksklusif.</p><span class="stock-badge">Ask Price</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Mack%20Snow%20Eclipse%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Tanya Harga</button></div><div class="card"><div class="product-img"><i class="fas fa-fire fa-2x"></i> <span>Tangerine</span></div><h3>Tangerine Tornado</h3><p>Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.</p><span class="stock-badge">Ask Price</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tangerine%20Tornado')"><i class="fab fa-whatsapp"></i> WA</button></div><div class="card"><div class="product-img"><i class="fas fa-moon fa-2x"></i> <span>Black Night</span></div><h3>Black Night 50% het</h3><p>Gen langka, dark melanistic seperti eboni — incaran kolektor serius.</p><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Black%20Night')"><i class="fab fa-whatsapp"></i> WA</button></div></div></div>
-                <div id="geck-stock" class="tab-content" style="display:none;"><div class="card"><h3>Stok Tersedia (update rutin)</h3><ul style="margin-left:1.2rem; list-style: disc; line-height: 1.8;"><li>Leopard Gecko Mack Snow (Juvi) – 3 ekor</li><li>RAPTOR Bold – 2 ekor</li><li>Enigma het Tremper – 1 jantan premium</li><li>Super Giant 70% – 1 ekor</li></ul><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Update%20stok%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Request Daftar Stok Lengkap</button></div></div>
-                <div id="geck-projects" class="tab-content" style="display:none;"><h3 style="color:#F5EAD8;">🔥 Breeding Projects Saat Ini</h3><p style="line-height: 1.8;">• Enigma × Eclipse – Target F1 Super Snow Eclipse<br>• Tremper Albino line breeding – warna intens kayu<br>• Black Night × Mack Snow – melanistic snow combos<br>• Giant Project: Super Giant × Tangerine</p><div class="card mt-1"><i class="fas fa-flask"></i> Genetik teruji, pairing dengan lineage dokumentasi lengkap.</div></div>
-                <div id="geck-care" class="tab-content" style="display:none;"><h3 style="color:#F5EAD8;">📌 Panduan Perawatan Gecko Natural</h3><ul style="line-height: 1.8; margin-left: 1.2rem; list-style: disc;"><li>Enclosure: 30×30×30cm untuk juvenile, 60×45×45 untuk dewasa</li><li>Suhu: 28–32°C (hot spot 32°C)</li><li>Pakan: Jangkrik/kecoa dubia + kalsium D3</li><li>Kelembaban: 30–40% dengan tempat lembab</li></ul><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Konsultasi%20care%20gecko')">Konsultasi Perawatan via WA</button></div>
-                <div id="geck-gallery" class="tab-content" style="display:none;"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Closeup Tangerine</span></div><p>Foto closeup — warna kayu alami</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Setup Kandang Kayu</span></div><p>Rack sistem natural premium</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Indukan Super Giant</span></div><p>High quality wood farm</p></div></div><p class="mt-1"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p></div>
-                <div id="geck-order" class="tab-content" style="display:none;"><div class="card text-center"><i class="fas fa-headset fa-2x"></i><h3>Pemesanan — Suasana Kayu</h3><p>Hubungi tim via WhatsApp untuk info terbaru & harga eksklusif.</p><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=ZeroOne.Gecko%20order')"><i class="fab fa-whatsapp"></i> WhatsApp ZeroOne.Gecko</button></div></div>
+
+                <!-- Sticky tab bar -->
+                <div class="tab-menu-wrapper" id="gecko-tab-wrapper">
+                    <div class="tab-menu" role="tablist" id="gecko-tab-menu">
+                        <span class="tab-link active" data-tab="geck-catalog" role="tab">📦 Catalog</span>
+                        <span class="tab-link" data-tab="geck-stock" role="tab">📊 Stock</span>
+                        <span class="tab-link" data-tab="geck-projects" role="tab">🧬 Projects</span>
+                        <span class="tab-link" data-tab="geck-care" role="tab">📘 Care Guide</span>
+                        <span class="tab-link" data-tab="geck-gallery" role="tab">🖼️ Gallery</span>
+                        <span class="tab-link" data-tab="geck-order" role="tab">📞 Order</span>
+                    </div>
+                    <div class="tab-scroll-indicator" id="gecko-scroll-indicator"></div>
+                </div>
+
+                <!-- Tab: Catalog -->
+                <div id="geck-catalog" class="tab-content">
+                    <div class="product-grid product-grid-2">
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-eye fa-2x"></i><span>Mack Snow</span></div>
+                            <div class="product-body">
+                                <h3>Mack Snow Eclipse</h3>
+                                <p>Kontras tinggi, pupil solid, grade A — wood series eksklusif.</p>
+                                <div class="product-footer">
+                                    <span class="stock-badge">Ask Price</span>
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Mack%20Snow%20Eclipse%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-fire fa-2x"></i><span>Tangerine</span></div>
+                            <div class="product-body">
+                                <h3>Tangerine Tornado</h3>
+                                <p>Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.</p>
+                                <div class="product-footer">
+                                    <span class="stock-badge">Ask Price</span>
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tangerine%20Tornado')"><i class="fab fa-whatsapp"></i> <span class="btn-text">WA</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-moon fa-2x"></i><span>Black Night</span></div>
+                            <div class="product-body">
+                                <h3>Black Night 50% het</h3>
+                                <p>Gen langka, dark melanistic seperti eboni — incaran kolektor serius.</p>
+                                <div class="product-footer">
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Black%20Night')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Stock -->
+                <div id="geck-stock" class="tab-content" style="display:none;">
+                    <div class="card stock-list-card">
+                        <h3><i class="fas fa-clipboard-list"></i> Stok Tersedia (update rutin)</h3>
+                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 2;">
+                            <li>Leopard Gecko Mack Snow (Juvi) – 3 ekor</li>
+                            <li>RAPTOR Bold – 2 ekor</li>
+                            <li>Enigma het Tremper – 1 jantan premium</li>
+                            <li>Super Giant 70% – 1 ekor</li>
+                        </ul>
+                        <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Update%20stok%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Request Daftar Stok Lengkap</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Projects -->
+                <div id="geck-projects" class="tab-content" style="display:none;">
+                    <h3 style="color:#F5EAD8; font-size: 1.1rem;">🔥 Breeding Projects Saat Ini</h3>
+                    <div class="card mt-1">
+                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 2;">
+                            <li>Enigma × Eclipse – Target F1 Super Snow Eclipse</li>
+                            <li>Tremper Albino line breeding – warna intens kayu</li>
+                            <li>Black Night × Mack Snow – melanistic snow combos</li>
+                            <li>Giant Project: Super Giant × Tangerine</li>
+                        </ul>
+                    </div>
+                    <div class="card mt-1"><i class="fas fa-flask" style="color: var(--gold);"></i><p style="margin-top:0.4rem;">Genetik teruji, pairing dengan lineage dokumentasi lengkap.</p></div>
+                </div>
+
+                <!-- Tab: Care Guide -->
+                <div id="geck-care" class="tab-content" style="display:none;">
+                    <h3 style="color:#F5EAD8; font-size: 1.1rem;">📌 Panduan Perawatan Gecko Natural</h3>
+                    <div class="card mt-1">
+                        <ul style="line-height: 2; margin-left: 1.2rem; list-style: disc;">
+                            <li>Enclosure: 30×30×30cm juvenile, 60×45×45 dewasa</li>
+                            <li>Suhu: 28–32°C (hot spot 32°C)</li>
+                            <li>Pakan: Jangkrik/kecoa dubia + kalsium D3</li>
+                            <li>Kelembaban: 30–40% dengan tempat lembab</li>
+                        </ul>
+                        <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Konsultasi%20care%20gecko')"><i class="fab fa-whatsapp"></i> Konsultasi Perawatan via WA</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Gallery -->
+                <div id="geck-gallery" class="tab-content" style="display:none;">
+                    <div class="product-grid product-grid-2">
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Closeup Tangerine</span></div>
+                            <div class="product-body"><p>Foto closeup — warna kayu alami</p></div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Setup Kandang Kayu</span></div>
+                            <div class="product-body"><p>Rack sistem natural premium</p></div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Indukan Super Giant</span></div>
+                            <div class="product-body"><p>High quality wood farm</p></div>
+                        </div>
+                    </div>
+                    <p class="mt-1" style="font-size: 0.88rem;"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p>
+                </div>
+
+                <!-- Tab: Order -->
+                <div id="geck-order" class="tab-content" style="display:none;">
+                    <div class="card text-center">
+                        <i class="fas fa-headset fa-2x"></i><h3>Pemesanan — Suasana Kayu</h3>
+                        <p>Hubungi tim via WhatsApp untuk info terbaru & harga eksklusif.</p>
+                        <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=ZeroOne.Gecko%20order')"><i class="fab fa-whatsapp"></i> WhatsApp ZeroOne.Gecko</button>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- ===== RODENT PAGE ===== -->
         <div id="rodent-page" class="page" style="display:none;">
             <div class="container">
-                <h1 style="font-family:var(--font-heading);"><i class="fas fa-rat"></i> Rumah Tikus Nusantara</h1>
-                <p class="section-subtitle">Clean, consistent rodent supply — sentuhan kayu gelap nan hangat untuk feeder & hobiis.</p>
-                <div class="tab-menu" role="tablist">
-                    <span class="tab-link active" data-tab="rodent-catalog" role="tab">📦 Catalog</span>
-                    <span class="tab-link" data-tab="rodent-stock" role="tab">📊 Available Stock</span>
-                    <span class="tab-link" data-tab="rodent-system" role="tab">🧬 Breeding System</span>
-                    <span class="tab-link" data-tab="rodent-care" role="tab">📘 Care Guide</span>
-                    <span class="tab-link" data-tab="rodent-gallery" role="tab">🖼️ Gallery</span>
-                    <span class="tab-link" data-tab="rodent-order" role="tab">📞 Order / Contact</span>
+                <div class="page-header">
+                    <h1><i class="fas fa-rat"></i> Rumah Tikus Nusantara</h1>
+                    <p class="section-subtitle">Clean, consistent rodent supply — sentuhan kayu gelap nan hangat untuk feeder & hobiis.</p>
                 </div>
-                <div id="rodent-catalog" class="tab-content"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-baby fa-2x"></i> <span>Pinkies</span></div><h3>Pinkies (1-4 hari)</h3><p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p><span class="stock-badge">Mulai 5rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Pinkies%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-frog fa-2x"></i> <span>Jumper</span></div><h3>Jumper (Mulai Berbulu)</h3><p>8-14 gram, aktif dan bernutrisi tinggi.</p><span class="stock-badge">Mulai 7rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Jumper%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-otter fa-2x"></i> <span>Medium</span></div><h3>Medium (Remaja)</h3><p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p><span class="stock-badge">Mulai 9rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Medium%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-kiwi-bird fa-2x"></i> <span>Adult</span></div><h3>Adult (Dewasa)</h3><p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p><span class="stock-badge">Mulai 12rb</span><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Adult%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Pesan</button></div><div class="card"><div class="product-img"><i class="fas fa-crown fa-2x"></i> <span>Tikus Hias</span></div><h3>Tikus Hias (Warna Unik)</h3><p>Jinak, sehat, warna eksotis seperti kayu eboni.</p><button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tikus%20Hias')"><i class="fab fa-whatsapp"></i> Tanya Koleksi</button></div></div></div>
-                <div id="rodent-stock" class="tab-content" style="display:none;"><div class="card"><h3>Stok Real-Time (Update Harian)</h3><ul style="margin-left:1.2rem; list-style: disc; line-height: 1.9;"><li>Pinkies Frozen – 50 pack</li><li>Jumper Live – 25 ekor</li><li>Medium Frozen – 30 pack</li><li>Adult Live – 12 ekor</li><li>Tikus Hias (coklat kayu) – 3 ekor</li></ul><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Stok%20terbaru%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Cek Stok Lengkap</button></div></div>
-                <div id="rodent-system" class="tab-content" style="display:none;"><div class="card"><i class="fas fa-seedling fa-2x"></i><h3>Sistem Breeding & Kebersihan Kayu</h3><p style="line-height: 1.8;">✅ Kandang sistem litter kayu + sekam, bebas amonia.<br>✅ Pembersihan harian tanpa bau menyengat — seperti habitat alami.<br>✅ Pakan nutrisi seimbang (biji-bijian, sayur, suplemen) untuk tikus sehat.<br>✅ Dokumentasi real-time kebersihan bisa direquest kapan saja.</p></div></div>
-                <div id="rodent-care" class="tab-content" style="display:none;"><h3 style="color:#F5EAD8;">📌 Panduan Perawatan & Ukuran</h3><ul style="line-height: 1.9; margin-left: 1.2rem; list-style: disc; margin-bottom: 1.5rem;"><li><strong>Pinkies</strong> (1–4 hari) – 2–5gr, untuk baby reptile</li><li><strong>Jumper</strong> (mulai berbulu) – 8–14gr</li><li><strong>Medium</strong> (remaja) – 25–40gr</li><li><strong>Adult</strong> (dewasa) – 45–70gr</li></ul><div class="faq-block"><h3><i class="fas fa-question-circle"></i> FAQ — Perawatan & Pengiriman</h3><p><strong>Apakah tikus pakan bau?</strong> Tidak, ventilasi + kemasan khusus menjaga kesegaran.<br><strong>Pengiriman aman?</strong> Ya, packing double carrier + garansi DOA dengan unboxing video.<br><strong>Minimal order?</strong> 10 ekor live, 5 pack frozen.</p></div></div>
-                <div id="rodent-gallery" class="tab-content" style="display:none;"><div class="grid-2"><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Kandang Kayu</span></div><p>Setup kandang sistem litter kayu alami</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Tikus Hias</span></div><p>Warna eksotis — koleksi kayu gelap</p></div><div class="card"><div class="product-img"><i class="fas fa-image fa-2x"></i> <span>Packaging</span></div><p>Double carrier + serbuk kayu aman</p></div></div><p class="mt-1"><i class="fas fa-info-circle"></i> Foto asli dari farm — request video call untuk tur virtual.</p></div>
-                <div id="rodent-order" class="tab-content" style="display:none;"><div class="card text-center"><i class="fas fa-boxes fa-2x"></i><h3>Paket Bulk & Pemesanan</h3><p>Min order 50 ekor (mix ukuran). Tersedia paket frozen 20, 50, 100 pcs.<br>Diskon khusus breeder dan toko.</p><button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Harga%20Bulk%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Minta Daftar Harga Grosir</button><button class="btn-primary mt-1" style="background: var(--accent-rodent);" onclick="window.open('https://wa.me/6281234567890?text=Order%20Rumah%20Tikus%20Nusantara')"><i class="fab fa-whatsapp"></i> Order Sekarang</button></div></div>
+
+                <!-- Sticky tab bar -->
+                <div class="tab-menu-wrapper" id="rodent-tab-wrapper">
+                    <div class="tab-menu" role="tablist" id="rodent-tab-menu">
+                        <span class="tab-link active" data-tab="rodent-catalog" role="tab">📦 Catalog</span>
+                        <span class="tab-link" data-tab="rodent-stock" role="tab">📊 Stock</span>
+                        <span class="tab-link" data-tab="rodent-system" role="tab">🧬 System</span>
+                        <span class="tab-link" data-tab="rodent-care" role="tab">📘 Care Guide</span>
+                        <span class="tab-link" data-tab="rodent-gallery" role="tab">🖼️ Gallery</span>
+                        <span class="tab-link" data-tab="rodent-order" role="tab">📞 Order</span>
+                    </div>
+                    <div class="tab-scroll-indicator" id="rodent-scroll-indicator"></div>
+                </div>
+
+                <!-- Tab: Catalog -->
+                <div id="rodent-catalog" class="tab-content">
+                    <div class="product-grid product-grid-2">
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-baby fa-2x"></i><span>Pinkies</span></div>
+                            <div class="product-body">
+                                <h3>Pinkies (1-4 hari)</h3>
+                                <p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p>
+                                <div class="product-footer">
+                                    <span class="stock-badge">Mulai 5rb</span>
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Pinkies%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-frog fa-2x"></i><span>Jumper</span></div>
+                            <div class="product-body">
+                                <h3>Jumper (Mulai Berbulu)</h3>
+                                <p>8-14 gram, aktif dan bernutrisi tinggi.</p>
+                                <div class="product-footer">
+                                    <span class="stock-badge">Mulai 7rb</span>
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Jumper%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-otter fa-2x"></i><span>Medium</span></div>
+                            <div class="product-body">
+                                <h3>Medium (Remaja)</h3>
+                                <p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p>
+                                <div class="product-footer">
+                                    <span class="stock-badge">Mulai 9rb</span>
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Medium%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-kiwi-bird fa-2x"></i><span>Adult</span></div>
+                            <div class="product-body">
+                                <h3>Adult (Dewasa)</h3>
+                                <p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p>
+                                <div class="product-footer">
+                                    <span class="stock-badge">Mulai 12rb</span>
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Adult%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-crown fa-2x"></i><span>Tikus Hias</span></div>
+                            <div class="product-body">
+                                <h3>Tikus Hias (Warna Unik)</h3>
+                                <p>Jinak, sehat, warna eksotis seperti kayu eboni.</p>
+                                <div class="product-footer">
+                                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Tikus%20Hias')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Koleksi</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Stock -->
+                <div id="rodent-stock" class="tab-content" style="display:none;">
+                    <div class="card stock-list-card">
+                        <h3><i class="fas fa-clipboard-list"></i> Stok Real-Time (Update Harian)</h3>
+                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 2.1;">
+                            <li>Pinkies Frozen – 50 pack</li>
+                            <li>Jumper Live – 25 ekor</li>
+                            <li>Medium Frozen – 30 pack</li>
+                            <li>Adult Live – 12 ekor</li>
+                            <li>Tikus Hias (coklat kayu) – 3 ekor</li>
+                        </ul>
+                        <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6281234567890?text=Stok%20terbaru%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Cek Stok Lengkap</button>
+                    </div>
+                </div>
+
+                <!-- Tab: System -->
+                <div id="rodent-system" class="tab-content" style="display:none;">
+                    <div class="card">
+                        <i class="fas fa-seedling fa-2x"></i>
+                        <h3>Sistem Breeding & Kebersihan Kayu</h3>
+                        <ul style="line-height: 2; margin-left: 1.2rem; list-style: none;">
+                            <li>✅ Kandang sistem litter kayu + sekam, bebas amonia.</li>
+                            <li>✅ Pembersihan harian tanpa bau menyengat.</li>
+                            <li>✅ Pakan nutrisi seimbang untuk tikus sehat.</li>
+                            <li>✅ Dokumentasi real-time bisa direquest kapan saja.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tab: Care Guide -->
+                <div id="rodent-care" class="tab-content" style="display:none;">
+                    <h3 style="color:#F5EAD8; font-size: 1.1rem;">📌 Panduan Perawatan & Ukuran</h3>
+                    <div class="card mt-1">
+                        <ul style="line-height: 2; margin-left: 1.2rem; list-style: disc;">
+                            <li><strong>Pinkies</strong> (1–4 hari) – 2–5gr, untuk baby reptile</li>
+                            <li><strong>Jumper</strong> (mulai berbulu) – 8–14gr</li>
+                            <li><strong>Medium</strong> (remaja) – 25–40gr</li>
+                            <li><strong>Adult</strong> (dewasa) – 45–70gr</li>
+                        </ul>
+                    </div>
+                    <div class="faq-block mt-1">
+                        <h3><i class="fas fa-question-circle"></i> FAQ — Perawatan & Pengiriman</h3>
+                        <p>
+                            <strong>Apakah tikus pakan bau?</strong> Tidak, ventilasi + kemasan khusus menjaga kesegaran.<br>
+                            <strong>Pengiriman aman?</strong> Ya, packing double carrier + garansi DOA dengan unboxing video.<br>
+                            <strong>Minimal order?</strong> 10 ekor live, 5 pack frozen.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tab: Gallery -->
+                <div id="rodent-gallery" class="tab-content" style="display:none;">
+                    <div class="product-grid product-grid-2">
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Kandang Kayu</span></div>
+                            <div class="product-body"><p>Setup kandang sistem litter kayu alami</p></div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Tikus Hias</span></div>
+                            <div class="product-body"><p>Warna eksotis — koleksi kayu gelap</p></div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Packaging</span></div>
+                            <div class="product-body"><p>Double carrier + serbuk kayu aman</p></div>
+                        </div>
+                    </div>
+                    <p class="mt-1" style="font-size: 0.88rem;"><i class="fas fa-info-circle"></i> Foto asli dari farm — request video call untuk tur virtual.</p>
+                </div>
+
+                <!-- Tab: Order -->
+                <div id="rodent-order" class="tab-content" style="display:none;">
+                    <div class="card text-center">
+                        <i class="fas fa-boxes fa-2x"></i>
+                        <h3>Paket Bulk & Pemesanan</h3>
+                        <p>Min order 50 ekor (mix ukuran). Tersedia paket frozen 20, 50, 100 pcs.<br>Diskon khusus breeder dan toko.</p>
+                        <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:1rem;">
+                            <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Harga%20Bulk%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Minta Daftar Harga Grosir</button>
+                            <button class="btn-primary" style="background: var(--accent-rodent);" onclick="window.open('https://wa.me/6281234567890?text=Order%20Rumah%20Tikus%20Nusantara')"><i class="fab fa-whatsapp"></i> Order Sekarang</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- ===== ABOUT ===== -->
         <div id="about-page" class="page" style="display:none;">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-leaf"></i> Tentang ZeroOne Exotics — Kayu Gelap</h2>
-                <p class="section-subtitle">ZeroOne Exotics didirikan oleh pecinta reptil dan rodent dengan jiwa natural. Setiap kandang kami buktikan bersih, hangat, dan mengedepankan kesejahteraan hewan. Mengusung estetika kayu gelap yang tenang namun profesional.</p>
+                <div class="page-header">
+                    <h2 class="section-title"><i class="fas fa-leaf"></i> Tentang ZeroOne Exotics — Kayu Gelap</h2>
+                    <p class="section-subtitle">ZeroOne Exotics didirikan oleh pecinta reptil dan rodent dengan jiwa natural. Setiap kandang kami buktikan bersih, hangat, dan mengedepankan kesejahteraan hewan. Mengusung estetika kayu gelap yang tenang namun profesional.</p>
+                </div>
                 <div class="grid-3">
                     <div class="card"><i class="fas fa-chart-line fa-2x"></i><h3>2019 – Sekarang</h3><p>Pengalaman breeding gecko premium dan suplai rodent bersih skala nasional.</p></div>
                     <div class="card"><i class="fas fa-shield-alt fa-2x"></i><h3>Garansi Kesehatan</h3><p>Screening ketat — semua hewan dipastikan sehat sebelum dikirim.</p></div>
@@ -530,33 +1060,40 @@
             </div>
         </div>
 
+        <!-- ===== CONTACT ===== -->
         <div id="contact-page" class="page" style="display:none;">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-headset"></i> Hubungi & Pengiriman Kayu Gelap</h2>
+                <div class="page-header">
+                    <h2 class="section-title"><i class="fas fa-headset"></i> Hubungi & Pengiriman Kayu Gelap</h2>
+                </div>
                 <div class="contact-info-card">
-                    <p><i class="fab fa-whatsapp fa-fw"></i> <strong>WhatsApp Bisnis:</strong> +62 812-3456-7890 (Admin ZeroOne)</p>
+                    <p><i class="fab fa-whatsapp fa-fw"></i> <strong>WhatsApp Bisnis:</strong> +62 812-3456-7890</p>
                     <p><i class="far fa-envelope fa-fw"></i> <strong>Email:</strong> admin@zerooneexotics.com</p>
                     <p><i class="fab fa-instagram fa-fw"></i> <strong>Instagram:</strong> @zerooneexotics.kayu</p>
                 </div>
                 <div class="card">
                     <h3><i class="fas fa-shipping-fast"></i> Shipping & Guarantee</h3>
-                    <p style="line-height: 1.8;">🚚 Pengiriman via JNE / Sicepat / Cargo — packing standar IATA untuk hewan hidup.<br>✅ <strong>Garansi DOA (Dead on Arrival)</strong> untuk Frozen Rodent & reptile khusus — wajib video unboxing.<br>📦 Estimasi 1–3 hari (Jawa, Sumatera, Kalimantan, Sulawesi, dan seluruh Indonesia).</p>
+                    <p style="line-height: 1.8;">
+                        🚚 Pengiriman via JNE / Sicepat / Cargo — packing standar IATA.<br>
+                        ✅ <strong>Garansi DOA</strong> — wajib video unboxing.<br>
+                        📦 Estimasi 1–3 hari ke seluruh Indonesia.
+                    </p>
                 </div>
                 <div class="text-center mt-2">
-                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Halo%20ZeroOne%20Exotics%20Kayu')" style="font-size: 1.05rem; padding: 0.9rem 2rem;"><i class="fab fa-whatsapp"></i> Chat Sekarang → Tim Siap Membantu</button>
+                    <button class="btn-wa" onclick="window.open('https://wa.me/6281234567890?text=Halo%20ZeroOne%20Exotics%20Kayu')" style="font-size: 1rem; padding: 0.85rem 1.8rem;"><i class="fab fa-whatsapp"></i> Chat Sekarang → Tim Siap Membantu</button>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>© 2025 ZeroOne Exotics — Kayu Gelap Natural | Premium Reptile & Rodent Breeder | Bersih & Terpercaya</p>
+        <p>&copy; 2025 ZeroOne Exotics — Kayu Gelap Natural | Premium Reptile & Rodent Breeder</p>
         <p><i class="fas fa-dragon"></i> ZeroOne.Gecko &nbsp;|&nbsp; <i class="fas fa-rat"></i> Rumah Tikus Nusantara</p>
     </footer>
 
     <script>
         /* ==========================================================
-           SLIDESHOW HERO — HANYA FOTO GECKO/REPTIL & TIKUS/RODENT
+           SLIDESHOW HERO
            ========================================================== */
         (function () {
             var heroEl = document.getElementById('homeHero');
@@ -606,6 +1143,28 @@
         })();
 
         /* ==========================================================
+           TAB SCROLL INDICATOR — show gradient when tabs overflow
+           ========================================================== */
+        function setupScrollIndicator(menuId, indicatorId) {
+            var menu = document.getElementById(menuId);
+            var indicator = document.getElementById(indicatorId);
+            if (!menu || !indicator) return;
+
+            function checkScroll() {
+                var hasOverflow = menu.scrollWidth > menu.clientWidth + 4;
+                var canScrollRight = menu.scrollLeft < menu.scrollWidth - menu.clientWidth - 4;
+                indicator.style.display = (hasOverflow && canScrollRight) ? 'block' : 'none';
+            }
+
+            menu.addEventListener('scroll', checkScroll, { passive: true });
+            window.addEventListener('resize', checkScroll, { passive: true });
+            // Initial check
+            setTimeout(checkScroll, 100);
+        }
+        setupScrollIndicator('gecko-tab-menu', 'gecko-scroll-indicator');
+        setupScrollIndicator('rodent-tab-menu', 'rodent-scroll-indicator');
+
+        /* ==========================================================
            NAVIGASI & TABS
            ========================================================== */
         var pages = {
@@ -642,12 +1201,14 @@
             navBackdrop.classList.remove('show');
             menuIcon.setAttribute('aria-expanded', 'false');
             menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
         }
         function openMobileMenu() {
             navLinks.classList.add('show');
             navBackdrop.classList.add('show');
             menuIcon.setAttribute('aria-expanded', 'true');
             menuIcon.innerHTML = '<i class="fas fa-times"></i>';
+            document.body.style.overflow = 'hidden';
         }
         function toggleMobileMenu() {
             if (navLinks.classList.contains('show')) closeMobileMenu();
@@ -656,8 +1217,7 @@
         allNavItems.forEach(function (li) {
             li.addEventListener('click', function () {
                 var navPage = li.getAttribute('data-nav');
-                var pageMap = { home: 'home', gecko: 'gecko', rodent: 'rodent', about: 'about', contact: 'contact' };
-                if (pageMap[navPage]) showPage(pageMap[navPage]);
+                if (pages[navPage]) showPage(navPage);
             });
         });
         document.getElementById('homeGeckoBtn').addEventListener('click', function () { showPage('gecko'); });
@@ -667,6 +1227,9 @@
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && navLinks.classList.contains('show')) closeMobileMenu(); });
         window.addEventListener('resize', function () { if (window.innerWidth > 768 && navLinks.classList.contains('show')) closeMobileMenu(); });
 
+        /* ==========================================================
+           TABS INIT
+           ========================================================== */
         function initTabs(containerSelector) {
             var container = document.querySelector(containerSelector);
             if (!container) return;
@@ -679,7 +1242,13 @@
                     tab.classList.add('active');
                     contents.forEach(function (c) { c.style.display = 'none'; });
                     var target = container.querySelector('#' + targetId);
-                    if (target) { target.style.display = 'block'; void target.offsetWidth; target.style.animation = 'fadeSlideIn 0.35s ease'; }
+                    if (target) {
+                        target.style.display = 'block';
+                        void target.offsetWidth;
+                        target.style.animation = 'fadeSlideIn 0.35s ease';
+                    }
+                    // Scroll tab into view on mobile
+                    tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 });
             });
             if (contents.length && tabs.length) {
