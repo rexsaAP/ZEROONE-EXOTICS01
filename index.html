@@ -449,7 +449,6 @@
             .home-hero { padding: 2.8rem 1.5rem 3.2rem; }
             .logo p { font-size: 0.65rem; }
 
-            /* Product grid: 2-col on tablet */
             .product-grid-2 {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
@@ -460,20 +459,16 @@
         @media (max-width: 768px) {
             .container { padding: 1.2rem 1rem; }
 
-            /* Header: compact mobile */
             .site-header {
                 padding: 0.6rem 0.8rem; gap: 0.3rem;
                 border-bottom-width: 1.5px;
             }
             .logo { flex: 1; min-width: 0; }
             .logo h1 { font-size: clamp(0.85rem, 3vw, 1.05rem); gap: 5px; }
-            /* ZEROONE EXOTICS tetap tampil di mobile */
             .logo p { font-size: 0.58rem; letter-spacing: 0.8px; margin-top: 1px; }
 
-            /* Hamburger menu button */
             .menu-icon { display: inline-flex; z-index: 102; }
 
-            /* Mobile nav: slide-down panel */
             .nav-links {
                 display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.15rem;
                 margin-top: 0.6rem; background: rgba(31, 23, 19, 0.97); border-radius: var(--radius);
@@ -490,7 +485,6 @@
             }
             .nav-links li:active { background: rgba(255,255,255,0.1); }
 
-            /* Sticky tab: adjust for mobile header height */
             .tab-menu-wrapper {
                 top: 52px;
                 margin: 0 -1rem;
@@ -498,14 +492,12 @@
                 padding-right: 2.5rem;
             }
 
-            /* Tab links: slightly smaller but still tappable */
             .tab-link {
                 padding: 0.4rem 0.85rem;
                 font-size: 0.82rem;
                 min-height: 38px;
             }
 
-            /* Product grid: 2-col on mobile for compact browsing */
             .product-grid-2 {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.75rem;
@@ -548,17 +540,14 @@
             .product-card .product-img i { font-size: 1.8rem; }
             .product-card .product-img span { font-size: 0.75rem; }
 
-            /* General grid */
             .grid-2 { grid-template-columns: 1fr; gap: 1rem; }
             .grid-3 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
             .grid-4 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 
-            /* Cards */
             .card { padding: 1.2rem; }
             .card h3 { font-size: 1rem; }
             .card p { font-size: 0.82rem; }
 
-            /* Hero */
             .home-hero {
                 padding: 2rem 1rem 2.5rem;
                 border-radius: var(--radius-xl);
@@ -570,12 +559,10 @@
             .hero-label { font-size: 0.7rem; padding: 0.25rem 0.8rem; }
             .hero-dot { width: 8px; height: 8px; }
 
-            /* Buttons */
             .btn-primary { padding: 0.7rem 1.2rem; font-size: 0.9rem; min-height: 46px; }
             .btn-wa { padding: 0.6rem 1rem; font-size: 0.85rem; min-height: 44px; }
             .btn-outline { width: 100%; justify-content: center; }
 
-            /* Highlight grid */
             .highlight-grid { gap: 1rem; }
             .highlight-item { min-width: 100px; }
             .testi-img { padding: 0.8rem; gap: 0.3rem; }
@@ -583,34 +570,25 @@
             .testi-img span { font-size: 0.75rem; }
             .highlight-item p { font-size: 0.78rem; }
 
-            /* Section title */
             .section-title { font-size: 1.35rem !important; }
 
-            /* Testimonial */
             .testimonial-block { padding: 1.5rem 1rem; border-radius: var(--radius-xl); }
 
-            /* Contact */
             .contact-info-card { padding: 1.3rem; }
             .contact-info-card p { font-size: 0.85rem; gap: 8px; }
 
-            /* FAQ */
             .faq-block { padding: 1.2rem; }
             .faq-block p { font-size: 0.82rem; }
 
-            /* Footer */
             footer { padding: 1.5rem 1rem; font-size: 0.78rem; }
 
-            /* Page header */
             .page-header h1 { font-size: 1.3rem; gap: 8px; }
 
-            /* Show floating WA button on mobile */
             .wa-float { display: flex; }
 
-            /* Lists in tab content */
             .tab-content ul { font-size: 0.88rem; line-height: 1.8; margin-left: 1rem; }
             .tab-content ul li { padding-left: 0.3rem; }
 
-            /* Stock list card */
             .stock-list-card { padding: 1.2rem; }
             .stock-list-card h3 { font-size: 1rem; }
             .stock-list-card ul { font-size: 0.85rem; }
@@ -626,7 +604,6 @@
             .logo p { font-size: 0.55rem; }
             .menu-icon { font-size: 1.6rem; min-width: 42px; min-height: 42px; }
 
-            /* Product grid: 2-col compact */
             .product-grid-2 { gap: 0.6rem; }
             .product-card .product-body { padding: 0.7rem 0.75rem 0.85rem; }
             .product-card .product-body h3 { font-size: 0.88rem; }
@@ -637,31 +614,24 @@
             .product-card .product-img i { font-size: 1.5rem; }
             .product-card .product-img span { font-size: 0.68rem; }
 
-            /* Tabs */
             .tab-link { padding: 0.35rem 0.7rem; font-size: 0.76rem; min-height: 36px; }
             .tab-menu-wrapper { margin: 0 -0.75rem; padding-left: 0.75rem; padding-right: 2rem; }
 
-            /* Buttons */
             .btn-primary { font-size: 0.85rem; padding: 0.6rem 1rem; min-height: 44px; }
             .btn-wa { font-size: 0.8rem; padding: 0.55rem 0.85rem; min-height: 42px; }
 
-            /* Cards */
             .card { padding: 1rem; border-radius: var(--radius); }
             .card h3 { font-size: 0.95rem; }
             .card p { font-size: 0.8rem; }
 
-            /* Grid */
             .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 0.8rem; }
 
-            /* Hero */
             .home-hero { padding: 1.5rem 0.75rem 2rem; border-radius: var(--radius-lg); }
             .home-hero h1 { font-size: 1.3rem !important; }
             .home-hero p { font-size: 0.82rem; }
 
-            /* Page header */
             .page-header h1 { font-size: 1.15rem; }
 
-            /* Contact card */
             .contact-info-card { padding: 1rem; border-radius: var(--radius-lg); }
             .contact-info-card p { font-size: 0.8rem; }
         }
@@ -681,14 +651,12 @@
             .home-hero { transition: none; }
         }
 
-        /* ===== LOGO: selalu tampilkan teks penuh ===== */
         .logo h1 span.logo-short { display: none; }
     </style>
 </head>
 <body>
     <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
-    <!-- Floating WhatsApp button for mobile -->
     <a class="wa-float" href="https://wa.me/6285830002355?text=Halo%20ZeroOne%20Exotics" aria-label="Chat WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -758,7 +726,6 @@
                     <p class="section-subtitle">Premium, selectively bred geckos with quality genetics. Morph langka dalam nuansa kayu klasik.</p>
                 </div>
 
-                <!-- Sticky tab bar — URUTAN BARU: Catalog → Gallery → Stock → Projects → Care Guide → Order -->
                 <div class="tab-menu-wrapper" id="gecko-tab-wrapper">
                     <div class="tab-menu" role="tablist" id="gecko-tab-menu">
                         <span class="tab-link active" data-tab="geck-catalog" role="tab">📦 Catalog</span>
@@ -781,7 +748,7 @@
                                 <p>Kontras tinggi, pupil solid, grade A — wood series eksklusif.</p>
                                 <div class="product-footer">
                                     <span class="stock-badge">Ask Price</span>
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Mack%20Snow%20Eclipse%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
                                 </div>
                             </div>
                         </div>
@@ -792,7 +759,7 @@
                                 <p>Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.</p>
                                 <div class="product-footer">
                                     <span class="stock-badge">Ask Price</span>
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Tangerine%20Tornado')"><i class="fab fa-whatsapp"></i> <span class="btn-text">WA</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">WA</span></button>
                                 </div>
                             </div>
                         </div>
@@ -802,14 +769,14 @@
                                 <h3>Black Night 50% het</h3>
                                 <p>Gen langka, dark melanistic seperti eboni — incaran kolektor serius.</p>
                                 <div class="product-footer">
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Black%20Night')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tab: Gallery (DIPINDAHKAN ke urutan ke-2, setelah Catalog) -->
+                <!-- Tab: Gallery -->
                 <div id="geck-gallery" class="tab-content" style="display:none;">
                     <div class="product-grid product-grid-2">
                         <div class="product-card">
@@ -889,7 +856,6 @@
                     <p class="section-subtitle">Clean, consistent rodent supply — sentuhan kayu gelap nan hangat untuk feeder & hobiis.</p>
                 </div>
 
-                <!-- Sticky tab bar -->
                 <div class="tab-menu-wrapper" id="rodent-tab-wrapper">
                     <div class="tab-menu" role="tablist" id="rodent-tab-menu">
                         <span class="tab-link active" data-tab="rodent-catalog" role="tab">📦 Catalog</span>
@@ -912,7 +878,7 @@
                                 <p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p>
                                 <div class="product-footer">
                                     <span class="stock-badge">Mulai 5rb</span>
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Pinkies%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
                                 </div>
                             </div>
                         </div>
@@ -923,7 +889,7 @@
                                 <p>8-14 gram, aktif dan bernutrisi tinggi.</p>
                                 <div class="product-footer">
                                     <span class="stock-badge">Mulai 7rb</span>
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Jumper%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
                                 </div>
                             </div>
                         </div>
@@ -934,7 +900,7 @@
                                 <p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p>
                                 <div class="product-footer">
                                     <span class="stock-badge">Mulai 9rb</span>
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Medium%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
                                 </div>
                             </div>
                         </div>
@@ -945,7 +911,7 @@
                                 <p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p>
                                 <div class="product-footer">
                                     <span class="stock-badge">Mulai 12rb</span>
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Adult%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
                                 </div>
                             </div>
                         </div>
@@ -955,7 +921,7 @@
                                 <h3>Tikus Hias (Warna Unik)</h3>
                                 <p>Jinak, sehat, warna eksotis seperti kayu eboni.</p>
                                 <div class="product-footer">
-                                    <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Tikus%20Hias')"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Koleksi</span></button>
+                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Koleksi</span></button>
                                 </div>
                             </div>
                         </div>
@@ -1145,7 +1111,7 @@
         })();
 
         /* ==========================================================
-           TAB SCROLL INDICATOR — show gradient when tabs overflow
+           TAB SCROLL INDICATOR
            ========================================================== */
         function setupScrollIndicator(menuId, indicatorId) {
             var menu = document.getElementById(menuId);
@@ -1160,7 +1126,6 @@
 
             menu.addEventListener('scroll', checkScroll, { passive: true });
             window.addEventListener('resize', checkScroll, { passive: true });
-            // Initial check
             setTimeout(checkScroll, 100);
         }
         setupScrollIndicator('gecko-tab-menu', 'gecko-scroll-indicator');
@@ -1249,7 +1214,6 @@
                         void target.offsetWidth;
                         target.style.animation = 'fadeSlideIn 0.35s ease';
                     }
-                    // Scroll tab into view on mobile
                     tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 });
             });
@@ -1261,6 +1225,34 @@
         initTabs('#gecko-page');
         initTabs('#rodent-page');
         showPage('home');
+
+        /* ==========================================================
+           CUSTOM WHATSAPP MESSAGE FOR CATALOG BUTTONS
+           ========================================================== */
+        (function() {
+            var waNumber = '6285830002355';
+            // Hanya tombol dengan class .catalog-btn (yang sudah kita tambahkan di catalog)
+            var catalogButtons = document.querySelectorAll('.catalog-btn');
+
+            catalogButtons.forEach(function(btn) {
+                btn.onclick = null; // hapus inline onclick jika ada (sebenarnya sudah tidak ada)
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var card = btn.closest('.product-card');
+                    if (card) {
+                        var h3 = card.querySelector('.product-body h3');
+                        var namaHewan = h3 ? h3.textContent.trim() : 'hewan ini';
+                        var pesan = 'Apakah hewan ' + namaHewan + ' ada?';
+                        var url = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(pesan);
+                        window.open(url);
+                    } else {
+                        // fallback jika bukan di dalam product card
+                        window.open('https://wa.me/' + waNumber + '?text=Halo%20ZeroOne%20Exotics');
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
