@@ -136,6 +136,59 @@
         }
         .product-card .product-img i { font-size: 2.4rem; }
         .product-card:hover .product-img { border-color: var(--border-light); }
+
+        /* ===== CATALOG IMAGE CARD (new image-based model) ===== */
+        .product-card .product-photo {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .product-card .product-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform var(--transition-slow);
+        }
+        .product-card:hover .product-photo img {
+            transform: scale(1.06);
+        }
+        .product-card .product-photo .photo-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(22,16,12,0.85) 0%, rgba(22,16,12,0.4) 60%, transparent 100%);
+            padding: 2rem 1rem 0.8rem;
+            pointer-events: none;
+        }
+        .product-card .product-photo .photo-overlay .morph-tag {
+            display: inline-block;
+            background: rgba(184,124,79,0.3);
+            border: 1px solid rgba(184,124,79,0.5);
+            border-radius: var(--radius-full);
+            padding: 0.2rem 0.7rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            letter-spacing: 0.03em;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .product-card .product-photo .stock-float {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: rgba(34,26,20,0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            padding: 0.2rem 0.65rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #9CCC65;
+            letter-spacing: 0.03em;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
         .product-card .product-body {
             padding: 1.2rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex-grow: 1;
         }
@@ -153,17 +206,60 @@
         .product-card .product-footer .stock-badge { flex-shrink: 0; }
         .product-card .product-footer .btn-wa { flex-grow: 1; min-width: 0; }
 
+        /* ===== CATALOG PRICE TAG ===== */
+        .price-tag {
+            font-family: var(--font-accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+            margin-top: 0.15rem;
+        }
+        .price-tag .price-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 1px;
+        }
+
+        /* ===== CATALOG PRICE ROW (image card variant) ===== */
+        .product-card .product-body .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-top: 0.1rem;
+        }
+        .product-card .product-body .price-row .price-current {
+            font-family: var(--font-accent);
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+        .product-card .product-body .price-row .price-unit {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
         /* ===== GRIDS ===== */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
 
-        /* ===== PRODUCT GRID (improved 2-col on mobile) ===== */
+        /* ===== PRODUCT GRID ===== */
         .product-grid {
             display: grid; gap: 1rem; margin: 1.5rem 0;
         }
         .product-grid-2 {
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* ===== CATALOG 3-COLUMN GRID ===== */
+        .product-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
         }
 
         /* ===== HEADER ===== */
@@ -440,6 +536,11 @@
             .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
             .nav-links li { font-size: 0.82rem; padding: 0.35rem 0.65rem; }
             .site-header { padding: 0.6rem 1.2rem; }
+
+            .product-grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
         }
 
         /* ===== RESPONSIVE: TABLET (769px - 1024px) ===== */
@@ -450,6 +551,11 @@
             .logo p { font-size: 0.65rem; }
 
             .product-grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .product-grid-3 {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
             }
@@ -502,6 +608,12 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.75rem;
             }
+
+            .product-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
             .product-card .product-body {
                 padding: 0.8rem 0.9rem 1rem;
                 gap: 0.35rem;
@@ -539,6 +651,15 @@
             }
             .product-card .product-img i { font-size: 1.8rem; }
             .product-card .product-img span { font-size: 0.75rem; }
+
+            .product-card .product-photo { aspect-ratio: 1 / 1; }
+            .product-card .product-photo .photo-overlay .morph-tag { font-size: 0.6rem; padding: 0.15rem 0.55rem; }
+            .product-card .product-photo .stock-float { font-size: 0.58rem; top: 6px; right: 6px; padding: 0.15rem 0.5rem; }
+
+            .product-card .price-tag { font-size: 0.9rem; }
+            .product-card .price-tag .price-label { font-size: 0.62rem; }
+            .product-card .product-body .price-row .price-current { font-size: 0.88rem; }
+            .product-card .product-body .price-row .price-unit { font-size: 0.62rem; }
 
             .grid-2 { grid-template-columns: 1fr; gap: 1rem; }
             .grid-3 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
@@ -604,6 +725,11 @@
             .logo p { font-size: 0.55rem; }
             .menu-icon { font-size: 1.6rem; min-width: 42px; min-height: 42px; }
 
+            .product-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+
             .product-grid-2 { gap: 0.6rem; }
             .product-card .product-body { padding: 0.7rem 0.75rem 0.85rem; }
             .product-card .product-body h3 { font-size: 0.88rem; }
@@ -613,6 +739,14 @@
             .product-card .product-img { padding: 0.5rem; }
             .product-card .product-img i { font-size: 1.5rem; }
             .product-card .product-img span { font-size: 0.68rem; }
+
+            .product-card .product-photo .photo-overlay .morph-tag { font-size: 0.55rem; padding: 0.1rem 0.45rem; }
+            .product-card .product-photo .stock-float { font-size: 0.52rem; top: 4px; right: 4px; padding: 0.1rem 0.4rem; }
+
+            .product-card .price-tag { font-size: 0.82rem; }
+            .product-card .price-tag .price-label { font-size: 0.58rem; }
+            .product-card .product-body .price-row .price-current { font-size: 0.8rem; }
+            .product-card .product-body .price-row .price-unit { font-size: 0.55rem; }
 
             .tab-link { padding: 0.35rem 0.7rem; font-size: 0.76rem; min-height: 36px; }
             .tab-menu-wrapper { margin: 0 -0.75rem; padding-left: 0.75rem; padding-right: 2rem; }
@@ -641,6 +775,11 @@
             .container { padding: 2.5rem 2rem; }
             .grid-2 { gap: 2rem; }
             .home-hero { padding: 4rem 2rem 5rem; }
+
+            .product-grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
         }
 
         /* ===== REDUCED MOTION ===== */
@@ -738,38 +877,114 @@
                     <div class="tab-scroll-indicator" id="gecko-scroll-indicator"></div>
                 </div>
 
-                <!-- Tab: Catalog -->
+                <!-- Tab: Catalog (3 COLUMNS) -->
                 <div id="geck-catalog" class="tab-content">
-                    <div class="product-grid product-grid-2">
+                    <div class="product-grid product-grid-3">
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-eye fa-2x"></i><span>Mack Snow</span></div>
+                            <div class="product-photo">
+                                <img src="images/gecko-mack-snow.png" alt="Mack Snow Eclipse" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Eclipse Morph</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Mack Snow Eclipse</h3>
                                 <p>Kontras tinggi, pupil solid, grade A — wood series eksklusif.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 1.500.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <span class="stock-badge">Ask Price</span>
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Mack Snow Eclipse" data-price="Rp 1.500.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-fire fa-2x"></i><span>Tangerine</span></div>
+                            <div class="product-photo">
+                                <img src="images/gecko-tangerine.png" alt="Tangerine Tornado" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Tangerine Morph</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Tangerine Tornado</h3>
                                 <p>Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 2.000.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <span class="stock-badge">Ask Price</span>
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">WA</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Tangerine Tornado" data-price="Rp 2.000.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-moon fa-2x"></i><span>Black Night</span></div>
+                            <div class="product-photo">
+                                <img src="images/gecko-black-night.png" alt="Black Night 50% het" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Melanistic Morph</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Black Night 50% het</h3>
                                 <p>Gen langka, dark melanistic seperti eboni — incaran kolektor serius.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 3.500.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Harga</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Black Night 50% het" data-price="Rp 3.500.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-photo">
+                                <img src="images/gecko-raptor.png" alt="RAPTOR Bold" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Albino Eclipse</span></div>
+                            </div>
+                            <div class="product-body">
+                                <h3>RAPTOR Bold</h3>
+                                <p>Albino eclipse dengan mata merah intens — genetics premium breeder.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 2.500.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
+                                <div class="product-footer">
+                                    <button class="btn-wa catalog-btn" data-name="RAPTOR Bold" data-price="Rp 2.500.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-photo">
+                                <img src="images/gecko-super-giant.png" alt="Super Giant 70%" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Giant Gene</span></div>
+                            </div>
+                            <div class="product-body">
+                                <h3>Super Giant 70%</h3>
+                                <p>Ukuran jumbo, gen giant dominan — incaran breeder komersial.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 2.800.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
+                                <div class="product-footer">
+                                    <button class="btn-wa catalog-btn" data-name="Super Giant 70%" data-price="Rp 2.800.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-photo">
+                                <img src="images/gecko-enigma.png" alt="Enigma het Tremper" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Het Tremper</span></div>
+                            </div>
+                            <div class="product-body">
+                                <h3>Enigma het Tremper</h3>
+                                <p>Pola unik enigma dengan het albino — pairing project potensial.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 1.800.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
+                                <div class="product-footer">
+                                    <button class="btn-wa catalog-btn" data-name="Enigma het Tremper" data-price="Rp 1.800.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
@@ -868,60 +1083,114 @@
                     <div class="tab-scroll-indicator" id="rodent-scroll-indicator"></div>
                 </div>
 
-                <!-- Tab: Catalog -->
+                <!-- Tab: Catalog (3 COLUMNS) -->
                 <div id="rodent-catalog" class="tab-content">
-                    <div class="product-grid product-grid-2">
+                    <div class="product-grid product-grid-3">
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-baby fa-2x"></i><span>Pinkies</span></div>
+                            <div class="product-photo">
+                                <img src="images/rodent-pinkies.png" alt="Pinkies 1-4 hari" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">1–4 Hari</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Pinkies (1-4 hari)</h3>
                                 <p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 5.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <span class="stock-badge">Mulai 5rb</span>
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Pinkies (1-4 hari)" data-price="Rp 5.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-frog fa-2x"></i><span>Jumper</span></div>
+                            <div class="product-photo">
+                                <img src="images/rodent-jumper.png" alt="Jumper Mulai Berbulu" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Berbulu</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Jumper (Mulai Berbulu)</h3>
                                 <p>8-14 gram, aktif dan bernutrisi tinggi.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 7.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <span class="stock-badge">Mulai 7rb</span>
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Jumper (Mulai Berbulu)" data-price="Rp 7.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-otter fa-2x"></i><span>Medium</span></div>
+                            <div class="product-photo">
+                                <img src="images/rodent-medium.png" alt="Medium Remaja" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Remaja</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Medium (Remaja)</h3>
                                 <p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 9.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <span class="stock-badge">Mulai 9rb</span>
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Medium (Remaja)" data-price="Rp 9.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-kiwi-bird fa-2x"></i><span>Adult</span></div>
+                            <div class="product-photo">
+                                <img src="images/rodent-adult.png" alt="Adult Dewasa" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Dewasa</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Adult (Dewasa)</h3>
                                 <p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 12.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <span class="stock-badge">Mulai 12rb</span>
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Adult (Dewasa)" data-price="Rp 12.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
                         <div class="product-card">
-                            <div class="product-img"><i class="fas fa-crown fa-2x"></i><span>Tikus Hias</span></div>
+                            <div class="product-photo">
+                                <img src="images/rodent-fancy.png" alt="Tikus Hias Warna Unik" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Hias Eksotis</span></div>
+                            </div>
                             <div class="product-body">
                                 <h3>Tikus Hias (Warna Unik)</h3>
                                 <p>Jinak, sehat, warna eksotis seperti kayu eboni.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 25.000</span>
+                                    <span class="price-unit">/ekor</span>
+                                </div>
                                 <div class="product-footer">
-                                    <button class="btn-wa catalog-btn"><i class="fab fa-whatsapp"></i> <span class="btn-text">Tanya Koleksi</span></button>
+                                    <button class="btn-wa catalog-btn" data-name="Tikus Hias (Warna Unik)" data-price="Rp 25.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-photo">
+                                <img src="images/rodent-frozen.png" alt="Frozen Pack Mix Ukuran" loading="lazy">
+                                <span class="stock-float">Tersedia</span>
+                                <div class="photo-overlay"><span class="morph-tag">Frozen Pack</span></div>
+                            </div>
+                            <div class="product-body">
+                                <h3>Frozen Pack (Mix Ukuran)</h3>
+                                <p>Paket frozen mix pinkies hingga adult — praktis & hemat.</p>
+                                <div class="price-row">
+                                    <span class="price-current">Rp 50.000</span>
+                                    <span class="price-unit">/pack</span>
+                                </div>
+                                <div class="product-footer">
+                                    <button class="btn-wa catalog-btn" data-name="Frozen Pack (Mix Ukuran)" data-price="Rp 50.000/pack"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
                                 </div>
                             </div>
                         </div>
@@ -1228,28 +1497,41 @@
 
         /* ==========================================================
            CUSTOM WHATSAPP MESSAGE FOR CATALOG BUTTONS
+           Pesan otomatis berisi nama produk + harga saat klik "Pesan"
            ========================================================== */
         (function() {
             var waNumber = '6285830002355';
-            // Hanya tombol dengan class .catalog-btn (yang sudah kita tambahkan di catalog)
             var catalogButtons = document.querySelectorAll('.catalog-btn');
 
             catalogButtons.forEach(function(btn) {
-                btn.onclick = null; // hapus inline onclick jika ada (sebenarnya sudah tidak ada)
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
+
                     var card = btn.closest('.product-card');
-                    if (card) {
+                    var namaProduk = btn.getAttribute('data-name') || '';
+                    var harga = btn.getAttribute('data-price') || '';
+
+                    // Fallback: ambil dari h3 jika data-name tidak ada
+                    if (!namaProduk && card) {
                         var h3 = card.querySelector('.product-body h3');
-                        var namaHewan = h3 ? h3.textContent.trim() : 'hewan ini';
-                        var pesan = 'Apakah hewan ' + namaHewan + ' ada?';
-                        var url = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(pesan);
-                        window.open(url);
-                    } else {
-                        // fallback jika bukan di dalam product card
-                        window.open('https://wa.me/' + waNumber + '?text=Halo%20ZeroOne%20Exotics');
+                        namaProduk = h3 ? h3.textContent.trim() : 'produk ini';
                     }
+
+                    var pesan;
+                    if (namaProduk && harga) {
+                        pesan = 'Halo ZeroOne Exotics, saya ingin memesan:\n\n' +
+                                '📦 ' + namaProduk + '\n' +
+                                '💰 Harga: ' + harga + '\n\n' +
+                                'Apakah masih tersedia? Terima kasih.';
+                    } else if (namaProduk) {
+                        pesan = 'Halo ZeroOne Exotics, apakah ' + namaProduk + ' masih tersedia?';
+                    } else {
+                        pesan = 'Halo ZeroOne Exotics, saya ingin bertanya tentang katalog Anda.';
+                    }
+
+                    var url = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(pesan);
+                    window.open(url);
                 });
             });
         })();
