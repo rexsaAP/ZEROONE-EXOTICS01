@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>ZeroOne Exotics | Premium Reptile & Rodent</title>
+    
+    <!-- SEO Meta Tags & Open Graph -->
+    <meta name="description" content="ZeroOne Exotics - Premium Reptile & Rodent Breeder di Indonesia. Breeding berkualitas, pengiriman aman, dan garansi kesehatan.">
+    <meta name="keywords" content="reptil, rodent, gecko, tikus pakan, breeder indonesia, zeroone exotics">
+    <meta property="og:title" content="ZeroOne Exotics | Premium Reptile & Rodent">
+    <meta property="og:description" content="Premium Reptile & Rodent Breeder di Indonesia. Breeding berkualitas, pengiriman aman.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zerooneexotics.com">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1589331357433-93214743bdea?w=1200&q=80">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -117,7 +127,7 @@
         .card h3 { font-family: var(--font-accent); font-weight: 700; font-size: 1.15rem; color: #F2E0C9; letter-spacing: 0.02em; line-height: 1.3; }
         .card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; flex-grow: 1; }
 
-        /* ===== PRODUCT CARD (improved for mobile) ===== */
+        /* ===== PRODUCT CARD ===== */
         .product-card {
             background: var(--bg-card); border-radius: var(--radius-lg);
             transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
@@ -137,57 +147,33 @@
         .product-card .product-img i { font-size: 2.4rem; }
         .product-card:hover .product-img { border-color: var(--border-light); }
 
-        /* ===== CATALOG IMAGE CARD (new image-based model) ===== */
+        /* ===== CATALOG IMAGE CARD ===== */
         .product-card .product-photo {
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-            flex-shrink: 0;
+            aspect-ratio: 1 / 1; overflow: hidden; position: relative; width: 100%; flex-shrink: 0; cursor: pointer;
         }
         .product-card .product-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform var(--transition-slow);
+            width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-slow);
         }
-        .product-card:hover .product-photo img {
-            transform: scale(1.06);
-        }
+        .product-card.sold-out .product-photo img { filter: grayscale(100%); }
+        .product-card:hover .product-photo img { transform: scale(1.06); }
         .product-card .product-photo .photo-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
+            position: absolute; bottom: 0; left: 0; right: 0;
             background: linear-gradient(to top, rgba(22,16,12,0.85) 0%, rgba(22,16,12,0.4) 60%, transparent 100%);
-            padding: 2rem 1rem 0.8rem;
-            pointer-events: none;
+            padding: 2rem 1rem 0.8rem; pointer-events: none;
         }
         .product-card .product-photo .photo-overlay .morph-tag {
-            display: inline-block;
-            background: rgba(184,124,79,0.3);
-            border: 1px solid rgba(184,124,79,0.5);
-            border-radius: var(--radius-full);
-            padding: 0.2rem 0.7rem;
-            font-size: 0.68rem;
-            font-weight: 600;
-            color: var(--accent-light);
-            letter-spacing: 0.03em;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            display: inline-block; background: rgba(184,124,79,0.3); border: 1px solid rgba(184,124,79,0.5);
+            border-radius: var(--radius-full); padding: 0.2rem 0.7rem; font-size: 0.68rem; font-weight: 600;
+            color: var(--accent-light); letter-spacing: 0.03em; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
         }
         .product-card .product-photo .stock-float {
-            position: absolute;
-            top: 10px; right: 10px;
-            background: rgba(34,26,20,0.8);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-full);
-            padding: 0.2rem 0.65rem;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #9CCC65;
-            letter-spacing: 0.03em;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            position: absolute; top: 10px; right: 10px; background: rgba(34,26,20,0.8);
+            border: 1px solid var(--border-light); border-radius: var(--radius-full); padding: 0.2rem 0.65rem;
+            font-size: 0.65rem; font-weight: 700; color: #9CCC65; letter-spacing: 0.03em;
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: all 0.3s;
+        }
+        .product-card.sold-out .product-photo .stock-float {
+            background: #7A1A1A; border-color: #9A2A2A; color: #FFDADA;
         }
         .product-card .product-body {
             padding: 1.2rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex-grow: 1;
@@ -200,47 +186,31 @@
             font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; flex-grow: 1;
         }
         .product-card .product-footer {
-            display: flex; align-items: center; gap: 0.6rem; margin-top: 0.3rem;
-            flex-wrap: wrap;
+            display: flex; align-items: center; gap: 0.6rem; margin-top: 0.3rem; flex-wrap: wrap;
         }
         .product-card .product-footer .stock-badge { flex-shrink: 0; }
         .product-card .product-footer .btn-wa { flex-grow: 1; min-width: 0; }
 
         /* ===== CATALOG PRICE TAG ===== */
         .price-tag {
-            font-family: var(--font-accent);
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: var(--gold);
-            letter-spacing: 0.02em;
-            margin-top: 0.15rem;
+            font-family: var(--font-accent); font-weight: 800; font-size: 1.1rem;
+            color: var(--gold); letter-spacing: 0.02em; margin-top: 0.15rem;
         }
         .price-tag .price-label {
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 1px;
+            font-size: 0.72rem; font-weight: 500; color: var(--text-muted);
+            display: block; margin-bottom: 1px;
         }
 
-        /* ===== CATALOG PRICE ROW (image card variant) ===== */
+        /* ===== CATALOG PRICE ROW ===== */
         .product-card .product-body .price-row {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            margin-top: 0.1rem;
+            display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.1rem;
         }
         .product-card .product-body .price-row .price-current {
-            font-family: var(--font-accent);
-            font-weight: 800;
-            font-size: 1.05rem;
-            color: var(--gold);
-            letter-spacing: 0.02em;
+            font-family: var(--font-accent); font-weight: 800; font-size: 1.05rem;
+            color: var(--gold); letter-spacing: 0.02em;
         }
         .product-card .product-body .price-row .price-unit {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 500;
+            font-size: 0.7rem; color: var(--text-muted); font-weight: 500;
         }
 
         /* ===== GRIDS ===== */
@@ -249,17 +219,76 @@
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
 
         /* ===== PRODUCT GRID ===== */
-        .product-grid {
-            display: grid; gap: 1rem; margin: 1.5rem 0;
-        }
-        .product-grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
+        .product-grid { display: grid; gap: 1rem; margin: 1.5rem 0; }
+        .product-grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .product-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 
-        /* ===== CATALOG 3-COLUMN GRID ===== */
-        .product-grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+        /* ===== PROMO BANNER ===== */
+        .promo-banner {
+            background: linear-gradient(90deg, #5E3F2E, #3C2D24, #5E3F2E);
+            color: var(--accent-light); text-align: center; padding: 0.6rem 1.5rem;
+            font-size: 0.85rem; font-weight: 600; position: relative; z-index: 101;
+            letter-spacing: 0.03em; border-bottom: 1px solid var(--border-light);
+        }
+        .promo-banner .dismiss-promo {
+            position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.2); border: none; color: var(--text-muted);
+            width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 0.9rem;
+            display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        }
+        .promo-banner .dismiss-promo:hover { background: rgba(0,0,0,0.4); color: #fff; }
+
+        /* ===== SEARCH FILTER ===== */
+        .search-wrapper {
+            position: relative; max-width: 400px; margin: 0 auto 1.5rem;
+        }
+        .search-wrapper input {
+            width: 100%; padding: 0.7rem 1.2rem 0.7rem 2.8rem;
+            border-radius: var(--radius-full); border: 1px solid var(--border);
+            background: var(--bg-card); color: var(--text-primary); font-family: var(--font-body);
+            font-size: 0.95rem; transition: 0.3s;
+        }
+        .search-wrapper input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(184,124,79,0.2); }
+        .search-wrapper i { position: absolute; left: 1.1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+        /* ===== STOCK LIST GRID ===== */
+        .stock-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .stock-item {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.8rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            transition: 0.2s;
+        }
+        .stock-item:hover {
+            border-color: var(--border-light);
+            background: rgba(0,0,0,0.3);
+        }
+        .stock-item.sold-out-item {
+            opacity: 0.6;
+            border-color: #5E3A3A;
+        }
+        .stock-item h4 {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .stock-item .stock-val {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #9CCC65;
+        }
+        .stock-item.sold-out-item .stock-val {
+            color: #FF5252;
         }
 
         /* ===== HEADER ===== */
@@ -327,6 +356,89 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== SCROLL REVEAL ===== */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox-modal {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+            z-index: 9999; justify-content: center; align-items: center; padding: 2rem;
+            cursor: pointer;
+        }
+        .lightbox-modal.show { display: flex; animation: fadeSlideIn 0.3s ease; }
+        .lightbox-modal img {
+            max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); cursor: default;
+        }
+
+        /* ===== TOAST NOTIFICATION ===== */
+        .toast-container {
+            position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+            z-index: 9998; display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none;
+        }
+        .toast-msg {
+            background: #3C2D24; color: #F2E0C9; padding: 0.8rem 1.5rem; border-radius: var(--radius-full);
+            border: 1px solid var(--border-light); box-shadow: var(--shadow-lg); font-size: 0.9rem;
+            animation: toastIn 0.3s ease forwards;
+        }
+        .toast-msg.out { animation: toastOut 0.3s ease forwards; }
+        @keyframes toastIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes toastOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(20px); } }
+
+        /* ===== CART MODAL ===== */
+        .cart-modal-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            z-index: 999; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+        }
+        .cart-modal-overlay.show { display: block; }
+        .cart-panel {
+            position: fixed; top: 0; right: -400px; width: 100%; max-width: 380px; height: 100%;
+            background: var(--bg-darker); z-index: 1000; padding: 1.5rem;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.3s ease;
+            display: flex; flex-direction: column; border-left: 1px solid var(--border);
+        }
+        .cart-panel.show { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .cart-header h2 { font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .cart-close { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); background: none; border: none; }
+        .cart-body { flex-grow: 1; overflow-y: auto; margin-bottom: 1rem; }
+        .cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); align-items: center; }
+        .cart-item-info { flex-grow: 1; }
+        .cart-item-info h4 { font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.2rem; }
+        .cart-item-info p { font-size: 0.85rem; color: var(--gold); }
+        .cart-item-actions { display: flex; align-items: center; gap: 0.5rem; }
+        .cart-item-actions button { width: 28px; height: 28px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .cart-item-actions span { font-weight: 600; min-width: 20px; text-align: center; }
+        .cart-empty { text-align: center; color: var(--text-muted); margin-top: 3rem; }
+        .cart-footer { border-top: 1px solid var(--border); padding-top: 1rem; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); }
+        .cart-total span:last-child { color: var(--gold); }
+        .btn-checkout { width: 100%; padding: 0.9rem; background: var(--whatsapp); color: white; border: none; border-radius: var(--radius-full); font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
+        .btn-checkout:hover { background: var(--whatsapp-hover); }
+
+        /* ===== FLOATING CART BUTTON ===== */
+        .cart-float-btn {
+            position: fixed; bottom: calc(20px + var(--safe-bottom)); right: 20px; z-index: 90;
+            width: 60px; height: 60px; border-radius: 50%; background: var(--accent);
+            color: #1F1915; font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(184,124,79,0.5); transition: var(--transition); border: none; cursor: pointer;
+        }
+        .cart-float-btn:hover { background: var(--accent-hover); transform: scale(1.08); }
+        .cart-badge {
+            position: absolute; top: -5px; right: -5px; background: #D32F2F; color: white;
+            width: 22px; height: 22px; border-radius: 50%; font-size: 0.75rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-darker);
+        }
+
+        /* ===== SOLD OUT OVERLAY ===== */
+        .sold-out-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg);
+            background: #B71C1C; color: white; padding: 0.4rem 1.5rem; font-size: 1.1rem;
+            font-weight: 800; border-radius: 4px; letter-spacing: 2px; z-index: 5; pointer-events: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 2px solid #FF5252;
+        }
+
         /* ===== PAGE BACKGROUNDS ===== */
         #homepage { background: rgba(42, 33, 28, 0.55); color: #F0E4D6; }
         #gecko-page { background: rgba(47, 37, 31, 0.55); color: #F2E4D4; }
@@ -385,8 +497,7 @@
             border: 1px solid rgba(184,124,79,0.4); border-radius: var(--radius-full);
             padding: 0.3rem 1rem; font-size: 0.78rem; color: var(--accent-light);
             margin-bottom: 0.8rem; letter-spacing: 0.05em; font-weight: 600;
-            backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-            transition: opacity 0.4s ease;
+            backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); transition: opacity 0.4s ease;
             text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
         }
 
@@ -403,7 +514,6 @@
         .testi-img i { font-size: 2.6rem; display: block; }
         .highlight-item p { margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-muted); }
 
-        /* ===== LEGACY PRODUCT IMG ===== */
         .product-img {
             background: rgba(46, 34, 29, 0.7); aspect-ratio: 4 / 3; border-radius: var(--radius);
             display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem;
@@ -420,7 +530,7 @@
             display: inline-block; margin: 0.4rem 0; letter-spacing: 0.03em; align-self: flex-start;
         }
 
-        /* ===== IMPROVED TAB MENU (scroll-friendly for mobile) ===== */
+        /* ===== TAB MENU ===== */
         .tab-menu-wrapper {
             position: sticky; top: 56px; z-index: 50;
             background: rgba(47, 37, 31, 0.92);
@@ -431,9 +541,7 @@
         .tab-menu {
             display: flex; flex-wrap: nowrap; gap: 0.4rem;
             padding-bottom: 0.6rem; overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;
         }
         .tab-menu::-webkit-scrollbar { display: none; }
         .tab-link {
@@ -442,19 +550,17 @@
             font-size: 0.88rem; white-space: nowrap; user-select: none;
             letter-spacing: 0.02em; border: 2px solid transparent; flex-shrink: 0;
             -webkit-tap-highlight-color: transparent; min-height: 40px;
-            display: inline-flex; align-items: center;
+            display: inline-flex; align-items: center; background: none;
         }
         .tab-link:active { transform: scale(0.95); }
         .tab-link:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
         .tab-link.active { background: var(--accent); color: #231B16; font-weight: 700; border-color: var(--accent); }
         .tab-content { animation: fadeSlideIn 0.35s ease; }
 
-        /* ===== SCROLL INDICATOR ===== */
         .tab-scroll-indicator {
             position: absolute; right: 0; top: 0; bottom: 0; width: 40px;
             background: linear-gradient(to right, transparent, rgba(47, 37, 31, 0.95));
-            pointer-events: none; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            display: none;
+            pointer-events: none; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; display: none;
         }
 
         /* ===== FOOTER ===== */
@@ -471,16 +577,11 @@
         .section-title { font-family: var(--font-heading); font-size: clamp(1.4rem, 4vw, 2rem); letter-spacing: -0.3px; color: #F5EAD8; margin-bottom: 0.6rem; }
         .section-subtitle { font-size: clamp(0.92rem, 2vw, 1.1rem); color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
 
-        /* ===== PAGE HEADER (improved for mobile) ===== */
-        .page-header {
-            margin-bottom: 1.5rem;
-        }
+        /* ===== PAGE HEADER ===== */
+        .page-header { margin-bottom: 1.5rem; }
         .page-header h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(1.4rem, 5vw, 2rem);
-            letter-spacing: -0.3px;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
+            font-family: var(--font-heading); font-size: clamp(1.4rem, 5vw, 2rem);
+            letter-spacing: -0.3px; line-height: 1.2; margin-bottom: 0.5rem;
             display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
         }
         .page-header h1 i { font-size: 0.85em; }
@@ -510,25 +611,71 @@
         .faq-block p { line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary); }
         .faq-block strong { color: #F5EAD8; }
 
-        /* ===== MOBILE FLOATING WA BUTTON ===== */
-        .wa-float {
-            display: none; position: fixed; bottom: calc(20px + var(--safe-bottom)); right: 20px;
-            z-index: 90; width: 60px; height: 60px; border-radius: 50%;
-            background: var(--whatsapp); color: #fff; font-size: 1.6rem;
-            align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(44,110,47,0.45);
-            transition: var(--transition); -webkit-tap-highlight-color: transparent;
-        }
-        .wa-float:hover { background: var(--whatsapp-hover); transform: scale(1.08); }
-        .wa-float:active { transform: scale(0.94); }
-        .wa-float i { pointer-events: none; }
-
         .text-center { text-align: center; }
         .mt-1 { margin-top: 1rem; }
         .mt-2 { margin-top: 2rem; }
         .mb-1 { margin-bottom: 1rem; }
         .mb-2 { margin-bottom: 2rem; }
 
-        /* ===== RESPONSIVE: LARGE TABLET (1025px - 1200px) ===== */
+        /* ===== ORDER SECTION ===== */
+        .order-wrapper { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+        .order-card {
+            background: rgba(58, 43, 34, 0.8); border: 1px solid var(--border-light); border-radius: var(--radius-lg);
+            padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem; text-align: center;
+        }
+        .order-card h3 {
+            font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-primary);
+            display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+        }
+        .order-card h3 i { color: var(--gold); }
+
+        .order-steps { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+        .step-item { flex: 1 1 90px; max-width: 140px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; }
+        .step-icon {
+            width: 48px; height: 48px; background: rgba(184,124,79,0.2); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--gold);
+            font-size: 1.2rem; border: 1px solid rgba(184,124,79,0.4); margin-bottom: 0.2rem;
+        }
+        .step-item h4 { font-size: 0.85rem; color: var(--text-primary); font-weight: 600; }
+        .step-item p { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+
+        .btn-cta-main {
+            background: var(--whatsapp); color: #fff; padding: 1rem 1.5rem; border-radius: var(--radius-full);
+            font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(44, 110, 47, 0.4);
+            position: relative; overflow: hidden; border: none; cursor: pointer; text-decoration: none; min-height: 50px;
+        }
+        .btn-cta-main:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(44, 110, 47, 0.6); }
+        .btn-cta-main:active { transform: scale(0.97); }
+        .btn-cta-main::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: translateX(-100%); animation: ctaShine 3s infinite;
+        }
+        @keyframes ctaShine { 0% { transform: translateX(-100%); } 20% { transform: translateX(100%); } 100% { transform: translateX(100%); } }
+
+        .trust-badges { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 0.8rem; }
+        .badge-item {
+            display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--text-muted);
+            background: rgba(0,0,0,0.25); padding: 0.35rem 0.8rem; border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,0.05);
+        }
+        .badge-item i { color: #9CCC65; font-size: 0.8rem; }
+
+        /* ===== CART BUTTON IN CARD ===== */
+        .btn-cart {
+            background: var(--accent); color: #1F1915; border: none;
+            padding: 0.65rem 1.4rem; border-radius: var(--radius-full); font-weight: 600;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            font-size: 0.9rem; cursor: pointer; transition: var(--transition);
+            white-space: nowrap; text-decoration: none; min-height: 44px;
+            letter-spacing: 0.02em; border: 2px solid transparent; flex-grow: 1;
+        }
+        .btn-cart:hover { background: var(--accent-hover); transform: scale(0.97); box-shadow: var(--shadow-sm); }
+        .btn-cart:active { transform: scale(0.95); }
+        .btn-cart:disabled { background: #5A4A40; color: #8C7B70; cursor: not-allowed; transform: none; box-shadow: none; border-color: transparent; }
+        .btn-cart i { font-size: 1.1rem; flex-shrink: 0; }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
             .container { padding: 1.8rem 1.2rem; }
             .grid-2 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
@@ -536,45 +683,25 @@
             .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
             .nav-links li { font-size: 0.82rem; padding: 0.35rem 0.65rem; }
             .site-header { padding: 0.6rem 1.2rem; }
-
-            .product-grid-3 {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-            }
+            .product-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
         }
 
-        /* ===== RESPONSIVE: TABLET (769px - 1024px) ===== */
         @media (max-width: 1024px) {
             .container { padding: 1.6rem 1.2rem; }
             .site-header { padding: 0.65rem 1.2rem; }
             .home-hero { padding: 2.8rem 1.5rem 3.2rem; }
             .logo p { font-size: 0.65rem; }
-
-            .product-grid-2 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .product-grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
+            .product-grid-2 { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .product-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         }
 
-        /* ===== RESPONSIVE: MOBILE (max-width: 768px) ===== */
         @media (max-width: 768px) {
             .container { padding: 1.2rem 1rem; }
-
-            .site-header {
-                padding: 0.6rem 0.8rem; gap: 0.3rem;
-                border-bottom-width: 1.5px;
-            }
+            .site-header { padding: 0.6rem 0.8rem; gap: 0.3rem; border-bottom-width: 1.5px; }
             .logo { flex: 1; min-width: 0; }
             .logo h1 { font-size: clamp(0.85rem, 3vw, 1.05rem); gap: 5px; }
             .logo p { font-size: 0.58rem; letter-spacing: 0.8px; margin-top: 1px; }
-
             .menu-icon { display: inline-flex; z-index: 102; }
-
             .nav-links {
                 display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0.15rem;
                 margin-top: 0.6rem; background: rgba(31, 23, 19, 0.97); border-radius: var(--radius);
@@ -584,71 +711,23 @@
             }
             .nav-links.show { display: flex; animation: slideDown 0.3s ease; }
             @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-            .nav-links li {
-                font-size: 0.95rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm);
-                width: 100%; text-align: left; min-height: 48px;
-                display: flex; align-items: center; gap: 6px;
-            }
+            .nav-links li { font-size: 0.95rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); width: 100%; text-align: left; min-height: 48px; display: flex; align-items: center; gap: 6px; }
             .nav-links li:active { background: rgba(255,255,255,0.1); }
 
-            .tab-menu-wrapper {
-                top: 52px;
-                margin: 0 -1rem;
-                padding-left: 1rem;
-                padding-right: 2.5rem;
-            }
+            .tab-menu-wrapper { top: 52px; margin: 0 -1rem; padding-left: 1rem; padding-right: 2.5rem; }
+            .tab-link { padding: 0.4rem 0.85rem; font-size: 0.82rem; min-height: 38px; }
 
-            .tab-link {
-                padding: 0.4rem 0.85rem;
-                font-size: 0.82rem;
-                min-height: 38px;
-            }
+            .product-grid-2 { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+            .product-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
 
-            .product-grid-2 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
-            }
-
-            .product-grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
-            }
-
-            .product-card .product-body {
-                padding: 0.8rem 0.9rem 1rem;
-                gap: 0.35rem;
-            }
-            .product-card .product-body h3 {
-                font-size: 0.95rem;
-                line-height: 1.25;
-            }
-            .product-card .product-body p {
-                font-size: 0.78rem;
-                line-height: 1.45;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .product-card .product-footer {
-                gap: 0.4rem;
-                margin-top: 0.2rem;
-            }
-            .product-card .product-footer .stock-badge {
-                font-size: 0.65rem;
-                padding: 0.2rem 0.6rem;
-            }
-            .product-card .product-footer .btn-wa {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.6rem;
-                min-height: 36px;
-                gap: 5px;
-            }
-            .product-card .product-footer .btn-wa span.btn-text { display: none; }
-            .product-card .product-img {
-                aspect-ratio: 1 / 1;
-                padding: 0.6rem;
-            }
+            .product-card .product-body { padding: 0.8rem 0.9rem 1rem; gap: 0.35rem; }
+            .product-card .product-body h3 { font-size: 0.95rem; line-height: 1.25; }
+            .product-card .product-body p { font-size: 0.78rem; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+            .product-card .product-footer { gap: 0.4rem; margin-top: 0.2rem; }
+            .product-card .product-footer .stock-badge { font-size: 0.65rem; padding: 0.2rem 0.6rem; }
+            .product-card .product-footer .btn-cart, .product-card .product-footer .btn-wa { font-size: 0.75rem; padding: 0.4rem 0.6rem; min-height: 36px; gap: 5px; }
+            .product-card .product-footer .btn-cart span.btn-text, .product-card .product-footer .btn-wa span.btn-text { display: none; }
+            .product-card .product-img { aspect-ratio: 1 / 1; padding: 0.6rem; }
             .product-card .product-img i { font-size: 1.8rem; }
             .product-card .product-img span { font-size: 0.75rem; }
 
@@ -669,10 +748,7 @@
             .card h3 { font-size: 1rem; }
             .card p { font-size: 0.82rem; }
 
-            .home-hero {
-                padding: 2rem 1rem 2.5rem;
-                border-radius: var(--radius-xl);
-            }
+            .home-hero { padding: 2rem 1rem 2.5rem; border-radius: var(--radius-xl); }
             .home-hero h1 { font-size: 1.5rem !important; margin-bottom: 0.6rem; }
             .home-hero p { font-size: 0.88rem; margin: 0.8rem auto 1.4rem; }
             .home-hero .btn-group { flex-direction: column; align-items: stretch; gap: 0.6rem; }
@@ -694,47 +770,42 @@
             .section-title { font-size: 1.35rem !important; }
 
             .testimonial-block { padding: 1.5rem 1rem; border-radius: var(--radius-xl); }
-
             .contact-info-card { padding: 1.3rem; }
             .contact-info-card p { font-size: 0.85rem; gap: 8px; }
-
             .faq-block { padding: 1.2rem; }
             .faq-block p { font-size: 0.82rem; }
 
             footer { padding: 1.5rem 1rem; font-size: 0.78rem; }
-
             .page-header h1 { font-size: 1.3rem; gap: 8px; }
-
-            .wa-float { display: flex; }
 
             .tab-content ul { font-size: 0.88rem; line-height: 1.8; margin-left: 1rem; }
             .tab-content ul li { padding-left: 0.3rem; }
-
             .stock-list-card { padding: 1.2rem; }
             .stock-list-card h3 { font-size: 1rem; }
             .stock-list-card ul { font-size: 0.85rem; }
+
+            .cart-float-btn { bottom: calc(20px + var(--safe-bottom)); right: 20px; width: 56px; height: 56px; font-size: 1.3rem; }
+
+            .stock-list-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+            .stock-item { padding: 0.6rem 0.8rem; }
+            .stock-item h4 { font-size: 0.82rem; }
+            .stock-item .stock-val { font-size: 0.78rem; }
         }
 
-        /* ===== RESPONSIVE: SMALL MOBILE (max-width: 400px) ===== */
         @media (max-width: 400px) {
             .container { padding: 1rem 0.75rem; }
-
             .site-header { padding: 0.5rem 0.65rem; }
             .logo h1 { font-size: 0.82rem; gap: 3px; }
             .logo h1 i { font-size: 0.82rem; }
             .logo p { font-size: 0.55rem; }
             .menu-icon { font-size: 1.6rem; min-width: 42px; min-height: 42px; }
 
-            .product-grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.6rem;
-            }
-
+            .product-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
             .product-grid-2 { gap: 0.6rem; }
             .product-card .product-body { padding: 0.7rem 0.75rem 0.85rem; }
             .product-card .product-body h3 { font-size: 0.88rem; }
             .product-card .product-body p { font-size: 0.72rem; -webkit-line-clamp: 2; }
-            .product-card .product-footer .btn-wa { font-size: 0.7rem; padding: 0.35rem 0.5rem; min-height: 34px; }
+            .product-card .product-footer .btn-cart, .product-card .product-footer .btn-wa { font-size: 0.7rem; padding: 0.35rem 0.5rem; min-height: 34px; }
             .product-card .product-footer .stock-badge { font-size: 0.6rem; padding: 0.15rem 0.5rem; }
             .product-card .product-img { padding: 0.5rem; }
             .product-card .product-img i { font-size: 1.5rem; }
@@ -768,163 +839,80 @@
 
             .contact-info-card { padding: 1rem; border-radius: var(--radius-lg); }
             .contact-info-card p { font-size: 0.8rem; }
+            
+            .order-card { padding: 1.2rem; }
+            .btn-cta-main { font-size: 0.9rem; padding: 0.8rem 1rem; }
+
+            .stock-list-grid { grid-template-columns: 1fr; }
         }
 
-        /* ===== RESPONSIVE: WIDE SCREEN (1400px+) ===== */
         @media (min-width: 1400px) {
             .container { padding: 2.5rem 2rem; }
             .grid-2 { gap: 2rem; }
             .home-hero { padding: 4rem 2rem 5rem; }
-
-            .product-grid-3 {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
+            .product-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         }
-
-        /* ===== REDUCED MOTION ===== */
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            .page, .tab-content { animation: none; }
-            .card, .product-card, .btn-primary, .btn-wa, .nav-links li, .tab-link { transition: none; }
-            .home-hero { transition: none; }
-        }
-
-        .logo h1 span.logo-short { display: none; }
-
-        /* ===== UPGRADED ORDER SECTION (ADDED CSS) ===== */
-        .order-wrapper {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .order-card {
-            background: rgba(58, 43, 34, 0.8);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: 1.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: center;
-        }
-        .order-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .order-card h3 i { color: var(--gold); }
-
-        .order-steps {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 1rem 0;
-        }
-        .step-item {
-            flex: 1 1 90px;
-            max-width: 140px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 0.4rem;
-        }
-        .step-icon {
-            width: 48px; height: 48px;
-            background: rgba(184,124,79,0.2);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--gold);
-            font-size: 1.2rem;
-            border: 1px solid rgba(184,124,79,0.4);
-            margin-bottom: 0.2rem;
-        }
-        .step-item h4 { font-size: 0.85rem; color: var(--text-primary); font-weight: 600; }
-        .step-item p { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
-
-        .btn-cta-main {
-            background: var(--whatsapp);
-            color: #fff;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-full);
-            font-size: 1.05rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(44, 110, 47, 0.4);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            min-height: 50px;
-        }
-        .btn-cta-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 22px rgba(44, 110, 47, 0.6);
-        }
-        .btn-cta-main:active { transform: scale(0.97); }
-        .btn-cta-main::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
-            transform: translateX(-100%);
-            animation: ctaShine 3s infinite;
-        }
-        @keyframes ctaShine {
-            0% { transform: translateX(-100%); }
-            20% { transform: translateX(100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .trust-badges {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 0.8rem;
-        }
-        .badge-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            background: rgba(0,0,0,0.25);
-            padding: 0.35rem 0.8rem;
-            border-radius: var(--radius-full);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .badge-item i { color: #9CCC65; font-size: 0.8rem; }
 
         @media (min-width: 600px) {
             .order-wrapper { grid-template-columns: 1fr 1fr; }
         }
-        @media (max-width: 400px) {
-            .order-card { padding: 1.2rem; }
-            .btn-cta-main { font-size: 0.9rem; padding: 0.8rem 1rem; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .page, .tab-content, .reveal { animation: none !important; }
+            .card, .product-card, .btn-primary, .btn-wa, .nav-links li, .tab-link { transition: none !important; }
+            .home-hero { transition: none !important; }
+            .reveal { opacity: 1; transform: none; }
         }
+
+        .logo h1 span.logo-short { display: none; }
     </style>
 </head>
 <body>
+    <!-- Promo Banner -->
+    <div class="promo-banner" id="promoBanner">
+        🚀 GRAND OPENING! Diskon 15% untuk semua produk Gecko & Rodent. Berlaku hingga akhir bulan!
+        <button class="dismiss-promo" onclick="document.getElementById('promoBanner').style.display='none'">&times;</button>
+    </div>
+
     <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
-    <a class="wa-float" href="https://wa.me/6285830002355?text=Halo%20ZeroOne%20Exotics" aria-label="Chat WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-label="Zoom gambar">
+        <img src="" alt="Zoomed Image" id="lightboxImg">
+    </div>
+
+    <!-- Cart Floating Button -->
+    <button class="cart-float-btn" id="cartFloatBtn" aria-label="Buka Keranjang">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </button>
+
+    <!-- Cart Panel Overlay -->
+    <div class="cart-modal-overlay" id="cartOverlay"></div>
+    
+    <!-- Cart Slide-in Panel -->
+    <div class="cart-panel" id="cartPanel" role="dialog" aria-label="Keranjang Belanja">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Keranjang</h2>
+            <button class="cart-close" id="cartCloseBtn" aria-label="Tutup keranjang">&times;</button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="cart-empty"><i class="fas fa-box-open" style="font-size:2rem; display:block; margin-bottom:1rem;"></i>Keranjang masih kosong</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">Rp 0</span>
+            </div>
+            <button class="btn-checkout" id="btnCheckout" onclick="checkoutViaWA()">
+                <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+            </button>
+        </div>
+    </div>
 
     <header class="site-header">
         <div class="logo">
@@ -947,7 +935,7 @@
         <!-- ===== HOME ===== -->
         <div id="homepage" class="page">
             <div class="container">
-                <div class="home-hero" id="homeHero">
+                <div class="home-hero reveal" id="homeHero">
                     <span class="hero-label" id="heroLabel">🦎 Leopard Gecko</span>
                     <h1>Premium Reptile &<br>Rodent Breeder in Indonesia</h1>
                     <p>Breeding berstandar tinggi dan sudah terpercaya sejak 2024.</p>
@@ -959,13 +947,13 @@
                 </div>
 
                 <div class="grid-2">
-                    <div class="card"><i class="fas fa-dna fa-2x"></i><h3>Kualitas Breeding</h3><p>Seleksi ketat & line breeding premium untuk hasil terbaik.</p></div>
-                    <div class="card"><i class="fas fa-temperature-low fa-2x"></i><h3>Sistem Terkontrol</h3><p>Ruangan bersuhu optimal, kandang higienis kayu dan makanan teratur.</p></div>
-                    <div class="card"><i class="fas fa-shipping-fast fa-2x"></i><h3>Pengiriman Aman</h3><p>Packing profesional + life guarantee ke seluruh Indonesia dengan metode teruji.</p></div>
-                    <div class="card"><i class="fas fa-comment-dots fa-2x"></i><h3>Testimoni Nyata</h3><p>Dipercaya breeder & kolektor dari Sabang sampai Merauke sejak 2024.</p></div>
+                    <div class="card reveal"><i class="fas fa-dna fa-2x"></i><h3>Kualitas Breeding</h3><p>Seleksi ketat & line breeding premium untuk hasil terbaik.</p></div>
+                    <div class="card reveal"><i class="fas fa-temperature-low fa-2x"></i><h3>Sistem Terkontrol</h3><p>Ruangan bersuhu optimal, kandang higienis kayu dan makanan teratur.</p></div>
+                    <div class="card reveal"><i class="fas fa-shipping-fast fa-2x"></i><h3>Pengiriman Aman</h3><p>Packing profesional + life guarantee ke seluruh Indonesia dengan metode teruji.</p></div>
+                    <div class="card reveal"><i class="fas fa-comment-dots fa-2x"></i><h3>Testimoni Nyata</h3><p>Dipercaya breeder & kolektor dari Sabang sampai Merauke sejak 2024.</p></div>
                 </div>
 
-                <div class="testimonial-block">
+                <div class="testimonial-block reveal">
                     <h3><i class="fas fa-camera"></i> Fasilitas Breeding & Kandang Kayu</h3>
                     <div class="highlight-grid">
                         <div class="highlight-item"><div class="testi-img"><i class="fas fa-home fa-2x"></i><span>Ruangan Gecko</span></div><p>Ruangan Gecko</p></div>
@@ -975,7 +963,7 @@
                     <p class="mt-1"><i class="fas fa-check-circle"></i> Foto real dokumentasi.</p>
                 </div>
 
-                <div class="text-center mt-2">
+                <div class="text-center mt-2 reveal">
                     <p style="font-style: italic; max-width: 600px; margin: 0 auto 0.5rem;">"ZeroOne Exotics memberikan pengalaman yang baik, hewan yang sehat dan bersih."</p>
                     <p style="font-weight: 600; color: var(--gold);">— rai, kolektor Jabodetabek</p>
                     <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6285830002355?text=Halo%20ZeroOne%20Exotics,%20saya%20mau%20konsultasi%20breeding%20kayu')"><i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp</button>
@@ -986,174 +974,61 @@
         <!-- ===== GECKO PAGE ===== -->
         <div id="gecko-page" class="page" style="display:none;">
             <div class="container">
-                <div class="page-header">
+                <div class="page-header reveal">
                     <h1 style="color:#D6AA7A;"><i class="fas fa-lizard"></i> ZeroOne.Gecko</h1>
                     <p class="section-subtitle">Premium, selectively bred geckos with quality genetics. Morph langka dalam nuansa kayu klasik.</p>
                 </div>
 
                 <div class="tab-menu-wrapper" id="gecko-tab-wrapper">
                     <div class="tab-menu" role="tablist" id="gecko-tab-menu">
-                        <span class="tab-link" data-tab="geck-projects" role="tab">🧬 Projects</span>
-                        <span class="tab-link" data-tab="geck-gallery" role="tab">🖼️ Gallery</span>
-                        <span class="tab-link active" data-tab="geck-catalog" role="tab">📦 Catalog</span>
-                        <span class="tab-link" data-tab="geck-stock" role="tab">📊 Stock</span>
-                        <span class="tab-link" data-tab="geck-care" role="tab">📘 Care Guide</span>
-                        <span class="tab-link" data-tab="geck-order" role="tab">📞 Order</span>
+                        <button class="tab-link" data-tab="geck-projects" role="tab">🧬 Projects</button>
+                        <button class="tab-link" data-tab="geck-gallery" role="tab">🖼️ Gallery</button>
+                        <button class="tab-link active" data-tab="geck-catalog" role="tab">📦 Catalog</button>
+                        <button class="tab-link" data-tab="geck-stock" role="tab">📊 Stock</button>
+                        <button class="tab-link" data-tab="geck-care" role="tab">📘 Care Guide</button>
+                        <button class="tab-link" data-tab="geck-order" role="tab">📞 Order</button>
                     </div>
                     <div class="tab-scroll-indicator" id="gecko-scroll-indicator"></div>
                 </div>
 
-                <!-- Tab: Catalog (3 COLUMNS) -->
-                <div id="geck-catalog" class="tab-content">
-                    <div class="product-grid product-grid-3">
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/gecko-mack-snow.png" alt="Mack Snow Eclipse" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Eclipse Morph</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Mack Snow Eclipse</h3>
-                                <p>Kontras tinggi, pupil solid, grade A — wood series eksklusif.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 1.500.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Mack Snow Eclipse" data-price="Rp 1.500.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/gecko-tangerine.png" alt="Tangerine Tornado" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Tangerine Morph</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Tangerine Tornado</h3>
-                                <p>Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 2.000.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Tangerine Tornado" data-price="Rp 2.000.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/gecko-black-night.png" alt="Black Night 50% het" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Melanistic Morph</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Black Night 50% het</h3>
-                                <p>Gen langka, dark melanistic seperti eboni — incaran kolektor serius.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 3.500.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Black Night 50% het" data-price="Rp 3.500.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/gecko-raptor.png" alt="RAPTOR Bold" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Albino Eclipse</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>RAPTOR Bold</h3>
-                                <p>Albino eclipse dengan mata merah intens — genetics premium breeder.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 2.500.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="RAPTOR Bold" data-price="Rp 2.500.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/gecko-super-giant.png" alt="Super Giant 70%" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Giant Gene</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Super Giant 70%</h3>
-                                <p>Ukuran jumbo, gen giant dominan — incaran breeder komersial.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 2.800.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Super Giant 70%" data-price="Rp 2.800.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/gecko-enigma.png" alt="Enigma het Tremper" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Het Tremper</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Enigma het Tremper</h3>
-                                <p>Pola unik enigma dengan het albino — pairing project potensial.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 1.800.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Enigma het Tremper" data-price="Rp 1.800.000"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Tab: Catalog -->
+                <div id="geck-catalog" class="tab-content" role="tabpanel">
+                    <div class="search-wrapper reveal">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchGecko" placeholder="Cari morph gecko..." aria-label="Cari Gecko">
                     </div>
-                </div>
-
-                <!-- Tab: Gallery -->
-                <div id="geck-gallery" class="tab-content" style="display:none;">
-                    <div class="product-grid product-grid-2">
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Closeup Tangerine</span></div>
-                            <div class="product-body"><p>Foto closeup — warna kayu alami</p></div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Setup Kandang Kayu</span></div>
-                            <div class="product-body"><p>Rack sistem natural premium</p></div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Indukan Super Giant</span></div>
-                            <div class="product-body"><p>High quality wood farm</p></div>
-                        </div>
+                    <div class="product-grid product-grid-3" id="gridGecko">
+                        <!-- Rendered via JS -->
                     </div>
-                    <p class="mt-1" style="font-size: 0.88rem;"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p>
                 </div>
 
                 <!-- Tab: Stock -->
-                <div id="geck-stock" class="tab-content" style="display:none;">
-                    <div class="card stock-list-card">
-                        <h3><i class="fas fa-clipboard-list"></i> Stok Tersedia (update rutin)</h3>
-                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 2;">
-                            <li>Leopard Gecko Mack Snow (Juvi) – 3 ekor</li>
-                            <li>RAPTOR Bold – 2 ekor</li>
-                            <li>Enigma het Tremper – 1 jantan premium</li>
-                            <li>Super Giant 70% – 1 ekor</li>
-                        </ul>
+                <div id="geck-stock" class="tab-content" style="display:none;" role="tabpanel">
+                    <div class="search-wrapper reveal">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchGeckoStock" placeholder="Cari stok gecko..." aria-label="Cari Stok Gecko">
+                    </div>
+                    <div class="card stock-list-card reveal">
+                        <h3><i class="fas fa-clipboard-list"></i> Stok Tersedia (Mock API)</h3>
+                        <div id="geckoStockList" class="stock-list-grid">Memuat stok...</div>
                         <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6285830002355?text=Update%20stok%20ZeroOne.Gecko')"><i class="fab fa-whatsapp"></i> Request Daftar Stok Lengkap</button>
                     </div>
                 </div>
 
+                <!-- Tab: Gallery -->
+                <div id="geck-gallery" class="tab-content" style="display:none;" role="tabpanel">
+                    <div class="product-grid product-grid-2">
+                        <div class="product-card reveal"><div class="product-img"><i class="fas fa-image fa-2x"></i><span>Closeup Tangerine</span></div><div class="product-body"><p>Foto closeup — warna kayu alami</p></div></div>
+                        <div class="product-card reveal"><div class="product-img"><i class="fas fa-image fa-2x"></i><span>Setup Kandang Kayu</span></div><div class="product-body"><p>Rack sistem natural premium</p></div></div>
+                        <div class="product-card reveal"><div class="product-img"><i class="fas fa-image fa-2x"></i><span>Indukan Super Giant</span></div><div class="product-body"><p>High quality wood farm</p></div></div>
+                    </div>
+                    <p class="mt-1" style="font-size: 0.88rem;"><i class="fas fa-info-circle"></i> Foto asli dari breeding farm kayu gelap — request video call untuk lihat langsung.</p>
+                </div>
+
                 <!-- Tab: Projects -->
-                <div id="geck-projects" class="tab-content" style="display:none;">
+                <div id="geck-projects" class="tab-content" style="display:none;" role="tabpanel">
                     <h3 style="color:#F5EAD8; font-size: 1.1rem;">🔥 Breeding Projects Saat Ini</h3>
-                    <div class="card mt-1">
+                    <div class="card mt-1 reveal">
                         <ul style="margin-left:1.2rem; list-style: disc; line-height: 2;">
                             <li>Enigma × Eclipse – Target F1 Super Snow Eclipse</li>
                             <li>Tremper Albino line breeding – warna intens kayu</li>
@@ -1161,13 +1036,13 @@
                             <li>Giant Project: Super Giant × Tangerine</li>
                         </ul>
                     </div>
-                    <div class="card mt-1"><i class="fas fa-flask" style="color: var(--gold);"></i><p style="margin-top:0.4rem;">Genetik teruji, pairing dengan lineage dokumentasi lengkap.</p></div>
+                    <div class="card mt-1 reveal"><i class="fas fa-flask" style="color: var(--gold);"></i><p style="margin-top:0.4rem;">Genetik teruji, pairing dengan lineage dokumentasi lengkap.</p></div>
                 </div>
 
                 <!-- Tab: Care Guide -->
-                <div id="geck-care" class="tab-content" style="display:none;">
+                <div id="geck-care" class="tab-content" style="display:none;" role="tabpanel">
                     <h3 style="color:#F5EAD8; font-size: 1.1rem;">📌 Panduan Perawatan Gecko Natural</h3>
-                    <div class="card mt-1">
+                    <div class="card mt-1 reveal">
                         <ul style="line-height: 2; margin-left: 1.2rem; list-style: disc;">
                             <li>Enclosure: 30×30×30cm juvenile, 60×45×45 dewasa</li>
                             <li>Suhu: 28–32°C (hot spot 32°C)</li>
@@ -1178,34 +1053,17 @@
                     </div>
                 </div>
 
-                <!-- Tab: Order (UPDATED) -->
-                <div id="geck-order" class="tab-content" style="display:none;">
-                    <div class="order-card">
+                <!-- Tab: Order -->
+                <div id="geck-order" class="tab-content" style="display:none;" role="tabpanel">
+                    <div class="order-card reveal">
                         <h3><i class="fas fa-gem"></i> Proses Pemesanan Eksklusif</h3>
                         <p style="font-size: 0.9rem; color: var(--text-secondary);">Dapatkan gecko impian Anda dengan layanan premium kami.</p>
-                        
                         <div class="order-steps">
-                            <div class="step-item">
-                                <div class="step-icon"><i class="fas fa-comments"></i></div>
-                                <h4>1. Konsultasi</h4>
-                                <p>Tanya morph & ketersediaan</p>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-icon"><i class="fas fa-credit-card"></i></div>
-                                <h4>2. Pembayaran</h4>
-                                <p>Transfer aman & konfirmasi</p>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-icon"><i class="fas fa-box-open"></i></div>
-                                <h4>3. Packing Kayu</h4>
-                                <p>Standar IATA & Life Guarantee</p>
-                            </div>
+                            <div class="step-item"><div class="step-icon"><i class="fas fa-comments"></i></div><h4>1. Konsultasi</h4><p>Tanya morph & ketersediaan</p></div>
+                            <div class="step-item"><div class="step-icon"><i class="fas fa-credit-card"></i></div><h4>2. Pembayaran</h4><p>Transfer aman & konfirmasi</p></div>
+                            <div class="step-item"><div class="step-icon"><i class="fas fa-box-open"></i></div><h4>3. Packing Kayu</h4><p>Standar IATA & Life Guarantee</p></div>
                         </div>
-
-                        <button class="btn-cta-main" onclick="window.open('https://wa.me/6285830002355?text=Halo%20ZeroOne.Gecko,%20saya%20ingin%20konsultasi%20dan%20memesan%20gecko%20premium')">
-                            <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> Chat & Reservasi Sekarang
-                        </button>
-
+                        <button class="btn-cta-main" onclick="window.open('https://wa.me/6285830002355?text=Halo%20ZeroOne.Gecko,%20saya%20ingin%20konsultasi%20dan%20memesan%20gecko%20premium')"><i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> Chat & Reservasi Sekarang</button>
                         <div class="trust-badges">
                             <span class="badge-item"><i class="fas fa-shield-alt"></i> Garansi DOA</span>
                             <span class="badge-item"><i class="fas fa-video"></i> Video Call Tersedia</span>
@@ -1219,155 +1077,50 @@
         <!-- ===== RODENT PAGE ===== -->
         <div id="rodent-page" class="page" style="display:none;">
             <div class="container">
-                <div class="page-header">
+                <div class="page-header reveal">
                     <h1><i class="fas fa-rat"></i> Rumah Tikus Nusantara</h1>
                     <p class="section-subtitle">Clean, consistent rodent supply — sentuhan kayu gelap nan hangat untuk feeder & hobiis.</p>
                 </div>
 
                 <div class="tab-menu-wrapper" id="rodent-tab-wrapper">
                     <div class="tab-menu" role="tablist" id="rodent-tab-menu">
-                        <span class="tab-link active" data-tab="rodent-catalog" role="tab">📦 Catalog</span>
-                        <span class="tab-link" data-tab="rodent-stock" role="tab">📊 Stock</span>
-                        <span class="tab-link" data-tab="rodent-system" role="tab">🧬 System</span>
-                        <span class="tab-link" data-tab="rodent-care" role="tab">📘 Care Guide</span>
-                        <span class="tab-link" data-tab="rodent-gallery" role="tab">🖼️ Gallery</span>
-                        <span class="tab-link" data-tab="rodent-order" role="tab">📞 Order</span>
+                        <button class="tab-link active" data-tab="rodent-catalog" role="tab">📦 Catalog</button>
+                        <button class="tab-link" data-tab="rodent-stock" role="tab">📊 Stock</button>
+                        <button class="tab-link" data-tab="rodent-system" role="tab">🧬 System</button>
+                        <button class="tab-link" data-tab="rodent-care" role="tab">📘 Care Guide</button>
+                        <button class="tab-link" data-tab="rodent-gallery" role="tab">🖼️ Gallery</button>
+                        <button class="tab-link" data-tab="rodent-order" role="tab">📞 Order</button>
                     </div>
                     <div class="tab-scroll-indicator" id="rodent-scroll-indicator"></div>
                 </div>
 
-                <!-- Tab: Catalog (3 COLUMNS) -->
-                <div id="rodent-catalog" class="tab-content">
-                    <div class="product-grid product-grid-3">
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/rodent-pinkies.png" alt="Pinkies 1-4 hari" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">1–4 Hari</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Pinkies (1-4 hari)</h3>
-                                <p>2-5 gram, ideal untuk bayi reptil atau burung pemangsa.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 5.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Pinkies (1-4 hari)" data-price="Rp 5.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/rodent-jumper.png" alt="Jumper Mulai Berbulu" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Berbulu</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Jumper (Mulai Berbulu)</h3>
-                                <p>8-14 gram, aktif dan bernutrisi tinggi.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 7.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Jumper (Mulai Berbulu)" data-price="Rp 7.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/rodent-medium.png" alt="Medium Remaja" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Remaja</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Medium (Remaja)</h3>
-                                <p>25-40 gram, ukuran serbaguna untuk sebagian besar reptil.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 9.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Medium (Remaja)" data-price="Rp 9.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/rodent-adult.png" alt="Adult Dewasa" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Dewasa</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Adult (Dewasa)</h3>
-                                <p>45-70 gram, porsi besar untuk ular besar atau koleksi.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 12.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Adult (Dewasa)" data-price="Rp 12.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/rodent-fancy.png" alt="Tikus Hias Warna Unik" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Hias Eksotis</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Tikus Hias (Warna Unik)</h3>
-                                <p>Jinak, sehat, warna eksotis seperti kayu eboni.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 25.000</span>
-                                    <span class="price-unit">/ekor</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Tikus Hias (Warna Unik)" data-price="Rp 25.000/ekor"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-photo">
-                                <img src="images/rodent-frozen.png" alt="Frozen Pack Mix Ukuran" loading="lazy">
-                                <span class="stock-float">Tersedia</span>
-                                <div class="photo-overlay"><span class="morph-tag">Frozen Pack</span></div>
-                            </div>
-                            <div class="product-body">
-                                <h3>Frozen Pack (Mix Ukuran)</h3>
-                                <p>Paket frozen mix pinkies hingga adult — praktis & hemat.</p>
-                                <div class="price-row">
-                                    <span class="price-current">Rp 50.000</span>
-                                    <span class="price-unit">/pack</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-wa catalog-btn" data-name="Frozen Pack (Mix Ukuran)" data-price="Rp 50.000/pack"><i class="fab fa-whatsapp"></i> <span class="btn-text">Pesan via WA</span></button>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Tab: Catalog -->
+                <div id="rodent-catalog" class="tab-content" role="tabpanel">
+                    <div class="search-wrapper reveal">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchRodent" placeholder="Cari ukuran tikus..." aria-label="Cari Rodent">
+                    </div>
+                    <div class="product-grid product-grid-3" id="gridRodent">
+                        <!-- Rendered via JS -->
                     </div>
                 </div>
 
                 <!-- Tab: Stock -->
-                <div id="rodent-stock" class="tab-content" style="display:none;">
-                    <div class="card stock-list-card">
-                        <h3><i class="fas fa-clipboard-list"></i> Stok Real-Time (Update Harian)</h3>
-                        <ul style="margin-left:1.2rem; list-style: disc; line-height: 2.1;">
-                            <li>Pinkies Frozen – 50 pack</li>
-                            <li>Jumper Live – 25 ekor</li>
-                            <li>Medium Frozen – 30 pack</li>
-                            <li>Adult Live – 12 ekor</li>
-                            <li>Tikus Hias (coklat kayu) – 3 ekor</li>
-                        </ul>
+                <div id="rodent-stock" class="tab-content" style="display:none;" role="tabpanel">
+                    <div class="search-wrapper reveal">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchRodentStock" placeholder="Cari stok rodent..." aria-label="Cari Stok Rodent">
+                    </div>
+                    <div class="card stock-list-card reveal">
+                        <h3><i class="fas fa-clipboard-list"></i> Stok Real-Time (Mock API)</h3>
+                        <div id="rodentStockList" class="stock-list-grid">Memuat stok...</div>
                         <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6285830002355?text=Stok%20terbaru%20Rumah%20Tikus')"><i class="fab fa-whatsapp"></i> Cek Stok Lengkap</button>
                     </div>
                 </div>
 
                 <!-- Tab: System -->
-                <div id="rodent-system" class="tab-content" style="display:none;">
-                    <div class="card">
+                <div id="rodent-system" class="tab-content" style="display:none;" role="tabpanel">
+                    <div class="card reveal">
                         <i class="fas fa-seedling fa-2x"></i>
                         <h3>Sistem Breeding & Kebersihan Kayu</h3>
                         <ul style="line-height: 2; margin-left: 1.2rem; list-style: none;">
@@ -1380,9 +1133,9 @@
                 </div>
 
                 <!-- Tab: Care Guide -->
-                <div id="rodent-care" class="tab-content" style="display:none;">
+                <div id="rodent-care" class="tab-content" style="display:none;" role="tabpanel">
                     <h3 style="color:#F5EAD8; font-size: 1.1rem;">📌 Panduan Perawatan & Ukuran</h3>
-                    <div class="card mt-1">
+                    <div class="card mt-1 reveal">
                         <ul style="line-height: 2; margin-left: 1.2rem; list-style: disc;">
                             <li><strong>Pinkies</strong> (1–4 hari) – 2–5gr, untuk baby reptile</li>
                             <li><strong>Jumper</strong> (mulai berbulu) – 8–14gr</li>
@@ -1390,7 +1143,7 @@
                             <li><strong>Adult</strong> (dewasa) – 45–70gr</li>
                         </ul>
                     </div>
-                    <div class="faq-block mt-1">
+                    <div class="faq-block mt-1 reveal">
                         <h3><i class="fas fa-question-circle"></i> FAQ — Perawatan & Pengiriman</h3>
                         <p>
                             <strong>Apakah tikus pakan bau?</strong> Tidak, ventilasi + kemasan khusus menjaga kesegaran.<br>
@@ -1401,47 +1154,30 @@
                 </div>
 
                 <!-- Tab: Gallery -->
-                <div id="rodent-gallery" class="tab-content" style="display:none;">
+                <div id="rodent-gallery" class="tab-content" style="display:none;" role="tabpanel">
                     <div class="product-grid product-grid-2">
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Kandang Kayu</span></div>
-                            <div class="product-body"><p>Setup kandang sistem litter kayu alami</p></div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Tikus Hias</span></div>
-                            <div class="product-body"><p>Warna eksotis — koleksi kayu gelap</p></div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-img"><i class="fas fa-image fa-2x"></i><span>Packaging</span></div>
-                            <div class="product-body"><p>Double carrier + serbuk kayu aman</p></div>
-                        </div>
+                        <div class="product-card reveal"><div class="product-img"><i class="fas fa-image fa-2x"></i><span>Kandang Kayu</span></div><div class="product-body"><p>Setup kandang sistem litter kayu alami</p></div></div>
+                        <div class="product-card reveal"><div class="product-img"><i class="fas fa-image fa-2x"></i><span>Tikus Hias</span></div><div class="product-body"><p>Warna eksotis — koleksi kayu gelap</p></div></div>
+                        <div class="product-card reveal"><div class="product-img"><i class="fas fa-image fa-2x"></i><span>Packaging</span></div><div class="product-body"><p>Double carrier + serbuk kayu aman</p></div></div>
                     </div>
                     <p class="mt-1" style="font-size: 0.88rem;"><i class="fas fa-info-circle"></i> Foto asli dari farm — request video call untuk tur virtual.</p>
                 </div>
 
-                <!-- Tab: Order (UPDATED) -->
-                <div id="rodent-order" class="tab-content" style="display:none;">
+                <!-- Tab: Order -->
+                <div id="rodent-order" class="tab-content" style="display:none;" role="tabpanel">
                     <div class="order-wrapper">
-                        <!-- Order Satuan / Retail -->
-                        <div class="order-card">
+                        <div class="order-card reveal">
                             <h3><i class="fas fa-shopping-bag"></i> Order Satuan</h3>
                             <p style="font-size: 0.88rem; color: var(--text-secondary);">Untuk kebutuhan pakan hewan peliharaan Anda. Respons cepat via WhatsApp.</p>
-                            <button class="btn-cta-main" style="font-size: 0.95rem;" onclick="window.open('https://wa.me/6285830002355?text=Halo%20Rumah%20Tikus,%20saya%20mau%20order%20tikus%20pakan')">
-                                <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
-                            </button>
+                            <button class="btn-cta-main" style="font-size: 0.95rem;" onclick="window.open('https://wa.me/6285830002355?text=Halo%20Rumah%20Tikus,%20saya%20mau%20order%20tikus%20pakan')"><i class="fab fa-whatsapp"></i> Pesan via WhatsApp</button>
                         </div>
-
-                        <!-- Order Grosir / Breeder -->
-                        <div class="order-card" style="border-color: var(--accent-rodent-hover); background: rgba(71, 55, 43, 0.9);">
+                        <div class="order-card reveal" style="border-color: var(--accent-rodent-hover); background: rgba(71, 55, 43, 0.9);">
                             <h3 style="color: var(--gold);"><i class="fas fa-crown"></i> Harga Grosir Breeder</h3>
                             <p style="font-size: 0.88rem; color: var(--text-secondary);">Min. order 50 ekor. Dapatkan diskon khusus breeder & toko reptile.</p>
-                            <button class="btn-cta-main" style="background: var(--accent-rodent-hover); box-shadow: 0 4px 15px rgba(124, 95, 66, 0.5);" onclick="window.open('https://wa.me/6285830002355?text=Halo%20Rumah%20Tikus,%20saya%20mau%20tanya%20harga%20grosir%20breeder')">
-                                <i class="fas fa-tags"></i> Minta Daftar Harga Grosir
-                            </button>
+                            <button class="btn-cta-main" style="background: var(--accent-rodent-hover); box-shadow: 0 4px 15px rgba(124, 95, 66, 0.5);" onclick="window.open('https://wa.me/6285830002355?text=Halo%20Rumah%20Tikus,%20saya%20mau%20tanya%20harga%20grosir%20breeder')"><i class="fas fa-tags"></i> Minta Daftar Harga Grosir</button>
                         </div>
                     </div>
-
-                    <div class="trust-badges" style="margin-top: 1.5rem;">
+                    <div class="trust-badges reveal" style="margin-top: 1.5rem;">
                         <span class="badge-item"><i class="fas fa-snowflake"></i> Fresh & Frozen</span>
                         <span class="badge-item"><i class="fas fa-broom"></i> Bersih Bebas Bau</span>
                         <span class="badge-item"><i class="fas fa-shipping-fast"></i> Pengiriman Ekspres</span>
@@ -1453,31 +1189,31 @@
         <!-- ===== ABOUT ===== -->
         <div id="about-page" class="page" style="display:none;">
             <div class="container">
-                <div class="page-header">
+                <div class="page-header reveal">
                     <h2 class="section-title"><i class="fas fa-leaf"></i> Tentang ZeroOne Exotics — Kayu Gelap</h2>
                     <p class="section-subtitle">ZeroOne Exotics didirikan oleh pecinta reptil dan rodent dengan jiwa natural. Setiap kandang kami buktikan bersih, hangat, dan mengedepankan kesejahteraan hewan. Mengusung estetika kayu gelap yang tenang namun profesional.</p>
                 </div>
                 <div class="grid-3">
-                    <div class="card"><i class="fas fa-chart-line fa-2x"></i><h3>2019 – Sekarang</h3><p>Pengalaman breeding gecko premium dan suplai rodent bersih skala nasional.</p></div>
-                    <div class="card"><i class="fas fa-shield-alt fa-2x"></i><h3>Garansi Kesehatan</h3><p>Screening ketat — semua hewan dipastikan sehat sebelum dikirim.</p></div>
-                    <div class="card"><i class="fas fa-globe fa-2x"></i><h3>Jangkauan Nasional</h3><p>Kirim ke seluruh Indonesia dengan metode live animal care terstandar.</p></div>
+                    <div class="card reveal"><i class="fas fa-chart-line fa-2x"></i><h3>2019 – Sekarang</h3><p>Pengalaman breeding gecko premium dan suplai rodent bersih skala nasional.</p></div>
+                    <div class="card reveal"><i class="fas fa-shield-alt fa-2x"></i><h3>Garansi Kesehatan</h3><p>Screening ketat — semua hewan dipastikan sehat sebelum dikirim.</p></div>
+                    <div class="card reveal"><i class="fas fa-globe fa-2x"></i><h3>Jangkauan Nasional</h3><p>Kirim ke seluruh Indonesia dengan metode live animal care terstandar.</p></div>
                 </div>
-                <p class="mt-2">Kami mendukung edukasi, kepercayaan, dan kehangatan — seperti kayu jati pilihan.</p>
+                <p class="mt-2 reveal">Kami mendukung edukasi, kepercayaan, dan kehangatan — seperti kayu jati pilihan.</p>
             </div>
         </div>
 
         <!-- ===== CONTACT ===== -->
         <div id="contact-page" class="page" style="display:none;">
             <div class="container">
-                <div class="page-header">
+                <div class="page-header reveal">
                     <h2 class="section-title"><i class="fas fa-headset"></i> Hubungi & Pengiriman Kayu Gelap</h2>
                 </div>
-                <div class="contact-info-card">
+                <div class="contact-info-card reveal">
                     <p><i class="fab fa-whatsapp fa-fw"></i> <strong>WhatsApp Bisnis:</strong> +62 858-3000-2355</p>
                     <p><i class="far fa-envelope fa-fw"></i> <strong>Email:</strong> admin@zerooneexotics.com</p>
                     <p><i class="fab fa-instagram fa-fw"></i> <strong>Instagram:</strong> @zerooneexotics.kayu</p>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <h3><i class="fas fa-shipping-fast"></i> Shipping & Guarantee</h3>
                     <p style="line-height: 1.8;">
                         🚚 Pengiriman via JNE / Sicepat / Cargo — packing standar IATA.<br>
@@ -1485,7 +1221,7 @@
                         📦 Estimasi 1–3 hari ke seluruh Indonesia.
                     </p>
                 </div>
-                <div class="text-center mt-2">
+                <div class="text-center mt-2 reveal">
                     <button class="btn-wa" onclick="window.open('https://wa.me/6285830002355?text=Halo%20ZeroOne%20Exotics%20Kayu')" style="font-size: 1rem; padding: 0.85rem 1.8rem;"><i class="fab fa-whatsapp"></i> Chat Sekarang → Tim Siap Membantu</button>
                 </div>
             </div>
@@ -1498,6 +1234,295 @@
     </footer>
 
     <script>
+        /* ==========================================================
+           MOCK DATA & STOCK API
+           ========================================================== */
+        const geckoCatalogData = [
+            { id: 'g1', name: 'Mack Snow Eclipse', desc: 'Kontras tinggi, pupil solid, grade A — wood series eksklusif.', tag: 'Eclipse Morph', price: 1500000, unit: '/ekor', imgBase: 'gecko-mack-snow', stock: 3 },
+            { id: 'g2', name: 'Tangerine Tornado', desc: 'Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.', tag: 'Tangerine Morph', price: 2000000, unit: '/ekor', imgBase: 'gecko-tangerine', stock: 2 },
+            { id: 'g3', name: 'Black Night 50% het', desc: 'Gen langka, dark melanistic seperti eboni — incaran kolektor serius.', tag: 'Melanistic Morph', price: 3500000, unit: '/ekor', imgBase: 'gecko-black-night', stock: 0 }, // SOLD OUT
+            { id: 'g4', name: 'RAPTOR Bold', desc: 'Albino eclipse dengan mata merah intens — genetics premium breeder.', tag: 'Albino Eclipse', price: 2500000, unit: '/ekor', imgBase: 'gecko-raptor', stock: 2 },
+            { id: 'g5', name: 'Super Giant 70%', desc: 'Ukuran jumbo, gen giant dominan — incaran breeder komersial.', tag: 'Giant Gene', price: 2800000, unit: '/ekor', imgBase: 'gecko-super-giant', stock: 1 },
+            { id: 'g6', name: 'Enigma het Tremper', desc: 'Pola unik enigma dengan het albino — pairing project potensial.', tag: 'Het Tremper', price: 1800000, unit: '/ekor', imgBase: 'gecko-enigma', stock: 1 }
+        ];
+
+        const rodentCatalogData = [
+            { id: 'r1', name: 'Pinkies (1-4 hari)', desc: '2-5 gram, ideal untuk bayi reptil atau burung pemangsa.', tag: '1–4 Hari', price: 5000, unit: '/ekor', imgBase: 'rodent-pinkies', stock: 50 },
+            { id: 'r2', name: 'Jumper (Mulai Berbulu)', desc: '8-14 gram, aktif dan bernutrisi tinggi.', tag: 'Berbulu', price: 7000, unit: '/ekor', imgBase: 'rodent-jumper', stock: 25 },
+            { id: 'r3', name: 'Medium (Remaja)', desc: '25-40 gram, ukuran serbaguna untuk sebagian besar reptil.', tag: 'Remaja', price: 9000, unit: '/ekor', imgBase: 'rodent-medium', stock: 30 },
+            { id: 'r4', name: 'Adult (Dewasa)', desc: '45-70 gram, porsi besar untuk ular besar atau koleksi.', tag: 'Dewasa', price: 12000, unit: '/ekor', imgBase: 'rodent-adult', stock: 12 },
+            { id: 'r5', name: 'Tikus Hias (Warna Unik)', desc: 'Jinak, sehat, warna eksotis seperti kayu eboni.', tag: 'Hias Eksotis', price: 25000, unit: '/ekor', imgBase: 'rodent-fancy', stock: 3 },
+            { id: 'r6', name: 'Frozen Pack (Mix Ukuran)', desc: 'Paket frozen mix pinkies hingga adult — praktis & hemat.', tag: 'Frozen Pack', price: 50000, unit: '/pack', imgBase: 'rodent-frozen', stock: 15 }
+        ];
+
+        // Simulasi Mock API untuk cek stok
+        async function fetchStockData(type) {
+            // Di sini kamu bisa menggantinya dengan API asli:
+            // const res = await fetch('https://api.sheety.io/ID_KAMU/zerooneExotics/stok');
+            // return res.json();
+            
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    if(type === 'gecko') resolve(geckoCatalogData.map(d => ({ id: d.id, name: d.name, stock: d.stock })));
+                    if(type === 'rodent') resolve(rodentCatalogData.map(d => ({ id: d.id, name: d.name, stock: d.stock })));
+                }, 500); // Delay 0.5 detik
+            });
+        }
+
+        /* ==========================================================
+           DYNAMIC CATALOG RENDERING
+           ========================================================== */
+        function formatRupiah(num) {
+            return 'Rp ' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function renderCatalog(data, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            data.forEach(item => {
+                const isSoldOut = item.stock === 0;
+                const card = document.createElement('div');
+                card.className = `product-card reveal ${isSoldOut ? 'sold-out' : ''}`;
+                card.setAttribute('data-name', item.name.toLowerCase());
+                
+                // Simulasi <picture> dengan WebP
+                card.innerHTML = `
+                    <div class="product-photo" onclick="openLightbox('${item.imgBase}.jpg')">
+                        <picture>
+                            <source srcset="images/${item.imgBase}.webp" type="image/webp">
+                            <img src="images/${item.imgBase}.jpg" alt="${item.name}" loading="lazy">
+                        </picture>
+                        <span class="stock-float">${isSoldOut ? 'Sold Out' : 'Tersedia'}</span>
+                        ${isSoldOut ? '<div class="sold-out-overlay">SOLD OUT</div>' : ''}
+                        <div class="photo-overlay"><span class="morph-tag">${item.tag}</span></div>
+                    </div>
+                    <div class="product-body">
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                        <div class="price-row">
+                            <span class="price-current">${formatRupiah(item.price)}</span>
+                            <span class="price-unit">${item.unit}</span>
+                        </div>
+                        <div class="product-footer">
+                            <button class="btn-cart" onclick="addToCart('${item.id}', '${item.name.replace(/'/g, "\\'")}', ${item.price})" ${isSoldOut ? 'disabled' : ''}>
+                                <i class="fas fa-shopping-cart"></i> <span class="btn-text">Keranjang</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            // Activate Intersection Observer for new elements
+            initScrollReveal();
+        }
+
+        /* ==========================================================
+           SEARCH FILTER
+           ========================================================== */
+        function setupSearch(inputId, gridId) {
+            const input = document.getElementById(inputId);
+            const grid = document.getElementById(gridId);
+            input.addEventListener('keyup', () => {
+                const val = input.value.toLowerCase();
+                const cards = grid.querySelectorAll('.product-card');
+                cards.forEach(card => {
+                    const name = card.getAttribute('data-name');
+                    card.style.display = name.includes(val) ? 'flex' : 'none';
+                });
+            });
+        }
+
+        /* ==========================================================
+           MOCK STOCK FETCH UI
+           ========================================================== */
+        async function loadStockUI(type, targetElId) {
+            const el = document.getElementById(targetElId);
+            el.innerHTML = '<p>Memuat data stok...</p>';
+            const data = await fetchStockData(type);
+            
+            let html = '';
+            data.forEach(i => {
+                const isSoldOut = i.stock === 0;
+                html += `
+                    <div class="stock-item ${isSoldOut ? 'sold-out-item' : ''}" data-name="${i.name.toLowerCase()}">
+                        <h4>${i.name}</h4>
+                        <span class="stock-val">${isSoldOut ? 'SOLD OUT' : i.stock + ' ekor/pack'}</span>
+                    </div>
+                `;
+            });
+            el.innerHTML = html;
+        }
+
+        /* ==========================================================
+           SEARCH FILTER FOR STOCK
+           ========================================================== */
+        function setupStockSearch(inputId, targetElId) {
+            const input = document.getElementById(inputId);
+            const target = document.getElementById(targetElId);
+            
+            input.addEventListener('keyup', () => {
+                const val = input.value.toLowerCase();
+                const items = target.querySelectorAll('.stock-item');
+                
+                items.forEach(item => {
+                    const name = item.getAttribute('data-name');
+                    // Tampilkan item jika nama cocok, sembunyikan jika tidak
+                    if (name.includes(val)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        /* ==========================================================
+           CART LOGIC
+           ========================================================== */
+        let cart = [];
+
+        function addToCart(id, name, price) {
+            const existing = cart.find(c => c.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ id, name, price, qty: 1 });
+            }
+            showToast(`${name} ditambahkan ke keranjang!`);
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(c => c.id !== id);
+            updateCartUI();
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(c => c.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) return removeFromCart(id);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const body = document.getElementById('cartBody');
+            const badge = document.getElementById('cartBadge');
+            const totalEl = document.getElementById('cartTotal');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            if (totalQty === 0) {
+                badge.style.display = 'none';
+                body.innerHTML = '<div class="cart-empty"><i class="fas fa-box-open" style="font-size:2rem; display:block; margin-bottom:1rem;"></i>Keranjang masih kosong</div>';
+            } else {
+                badge.style.display = 'flex';
+                badge.textContent = totalQty;
+                let html = '';
+                cart.forEach(item => {
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <h4>${item.name}</h4>
+                                <p>${formatRupiah(item.price * item.qty)}</p>
+                            </div>
+                            <div class="cart-item-actions">
+                                <button onclick="changeQty('${item.id}', -1)"><i class="fas fa-minus"></i></button>
+                                <span>${item.qty}</span>
+                                <button onclick="changeQty('${item.id}', 1)"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    `;
+                });
+                body.innerHTML = html;
+            }
+            totalEl.textContent = formatRupiah(totalPrice);
+        }
+
+        function checkoutViaWA() {
+            if (cart.length === 0) return showToast('Keranjang masih kosong!');
+            let msg = 'Halo ZeroOne Exotics, saya ingin memesan:\n\n';
+            let totalPrice = 0;
+            cart.forEach(item => {
+                const sub = item.price * item.qty;
+                totalPrice += sub;
+                msg += `📦 ${item.name} (x${item.qty}) - ${formatRupiah(sub)}\n`;
+            });
+            msg += `\n💰 Total: ${formatRupiah(totalPrice)}\n\nMohon konfirmasi ketersediaan stok. Terima kasih!`;
+            window.open('https://wa.me/6285830002355?text=' + encodeURIComponent(msg));
+        }
+
+        // Cart Panel Toggle
+        document.getElementById('cartFloatBtn').addEventListener('click', () => {
+            document.getElementById('cartPanel').classList.add('show');
+            document.getElementById('cartOverlay').classList.add('show');
+        });
+        document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+        document.getElementById('cartOverlay').addEventListener('click', closeCart);
+        function closeCart() {
+            document.getElementById('cartPanel').classList.remove('show');
+            document.getElementById('cartOverlay').classList.remove('show');
+        }
+
+        /* ==========================================================
+           TOAST NOTIFICATION
+           ========================================================== */
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('out');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        /* ==========================================================
+           LIGHTBOX
+           ========================================================== */
+        function openLightbox(src) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            // Re-map simulated image path to unsplash for demo purpose
+            const demoImages = {
+                'gecko-mack-snow.jpg': 'https://images.unsplash.com/photo-1589331357433-93214743bdea?w=800&q=80',
+                'gecko-tangerine.jpg': 'https://images.unsplash.com/photo-1606567595334-d39972c85dbe?w=800&q=80',
+                'gecko-black-night.jpg': 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=800&q=80',
+                'gecko-raptor.jpg': 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=800&q=80',
+                'gecko-super-giant.jpg': 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=800&q=80',
+                'gecko-enigma.jpg': 'https://images.unsplash.com/photo-1589331357433-93214743bdea?w=800&q=80'
+            };
+            img.src = demoImages[src] || src;
+            modal.classList.add('show');
+        }
+        document.getElementById('lightboxModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                e.currentTarget.classList.remove('show');
+            }
+        });
+
+        /* ==========================================================
+           SCROLL REVEAL (INTERSECTION OBSERVER)
+           ========================================================== */
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal:not(.active)');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
         /* ==========================================================
            SLIDESHOW HERO
            ========================================================== */
@@ -1523,10 +1548,7 @@
                 dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
                 dot.setAttribute('aria-label', 'Slide ' + (i + 1));
                 dot.setAttribute('role', 'tab');
-                dot.addEventListener('click', function () {
-                    goTo(i);
-                    resetAuto();
-                });
+                dot.addEventListener('click', function () { goTo(i); resetAuto(); });
                 dotsContainer.appendChild(dot);
             });
 
@@ -1538,13 +1560,10 @@
                 if (labelEl) labelEl.textContent = slides[index].label;
                 dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
             }
-
             function next() { goTo((currentIndex + 1) % slides.length); }
             function resetAuto() { clearInterval(autoTimer); autoTimer = setInterval(next, 5000); }
 
-            goTo(0);
-            resetAuto();
-
+            goTo(0); resetAuto();
             slides.forEach(function (s) { var img = new Image(); img.src = s.src; });
         })();
 
@@ -1570,7 +1589,7 @@
         setupScrollIndicator('rodent-tab-menu', 'rodent-scroll-indicator');
 
         /* ==========================================================
-           NAVIGASI & TABS
+           NAVIGASI, TABS & SPA ROUTING (HASH)
            ========================================================== */
         var pages = {
             home: document.getElementById('homepage'),
@@ -1590,7 +1609,8 @@
                 if (li.getAttribute('data-nav') === pageId) li.classList.add('active-nav');
             });
         }
-        function showPage(pageId) {
+        
+        function showPage(pageId, pushHash = true) {
             Object.keys(pages).forEach(function (key) { if (pages[key]) pages[key].style.display = 'none'; });
             if (pages[pageId]) {
                 pages[pageId].style.display = 'block';
@@ -1600,7 +1620,12 @@
             setActiveNav(pageId);
             window.scrollTo({ top: 0, behavior: 'smooth' });
             closeMobileMenu();
+            
+            if (pushHash) {
+                window.location.hash = pageId;
+            }
         }
+        
         function closeMobileMenu() {
             navLinks.classList.remove('show');
             navBackdrop.classList.remove('show');
@@ -1619,6 +1644,7 @@
             if (navLinks.classList.contains('show')) closeMobileMenu();
             else openMobileMenu();
         }
+        
         allNavItems.forEach(function (li) {
             li.addEventListener('click', function () {
                 var navPage = li.getAttribute('data-nav');
@@ -1640,11 +1666,13 @@
             if (!container) return;
             var tabs = container.querySelectorAll('.tab-link');
             var contents = container.querySelectorAll('.tab-content');
+            
             tabs.forEach(function (tab) {
                 tab.addEventListener('click', function () {
                     var targetId = tab.getAttribute('data-tab');
-                    tabs.forEach(function (t) { t.classList.remove('active'); });
+                    tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
                     tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
                     contents.forEach(function (c) { c.style.display = 'none'; });
                     var target = container.querySelector('#' + targetId);
                     if (target) {
@@ -1658,50 +1686,51 @@
             if (contents.length && tabs.length) {
                 contents.forEach(function (c, i) { c.style.display = i === 0 ? 'block' : 'none'; });
                 tabs[0].classList.add('active');
+                tabs[0].setAttribute('aria-selected', 'true');
             }
         }
         initTabs('#gecko-page');
         initTabs('#rodent-page');
-        showPage('home');
 
         /* ==========================================================
-           CUSTOM WHATSAPP MESSAGE FOR CATALOG BUTTONS
+           ON LOAD: INIT DYNAMIC CONTENT & ROUTING
            ========================================================== */
-        (function() {
-            var waNumber = '6285830002355';
-            var catalogButtons = document.querySelectorAll('.catalog-btn');
+        window.addEventListener('DOMContentLoaded', () => {
+            // Render Catalogs
+            renderCatalog(geckoCatalogData, 'gridGecko');
+            renderCatalog(rodentCatalogData, 'gridRodent');
+            
+            // Setup Search Filters for Catalog
+            setupSearch('searchGecko', 'gridGecko');
+            setupSearch('searchRodent', 'gridRodent');
+            
+            // Fetch Mock Stocks
+            loadStockUI('gecko', 'geckoStockList');
+            loadStockUI('rodent', 'rodentStockList');
+            
+            // Setup Search Filters for Stock
+            setupStockSearch('searchGeckoStock', 'geckoStockList');
+            setupStockSearch('searchRodentStock', 'rodentStockList');
+            
+            // Initialize Scroll Reveal
+            initScrollReveal();
+            
+            // Handle Hash Routing
+            const hash = window.location.hash.replace('#', '');
+            if (hash && pages[hash]) {
+                showPage(hash, false);
+            } else {
+                showPage('home', false);
+            }
+        });
 
-            catalogButtons.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    var card = btn.closest('.product-card');
-                    var namaProduk = btn.getAttribute('data-name') || '';
-                    var harga = btn.getAttribute('data-price') || '';
-
-                    if (!namaProduk && card) {
-                        var h3 = card.querySelector('.product-body h3');
-                        namaProduk = h3 ? h3.textContent.trim() : 'produk ini';
-                    }
-
-                    var pesan;
-                    if (namaProduk && harga) {
-                        pesan = 'Halo ZeroOne Exotics, saya ingin memesan:\n\n' +
-                                '📦 ' + namaProduk + '\n' +
-                                '💰 Harga: ' + harga + '\n\n' +
-                                'Apakah masih tersedia? Terima kasih.';
-                    } else if (namaProduk) {
-                        pesan = 'Halo ZeroOne Exotics, apakah ' + namaProduk + ' masih tersedia?';
-                    } else {
-                        pesan = 'Halo ZeroOne Exotics, saya ingin bertanya tentang katalog Anda.';
-                    }
-
-                    var url = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(pesan);
-                    window.open(url);
-                });
-            });
-        })();
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && pages[hash]) {
+                showPage(hash, false);
+            }
+        });
     </script>
 </body>
 </html>
