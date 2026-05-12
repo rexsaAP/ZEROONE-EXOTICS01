@@ -191,6 +191,21 @@
         .product-card .product-footer .stock-badge { flex-shrink: 0; }
         .product-card .product-footer .btn-wa { flex-grow: 1; min-width: 0; }
 
+        /* ===== SPEC LIST (GECKO CATALOG) ===== */
+        .spec-list {
+            display: flex; flex-direction: column; gap: 0.2rem; flex-grow: 1;
+        }
+        .spec-row {
+            display: flex; gap: 0.5rem; font-size: 0.82rem; line-height: 1.5;
+            align-items: baseline;
+        }
+        .spec-label {
+            color: var(--text-muted); font-weight: 500; min-width: 48px; flex-shrink: 0;
+        }
+        .spec-value {
+            color: var(--text-secondary); font-weight: 600;
+        }
+
         /* ===== CATALOG PRICE TAG ===== */
         .price-tag {
             font-family: var(--font-accent); font-weight: 800; font-size: 1.1rem;
@@ -740,6 +755,10 @@
             .product-card .product-body .price-row .price-current { font-size: 0.88rem; }
             .product-card .product-body .price-row .price-unit { font-size: 0.62rem; }
 
+            .spec-row { font-size: 0.72rem; gap: 0.35rem; }
+            .spec-label { min-width: 38px; font-size: 0.68rem; }
+            .spec-value { font-size: 0.72rem; }
+
             .grid-2 { grid-template-columns: 1fr; gap: 1rem; }
             .grid-3 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
             .grid-4 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
@@ -818,6 +837,10 @@
             .product-card .price-tag .price-label { font-size: 0.58rem; }
             .product-card .product-body .price-row .price-current { font-size: 0.8rem; }
             .product-card .product-body .price-row .price-unit { font-size: 0.55rem; }
+
+            .spec-row { font-size: 0.65rem; gap: 0.25rem; }
+            .spec-label { min-width: 32px; font-size: 0.6rem; }
+            .spec-value { font-size: 0.65rem; }
 
             .tab-link { padding: 0.35rem 0.7rem; font-size: 0.76rem; min-height: 36px; }
             .tab-menu-wrapper { margin: 0 -0.75rem; padding-left: 0.75rem; padding-right: 2rem; }
@@ -1046,7 +1069,7 @@
                         <ul style="line-height: 2; margin-left: 1.2rem; list-style: disc;">
                             <li>Kandang : Gex Nikita Size M / L Ceper</li>
                             <li>Suhu : Suhu Ruangan 24°-27°</li>
-                            <li>Pakan : Jangkrik/Ulat Hongkong/Kecoa Dubia + Gutload & Kalsium (Gutload adalah proses pemberian pakan yang bernutrisi kepada jangkrik seperti ubi ungu, wortel, gutload instant dan semacamnya sekitar 8-12 jam sebelum pemberian pakan kepada gecko)/li>
+                            <li>Pakan : Jangkrik/Ulat Hongkong/Kecoa Dubia + Gutload & Kalsium (Gutload adalah proses pemberian pakan yang bernutrisi kepada jangkrik seperti ubi ungu, wortel, gutload instant dan semacamnya sekitar 8-12 jam sebelum pemberian pakan kepada gecko)</li>
                             <li>Kelembaban : Selalu Sediakan Waterdish Yang Terisi Air</li>
                         </ul>
                         <button class="btn-wa mt-1" onclick="window.open('https://wa.me/6285830002355?text=Konsultasi%20care%20gecko')"><i class="fab fa-whatsapp"></i> Konsultasi Perawatan via WA</button>
@@ -1238,12 +1261,12 @@
            MOCK DATA & STOCK API
            ========================================================== */
         const geckoCatalogData = [
-            { id: 'g1', name: 'Mack Snow Eclipse', desc: 'Kontras tinggi, pupil solid, grade A — wood series eksklusif.', tag: 'Eclipse Morph', price: 1500000, unit: '/ekor', imgBase: 'gecko-mack-snow', stock: 3 },
-            { id: 'g2', name: 'Tangerine Tornado', desc: 'Warna fiery, body oranye pekat seperti kayu jati — sangat mencolok.', tag: 'Tangerine Morph', price: 2000000, unit: '/ekor', imgBase: 'gecko-tangerine', stock: 2 },
-            { id: 'g3', name: 'Black Night 50% het', desc: 'Gen langka, dark melanistic seperti eboni — incaran kolektor serius.', tag: 'Melanistic Morph', price: 3500000, unit: '/ekor', imgBase: 'gecko-black-night', stock: 0 }, // SOLD OUT
-            { id: 'g4', name: 'RAPTOR Bold', desc: 'Albino eclipse dengan mata merah intens — genetics premium breeder.', tag: 'Albino Eclipse', price: 2500000, unit: '/ekor', imgBase: 'gecko-raptor', stock: 2 },
-            { id: 'g5', name: 'Super Giant 70%', desc: 'Ukuran jumbo, gen giant dominan — incaran breeder komersial.', tag: 'Giant Gene', price: 2800000, unit: '/ekor', imgBase: 'gecko-super-giant', stock: 1 },
-            { id: 'g6', name: 'Enigma het Tremper', desc: 'Pola unik enigma dengan het albino — pairing project potensial.', tag: 'Het Tremper', price: 1800000, unit: '/ekor', imgBase: 'gecko-enigma', stock: 1 }
+            { id: 'g1', morph: 'Mack Snow Eclipse', sire: 'Giant Mack Snow', dam: 'Eclipse Female #1', sex: 'Male', dob: '15-08-2024', class: 'Grade A', tag: 'Eclipse Morph', price: 1500000, unit: '/ekor', imgBase: 'gecko-mack-snow', stock: 3 },
+            { id: 'g2', morph: 'Tangerine Tornado', sire: 'Tangerine Bold Male', dam: 'Tangerine Hypo Female', sex: 'Female', dob: '22-06-2024', class: 'Grade A', tag: 'Tangerine Morph', price: 2000000, unit: '/ekor', imgBase: 'gecko-tangerine', stock: 2 },
+            { id: 'g3', morph: 'Black Night 50% het', sire: 'Black Night Male', dam: 'Normal het Black Night', sex: 'Male', dob: '10-09-2024', class: 'Premium', tag: 'Melanistic Morph', price: 3500000, unit: '/ekor', imgBase: 'gecko-black-night', stock: 0 },
+            { id: 'g4', morph: 'RAPTOR Bold', sire: 'Tremper Albino Eclipse', dam: 'RAPTOR Female', sex: 'Female', dob: '05-07-2024', class: 'Grade A', tag: 'Albino Eclipse', price: 2500000, unit: '/ekor', imgBase: 'gecko-raptor', stock: 2 },
+            { id: 'g5', morph: 'Super Giant 70%', sire: 'Super Giant Male', dam: 'Giant Female', sex: 'Male', dob: '18-04-2024', class: 'Giant Line', tag: 'Giant Gene', price: 2800000, unit: '/ekor', imgBase: 'gecko-super-giant', stock: 1 },
+            { id: 'g6', morph: 'Enigma het Tremper', sire: 'Enigma Male', dam: 'Tremper Albino Female', sex: 'Female', dob: '30-10-2024', class: 'Project', tag: 'Het Tremper', price: 1800000, unit: '/ekor', imgBase: 'gecko-enigma', stock: 1 }
         ];
 
         const rodentCatalogData = [
@@ -1257,15 +1280,11 @@
 
         // Simulasi Mock API untuk cek stok
         async function fetchStockData(type) {
-            // Di sini kamu bisa menggantinya dengan API asli:
-            // const res = await fetch('https://api.sheety.io/ID_KAMU/zerooneExotics/stok');
-            // return res.json();
-            
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    if(type === 'gecko') resolve(geckoCatalogData.map(d => ({ id: d.id, name: d.name, stock: d.stock })));
+                    if(type === 'gecko') resolve(geckoCatalogData.map(d => ({ id: d.id, name: d.morph, stock: d.stock })));
                     if(type === 'rodent') resolve(rodentCatalogData.map(d => ({ id: d.id, name: d.name, stock: d.stock })));
-                }, 500); // Delay 0.5 detik
+                }, 500);
             });
         }
 
@@ -1284,28 +1303,53 @@
                 const isSoldOut = item.stock === 0;
                 const card = document.createElement('div');
                 card.className = `product-card reveal ${isSoldOut ? 'sold-out' : ''}`;
-                card.setAttribute('data-name', item.name.toLowerCase());
                 
-                // Simulasi <picture> dengan WebP
+                // Use morph as searchable name for gecko, name for rodent
+                const searchName = (item.morph || item.name || '').toLowerCase();
+                card.setAttribute('data-name', searchName);
+                
+                // Build body content based on item type
+                let bodyContent = '';
+                if (item.morph) {
+                    // Gecko format — show Morph, Sire, Dam, Sex, Dob, Class
+                    bodyContent = `
+                        <h3>${item.morph}</h3>
+                        <div class="spec-list">
+                            <div class="spec-row"><span class="spec-label">Sire</span><span class="spec-value">${item.sire}</span></div>
+                            <div class="spec-row"><span class="spec-label">Dam</span><span class="spec-value">${item.dam}</span></div>
+                            <div class="spec-row"><span class="spec-label">Sex</span><span class="spec-value">${item.sex}</span></div>
+                            <div class="spec-row"><span class="spec-label">DOB</span><span class="spec-value">${item.dob}</span></div>
+                            <div class="spec-row"><span class="spec-label">Class</span><span class="spec-value">${item.class}</span></div>
+                        </div>
+                    `;
+                } else {
+                    // Rodent format — show name and description
+                    bodyContent = `
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                    `;
+                }
+                
+                const cartName = (item.morph || item.name || '').replace(/'/g, "\\'");
+                
                 card.innerHTML = `
                     <div class="product-photo" onclick="openLightbox('${item.imgBase}.jpg')">
                         <picture>
                             <source srcset="images/${item.imgBase}.webp" type="image/webp">
-                            <img src="images/${item.imgBase}.jpg" alt="${item.name}" loading="lazy">
+                            <img src="images/${item.imgBase}.jpg" alt="${item.morph || item.name}" loading="lazy">
                         </picture>
                         <span class="stock-float">${isSoldOut ? 'Sold Out' : 'Tersedia'}</span>
                         ${isSoldOut ? '<div class="sold-out-overlay">SOLD OUT</div>' : ''}
                         <div class="photo-overlay"><span class="morph-tag">${item.tag}</span></div>
                     </div>
                     <div class="product-body">
-                        <h3>${item.name}</h3>
-                        <p>${item.desc}</p>
+                        ${bodyContent}
                         <div class="price-row">
                             <span class="price-current">${formatRupiah(item.price)}</span>
                             <span class="price-unit">${item.unit}</span>
                         </div>
                         <div class="product-footer">
-                            <button class="btn-cart" onclick="addToCart('${item.id}', '${item.name.replace(/'/g, "\\'")}', ${item.price})" ${isSoldOut ? 'disabled' : ''}>
+                            <button class="btn-cart" onclick="addToCart('${item.id}', '${cartName}', ${item.price})" ${isSoldOut ? 'disabled' : ''}>
                                 <i class="fas fa-shopping-cart"></i> <span class="btn-text">Keranjang</span>
                             </button>
                         </div>
@@ -1368,7 +1412,6 @@
                 
                 items.forEach(item => {
                     const name = item.getAttribute('data-name');
-                    // Tampilkan item jika nama cocok, sembunyikan jika tidak
                     if (name.includes(val)) {
                         item.style.display = 'flex';
                     } else {
@@ -1488,7 +1531,6 @@
         function openLightbox(src) {
             const modal = document.getElementById('lightboxModal');
             const img = document.getElementById('lightboxImg');
-            // Re-map simulated image path to unsplash for demo purpose
             const demoImages = {
                 'gecko-mack-snow.jpg': 'https://images.unsplash.com/photo-1589331357433-93214743bdea?w=800&q=80',
                 'gecko-tangerine.jpg': 'https://images.unsplash.com/photo-1606567595334-d39972c85dbe?w=800&q=80',
